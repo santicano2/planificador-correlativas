@@ -1,7 +1,5 @@
+import { ImportPlanFlow } from "@/components/import/import-plan-flow";
+
 export default function Home() {
-  return (
-    <main>
-      <h1>Planificador de Correlativas</h1>
-    </main>
-  );
+  return <ImportPlanFlow />;
 }

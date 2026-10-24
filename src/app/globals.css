@@ -1,1 +1,133 @@
 @import "tailwindcss";
+
+@theme inline {
+  --color-paper: #f4efe5;
+  --color-paper-deep: #e9dfcd;
+  --color-paper-light: #fbf8f1;
+  --color-ink: #17241d;
+  --color-ink-soft: #4b5b51;
+  --color-forest: #1f4d3a;
+  --color-forest-deep: #102e23;
+  --color-terracotta: #a9522b;
+  --color-terracotta-soft: #f2d8c9;
+  --color-gold: #d6a33f;
+  --color-sage: #a9beae;
+  --color-line: #d8cdbb;
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-instrument-sans);
+}
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background-color: var(--color-paper);
+  background-image:
+    radial-gradient(circle at 8% 0%, rgba(214, 163, 63, 0.18), transparent 30rem),
+    radial-gradient(circle at 95% 10%, rgba(31, 77, 58, 0.12), transparent 28rem),
+    linear-gradient(rgba(23, 36, 29, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23, 36, 29, 0.035) 1px, transparent 1px);
+  background-size: auto, auto, 28px 28px, 28px 28px;
+  color: var(--color-ink);
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-terracotta);
+  outline-offset: 3px;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-1deg);
+  }
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(-10%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(480%);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.65;
+  }
+  70%,
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+.animate-rise {
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-float {
+  animation: float 7s ease-in-out infinite;
+}
+
+.animate-scan {
+  animation: scan 2.2s ease-in-out infinite;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 1.8s ease-out infinite;
+}
+
+.paper-shadow {
+  box-shadow: 10px 10px 0 rgba(23, 36, 29, 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
