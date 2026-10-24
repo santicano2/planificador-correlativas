@@ -1,0 +1,2072 @@
+[
+  {
+    "pageNumber": 1,
+    "width": 612,
+    "height": 792,
+    "items": [
+      {
+        "text": "ANALISTA PROGRAMADOR UNIVERSITARIO / LICENCIATURA EN SISTEMAS",
+        "x": 93.5,
+        "y": 728.3,
+        "width": 424.1,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "PLAN DE ESTUDIOS 2014",
+        "x": 238.4,
+        "y": 715.3,
+        "width": 134.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "ORGANIZACIÓN CURRICULAR",
+        "x": 79.2,
+        "y": 689.4,
+        "width": 171.2,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Código",
+        "x": 85,
+        "y": 649.1,
+        "width": 31.7,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "Asignatura",
+        "x": 189.8,
+        "y": 649.1,
+        "width": 49.3,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "Carga",
+        "x": 316.4,
+        "y": 661,
+        "width": 27.5,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "Horaria",
+        "x": 312.5,
+        "y": 649.1,
+        "width": 35.6,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "Total",
+        "x": 318.4,
+        "y": 637.2,
+        "width": 23.7,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "Carga",
+        "x": 364.9,
+        "y": 661,
+        "width": 27.5,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "Horaria",
+        "x": 361,
+        "y": 649.1,
+        "width": 35.5,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "Semanal",
+        "x": 359.6,
+        "y": 637.2,
+        "width": 37.9,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "Régimen de",
+        "x": 414.1,
+        "y": 655.1,
+        "width": 51.8,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "Cursada",
+        "x": 421.1,
+        "y": 643.1,
+        "width": 37.8,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "Correla-",
+        "x": 483.1,
+        "y": 656.4,
+        "width": 37.8,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "tividades",
+        "x": 482.3,
+        "y": 641.8,
+        "width": 39.6,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "Primer Año",
+        "x": 274.8,
+        "y": 618.2,
+        "width": 57.2,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "1",
+        "x": 100.4,
+        "y": 599.5,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Programación de Computadoras",
+        "x": 127.6,
+        "y": 599.8,
+        "width": 133.1,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "192",
+        "x": 324.2,
+        "y": 599.5,
+        "width": 16.9,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "6",
+        "x": 378.3,
+        "y": 599.5,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Anual",
+        "x": 431.2,
+        "y": 600.1,
+        "width": 22.8,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "2",
+        "x": 100.4,
+        "y": 580.4,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Organización de Computadoras",
+        "x": 127.6,
+        "y": 580.7,
+        "width": 130.7,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "96",
+        "x": 327.1,
+        "y": 580.4,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "6",
+        "x": 378.3,
+        "y": 580.4,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "1º Cuatrimestre",
+        "x": 408.6,
+        "y": 581,
+        "width": 58.5,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "3",
+        "x": 100.4,
+        "y": 561.5,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Arquitectura de Computadoras",
+        "x": 127.6,
+        "y": 561.6,
+        "width": 127.3,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "96",
+        "x": 327.1,
+        "y": 561.5,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "6",
+        "x": 378.3,
+        "y": 561.5,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "2º Cuatrimestre",
+        "x": 408.6,
+        "y": 562,
+        "width": 58.5,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "2",
+        "x": 501.7,
+        "y": 561.5,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "4",
+        "x": 100.4,
+        "y": 542.3,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Matemática 1",
+        "x": 127.6,
+        "y": 542.6,
+        "width": 56.5,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "96",
+        "x": 327.1,
+        "y": 542.3,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "6",
+        "x": 378.3,
+        "y": 542.3,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "1º Cuatrimestre",
+        "x": 408.6,
+        "y": 542.9,
+        "width": 58.5,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "5",
+        "x": 100.4,
+        "y": 523.2,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Matemática 2",
+        "x": 127.6,
+        "y": 523.4,
+        "width": 56.5,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "96",
+        "x": 327.1,
+        "y": 523.2,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "6",
+        "x": 378.3,
+        "y": 523.2,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "2º Cuatrimestre",
+        "x": 408.6,
+        "y": 523.9,
+        "width": 58.5,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "4",
+        "x": 501.7,
+        "y": 523.2,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "6",
+        "x": 100.4,
+        "y": 504.1,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Expresión de Problemas y Algoritmos",
+        "x": 127.6,
+        "y": 504.4,
+        "width": 158,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "64",
+        "x": 327.1,
+        "y": 504.1,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "4",
+        "x": 378.3,
+        "y": 504.1,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "1º Cuatrimestre",
+        "x": 408.6,
+        "y": 504.7,
+        "width": 58.5,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "7",
+        "x": 100.4,
+        "y": 485,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Introducción al Pensamiento Científico",
+        "x": 127.6,
+        "y": 485.3,
+        "width": 162.1,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "64",
+        "x": 327.1,
+        "y": 485,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "4",
+        "x": 378.3,
+        "y": 485,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "2º Cuatrimestre",
+        "x": 408.6,
+        "y": 485.6,
+        "width": 58.5,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "Segundo Año",
+        "x": 271.2,
+        "y": 465.7,
+        "width": 64,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "8",
+        "x": 97.9,
+        "y": 447,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Ingeniería de Software 1",
+        "x": 127.6,
+        "y": 447.1,
+        "width": 101.8,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "96",
+        "x": 324.5,
+        "y": 447,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "6",
+        "x": 375.8,
+        "y": 447,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "1º Cuatrimestre",
+        "x": 408.6,
+        "y": 447.5,
+        "width": 58.5,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "1",
+        "x": 499.2,
+        "y": 447,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "9",
+        "x": 97.9,
+        "y": 427.8,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Introducción a las Bases de Datos",
+        "x": 127.6,
+        "y": 428.2,
+        "width": 139.8,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "128",
+        "x": 321.7,
+        "y": 427.8,
+        "width": 16.9,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "4",
+        "x": 375.8,
+        "y": 427.8,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Anual",
+        "x": 428.5,
+        "y": 428.4,
+        "width": 22.9,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "1",
+        "x": 499.2,
+        "y": 427.8,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "10",
+        "x": 95,
+        "y": 408.7,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Algoritmos y Estructuras de Datos",
+        "x": 127.6,
+        "y": 409,
+        "width": 142.9,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "96",
+        "x": 324.5,
+        "y": 408.7,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "6",
+        "x": 375.8,
+        "y": 408.7,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "1º Cuatrimestre",
+        "x": 410.8,
+        "y": 409.3,
+        "width": 58.4,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "1 – 5 - 6",
+        "x": 483.4,
+        "y": 408.7,
+        "width": 37.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "11",
+        "x": 95,
+        "y": 389.6,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Orientación a Objetos 1",
+        "x": 127.6,
+        "y": 389.9,
+        "width": 98.3,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "96",
+        "x": 324.5,
+        "y": 389.6,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "6",
+        "x": 375.8,
+        "y": 389.6,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "2º Cuatrimestre",
+        "x": 410.8,
+        "y": 390.4,
+        "width": 58.4,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "1",
+        "x": 499.2,
+        "y": 389.6,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "12",
+        "x": 95,
+        "y": 370.6,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Seminario de Lenguajes",
+        "x": 127.6,
+        "y": 370.8,
+        "width": 99.8,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "96",
+        "x": 324.5,
+        "y": 370.6,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "6",
+        "x": 375.8,
+        "y": 370.6,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "2º Cuatrimestre",
+        "x": 410.8,
+        "y": 371.2,
+        "width": 58.4,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "1",
+        "x": 499.2,
+        "y": 370.6,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "13",
+        "x": 95,
+        "y": 351.5,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Introducción a los Sistemas Operativos",
+        "x": 127.6,
+        "y": 351.7,
+        "width": 161.8,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "96",
+        "x": 324.5,
+        "y": 351.5,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "6",
+        "x": 375.8,
+        "y": 351.5,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "2º Cuatrimestre",
+        "x": 410.8,
+        "y": 352.1,
+        "width": 58.4,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "1 – 3",
+        "x": 490.8,
+        "y": 351.5,
+        "width": 22.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "14",
+        "x": 95,
+        "y": 332.4,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Matemática 3",
+        "x": 127.6,
+        "y": 332.6,
+        "width": 56.5,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "96",
+        "x": 324.5,
+        "y": 332.4,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "6",
+        "x": 375.8,
+        "y": 332.4,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "1º Cuatrimestre",
+        "x": 410.8,
+        "y": 333,
+        "width": 58.4,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "5",
+        "x": 499.2,
+        "y": 332.4,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "15",
+        "x": 95,
+        "y": 313.3,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Probabilidades y Estadística",
+        "x": 127.6,
+        "y": 313.6,
+        "width": 116.5,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "64",
+        "x": 324.5,
+        "y": 313.3,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "4",
+        "x": 375.8,
+        "y": 313.3,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "2º Cuatrimestre",
+        "x": 410.8,
+        "y": 313.9,
+        "width": 58.4,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "14",
+        "x": 496.4,
+        "y": 313.3,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Tercer Año",
+        "x": 275.6,
+        "y": 293.9,
+        "width": 55.5,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "16",
+        "x": 95,
+        "y": 275.2,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Programación Concurrente",
+        "x": 127.6,
+        "y": 275.4,
+        "width": 111.7,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "96",
+        "x": 324.5,
+        "y": 275.2,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "6",
+        "x": 375.8,
+        "y": 275.2,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "1º Cuatrimestre",
+        "x": 410.8,
+        "y": 275.9,
+        "width": 58.4,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "12 - 13",
+        "x": 486.1,
+        "y": 275.2,
+        "width": 32,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "17",
+        "x": 95,
+        "y": 256.1,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Ingeniería de Software 2",
+        "x": 127.6,
+        "y": 256.3,
+        "width": 101.8,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "96",
+        "x": 324.5,
+        "y": 256.1,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "6",
+        "x": 375.8,
+        "y": 256.1,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "1º Cuatrimestre",
+        "x": 410.8,
+        "y": 256.7,
+        "width": 58.4,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "8",
+        "x": 499.2,
+        "y": 256.1,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "18",
+        "x": 95,
+        "y": 237,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Orientación a Objetos 2",
+        "x": 127.6,
+        "y": 237.2,
+        "width": 98.3,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "96",
+        "x": 324.5,
+        "y": 237,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "6",
+        "x": 375.8,
+        "y": 237,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "1º Cuatrimestre",
+        "x": 410.8,
+        "y": 237.6,
+        "width": 58.4,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "11",
+        "x": 496.4,
+        "y": 237,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "19",
+        "x": 95,
+        "y": 217.9,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Sistemas y Organizaciones",
+        "x": 127.6,
+        "y": 218.2,
+        "width": 111.4,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "96",
+        "x": 324.5,
+        "y": 217.9,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "6",
+        "x": 375.8,
+        "y": 217.9,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "2º Cuatrimestre",
+        "x": 410.8,
+        "y": 218.5,
+        "width": 58.4,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "8 - 9",
+        "x": 491.8,
+        "y": 217.9,
+        "width": 20.7,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "20",
+        "x": 95,
+        "y": 198.8,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Bases de Datos 1",
+        "x": 127.6,
+        "y": 199.1,
+        "width": 70.8,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "96",
+        "x": 324.5,
+        "y": 198.8,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "6",
+        "x": 375.8,
+        "y": 198.8,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "2º Cuatrimestre",
+        "x": 410.8,
+        "y": 199.4,
+        "width": 58.4,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "9",
+        "x": 499.2,
+        "y": 198.8,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "21",
+        "x": 95,
+        "y": 173.3,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Proyecto de Software",
+        "x": 127.6,
+        "y": 173.5,
+        "width": 89,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "96",
+        "x": 324.5,
+        "y": 173.3,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "6",
+        "x": 375.8,
+        "y": 173.3,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "2º Cuatrimestre",
+        "x": 410.8,
+        "y": 173.9,
+        "width": 58.4,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "8 – 9 –",
+        "x": 486.6,
+        "y": 179.8,
+        "width": 31.1,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "10 - 12",
+        "x": 486.1,
+        "y": 166.8,
+        "width": 32,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Aprobadas las asignaturas hasta 21 inclusive y cumplidos los requisitos correspondientes se obtiene",
+        "x": 79.2,
+        "y": 137.5,
+        "width": 452.5,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "el título de Analista Programador Universitario.",
+        "x": 79.2,
+        "y": 124.6,
+        "width": 215.4,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Otros Requisitos para obtener el título de Analista Programados Universitario:",
+        "x": 79.2,
+        "y": 98.6,
+        "width": 353.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "-Aprobar Inglés I y II de 70 horas cada uno",
+        "x": 79.2,
+        "y": 85.7,
+        "width": 195,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "-Aprobar Prácticas Pre-Profesionales (80 horas)",
+        "x": 79.2,
+        "y": 72.7,
+        "width": 216,
+        "height": 11.3,
+        "fontSize": 11.3
+      }
+    ]
+  },
+  {
+    "pageNumber": 2,
+    "width": 612,
+    "height": 792,
+    "items": [
+      {
+        "text": "Tercer Año",
+        "x": 275.6,
+        "y": 724.9,
+        "width": 55.5,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "22",
+        "x": 95,
+        "y": 700.8,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Conceptos y Paradigmas de Lenguajes de",
+        "x": 127.6,
+        "y": 706.9,
+        "width": 171.8,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "Programación",
+        "x": 127.6,
+        "y": 695.2,
+        "width": 57.9,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "80",
+        "x": 324.5,
+        "y": 700.8,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "4",
+        "x": 375.8,
+        "y": 700.8,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "1º Cuatrimestre",
+        "x": 410.8,
+        "y": 701.4,
+        "width": 58.4,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "10 - 12",
+        "x": 486.1,
+        "y": 700.8,
+        "width": 32,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "23",
+        "x": 95,
+        "y": 676.3,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Redes y Comunicaciones",
+        "x": 127.6,
+        "y": 676.4,
+        "width": 104.6,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "96",
+        "x": 324.5,
+        "y": 676.3,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "6",
+        "x": 375.8,
+        "y": 676.3,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "2º Cuatrimestre",
+        "x": 410.8,
+        "y": 676.9,
+        "width": 58.4,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "5 - 13",
+        "x": 489,
+        "y": 676.3,
+        "width": 26.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Cuarto Año",
+        "x": 274.8,
+        "y": 656.9,
+        "width": 57.2,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "24",
+        "x": 95,
+        "y": 631.6,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Ingeniería de Software 3",
+        "x": 127.6,
+        "y": 631.9,
+        "width": 101.8,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "96",
+        "x": 324.5,
+        "y": 631.6,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "6",
+        "x": 375.8,
+        "y": 631.6,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "1º Cuatrimestre",
+        "x": 410.8,
+        "y": 632.3,
+        "width": 58.4,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "14 – 17 -",
+        "x": 481.9,
+        "y": 638.2,
+        "width": 40.5,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "19",
+        "x": 496.4,
+        "y": 625.2,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "25",
+        "x": 95,
+        "y": 606.1,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Bases de Datos 2",
+        "x": 127.6,
+        "y": 606.4,
+        "width": 70.8,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "96",
+        "x": 324.5,
+        "y": 606.1,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "6",
+        "x": 375.8,
+        "y": 606.1,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "1º Cuatrimestre",
+        "x": 410.8,
+        "y": 606.7,
+        "width": 58.4,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "20",
+        "x": 496.4,
+        "y": 606.1,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "26",
+        "x": 95,
+        "y": 581.6,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Fundamentos de Teoría de la",
+        "x": 127.6,
+        "y": 587.9,
+        "width": 119.9,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "Computación",
+        "x": 127.6,
+        "y": 575.9,
+        "width": 55.6,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "96",
+        "x": 324.5,
+        "y": 581.6,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "6",
+        "x": 375.8,
+        "y": 581.6,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "2º Cuatrimestre",
+        "x": 410.8,
+        "y": 582.2,
+        "width": 58.4,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "14 - 22",
+        "x": 486.1,
+        "y": 581.6,
+        "width": 32,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "27",
+        "x": 95,
+        "y": 557.2,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Sistemas Operativos",
+        "x": 127.6,
+        "y": 557.4,
+        "width": 84.6,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "96",
+        "x": 324.5,
+        "y": 557.2,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "6",
+        "x": 375.8,
+        "y": 557.2,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "1º Cuatrimestre",
+        "x": 410.8,
+        "y": 557.8,
+        "width": 58.4,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "23",
+        "x": 496.4,
+        "y": 557.2,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "28",
+        "x": 95,
+        "y": 531.2,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Desarrollo de Software en Sistemas",
+        "x": 127.6,
+        "y": 538.8,
+        "width": 147.5,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "Distribuidos",
+        "x": 127.6,
+        "y": 524,
+        "width": 51.2,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "96",
+        "x": 324.5,
+        "y": 531.2,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "6",
+        "x": 375.8,
+        "y": 531.2,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "2º Cuatrimestre",
+        "x": 410.8,
+        "y": 531.7,
+        "width": 58.4,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "16 – 20 -",
+        "x": 481.9,
+        "y": 537.7,
+        "width": 40.5,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "23",
+        "x": 496.4,
+        "y": 524.8,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "29",
+        "x": 95,
+        "y": 505.2,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Matemática Discreta",
+        "x": 127.6,
+        "y": 505.6,
+        "width": 85.7,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "64",
+        "x": 324.5,
+        "y": 505.2,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "4",
+        "x": 375.8,
+        "y": 505.2,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "1º Cuatrimestre",
+        "x": 410.8,
+        "y": 505.9,
+        "width": 58.4,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "15",
+        "x": 496.4,
+        "y": 505.2,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "30",
+        "x": 95,
+        "y": 479.4,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Optativa Área Arquitectura, Sistemas",
+        "x": 127.6,
+        "y": 487,
+        "width": 155,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "Operativos y Redes",
+        "x": 127.6,
+        "y": 472.3,
+        "width": 80.9,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "64",
+        "x": 324.5,
+        "y": 479.4,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "4",
+        "x": 375.8,
+        "y": 479.4,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "2º Cuatrimestre",
+        "x": 410.8,
+        "y": 480,
+        "width": 58.4,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "23",
+        "x": 496.4,
+        "y": 479.4,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "31",
+        "x": 95,
+        "y": 453.5,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Optativa Área Algoritmos y Lenguajes",
+        "x": 127.6,
+        "y": 453.8,
+        "width": 160.7,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "64",
+        "x": 324.5,
+        "y": 453.5,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "4",
+        "x": 375.8,
+        "y": 453.5,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "2º Cuatrimestre",
+        "x": 410.8,
+        "y": 454.2,
+        "width": 58.4,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "22",
+        "x": 496.4,
+        "y": 453.5,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Quinto Año",
+        "x": 275,
+        "y": 434,
+        "width": 56.5,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "32",
+        "x": 95,
+        "y": 415.3,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Política y Gestión de la Ciencia",
+        "x": 127.6,
+        "y": 415.6,
+        "width": 130.6,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "64",
+        "x": 324.5,
+        "y": 415.3,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "4",
+        "x": 375.8,
+        "y": 415.3,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "1º Cuatrimestre",
+        "x": 410.8,
+        "y": 415.9,
+        "width": 58.4,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "(*)",
+        "x": 495.5,
+        "y": 415.3,
+        "width": 13.1,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "33",
+        "x": 95,
+        "y": 389.4,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Aspectos legales y Profesionales de",
+        "x": 127.6,
+        "y": 397.1,
+        "width": 147.5,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "Informática",
+        "x": 127.6,
+        "y": 382.3,
+        "width": 48.2,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "96",
+        "x": 324.5,
+        "y": 389.4,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "6",
+        "x": 375.8,
+        "y": 389.4,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "1º Cuatrimestre",
+        "x": 410.8,
+        "y": 390.1,
+        "width": 58.4,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "21",
+        "x": 496.4,
+        "y": 389.4,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "34",
+        "x": 95,
+        "y": 363.6,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Nuevos Escenarios",
+        "x": 127.6,
+        "y": 363.8,
+        "width": 78.9,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "64",
+        "x": 324.5,
+        "y": 363.6,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "4",
+        "x": 375.8,
+        "y": 363.6,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "2º Cuatrimestre",
+        "x": 410.8,
+        "y": 364.2,
+        "width": 58.4,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "(*)",
+        "x": 495.5,
+        "y": 363.6,
+        "width": 13.1,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "35",
+        "x": 95,
+        "y": 339.1,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Optativa Área Ingeniería de Software y",
+        "x": 127.6,
+        "y": 345.4,
+        "width": 162.7,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "Bases de Datos",
+        "x": 127.6,
+        "y": 333.4,
+        "width": 63.1,
+        "height": 10.4,
+        "fontSize": 10.4
+      },
+      {
+        "text": "96",
+        "x": 324.5,
+        "y": 339.1,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "6",
+        "x": 375.8,
+        "y": 339.1,
+        "width": 5.6,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "2º Cuatrimestre",
+        "x": 410.8,
+        "y": 339.7,
+        "width": 58.4,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "24",
+        "x": 496.4,
+        "y": 339.1,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "36",
+        "x": 95,
+        "y": 295.1,
+        "width": 11.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Seminario de Trabajo Final",
+        "x": 127.6,
+        "y": 295.1,
+        "width": 123.7,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "200",
+        "x": 321.5,
+        "y": 295.1,
+        "width": 16.9,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Anual",
+        "x": 428.5,
+        "y": 295.8,
+        "width": 22.9,
+        "height": 9.3,
+        "fontSize": 9.3
+      },
+      {
+        "text": "16 – 17 -",
+        "x": 481.9,
+        "y": 314.6,
+        "width": 40.5,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "18 – 19 -",
+        "x": 481.9,
+        "y": 301.7,
+        "width": 40.5,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "20- 21 -",
+        "x": 484.2,
+        "y": 288.7,
+        "width": 35.8,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "22 - 23",
+        "x": 486.1,
+        "y": 275.8,
+        "width": 32,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Aprobadas las asignaturas hasta 36 inclusive y cumplidos los requisitos correspondientes se obtiene",
+        "x": 79.2,
+        "y": 246.5,
+        "width": 452.5,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "el título de Licenciado en Sistemas.",
+        "x": 79.2,
+        "y": 233.5,
+        "width": 160.2,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Otros Requisitos para obtener el título de Licenciado en Sistemas:",
+        "x": 79.2,
+        "y": 207.6,
+        "width": 297.7,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "-Aprobar Seminario de Pensamiento Nacional y Latinoamericano",
+        "x": 79.2,
+        "y": 194.6,
+        "width": 295.5,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "-Aprobar Seminario de Justicia y Derechos Humanos",
+        "x": 79.2,
+        "y": 181.7,
+        "width": 240.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "-Aprobar Inglés III de 70 horas.",
+        "x": 79.2,
+        "y": 168.7,
+        "width": 143.3,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "-Aprobar Trabajo Final de Licenciatura en Sistemas",
+        "x": 79.2,
+        "y": 155.6,
+        "width": 234.2,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "(*) Estas asignaturas no poseen correlativas. El requisito es estar cursando el tramo del título de",
+        "x": 79.2,
+        "y": 116.8,
+        "width": 452.5,
+        "height": 11.3,
+        "fontSize": 11.3
+      },
+      {
+        "text": "Licenciatura en Sistemas.",
+        "x": 79.2,
+        "y": 103.8,
+        "width": 115.5,
+        "height": 11.3,
+        "fontSize": 11.3
+      }
+    ]
+  }
+]

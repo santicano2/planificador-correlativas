@@ -13,6 +13,7 @@ export type SubjectTerm = "1" | "2" | "annual";
 
 export interface Subject {
   id: string;
+  code?: string;
   name: string;
   year: number;
   term?: SubjectTerm;
