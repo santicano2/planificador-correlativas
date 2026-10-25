@@ -47,7 +47,7 @@ src/
   app/                     # App Router de Next.js
   components/
     backup/                # Exportación y restauración de respaldos
-    dashboard/             # Tablero, progreso y control de estados
+    dashboard/             # Tablero, grafo, progreso y control de estados
     import/                # Flujo de importación y revisión
   lib/
     backup/
@@ -58,6 +58,8 @@ src/
       availability.ts      # Disponibilidad de materias
       progress.ts          # Resumen de progreso
       dashboard.ts         # Modelo del tablero y poda de progreso
+      graph.ts             # Nodos, aristas y dependencias del grafo
+      graph-layout.ts      # Columnas por año y rutas SVG
       validation.ts        # Validación de planes
       index.ts             # API pública del módulo
     pdf/
@@ -125,6 +127,9 @@ Jerarquía: `pending < in_progress < regularized < approved`. Una materia regula
 - `getSubjectAvailability(subject, progress)`: devuelve `available` o `blocked` con los requisitos faltantes.
 - `getProgressSummary(plan, progress)`: calcula total, aprobadas, restantes, porcentaje y conteo por estado.
 - `buildDashboard(plan, progress)`: arma las filas del tablero con estado, disponibilidad y nombres de correlativas faltantes.
+- `buildCorrelationGraph(plan, progress)`: arma nodos y aristas del grafo, resuelve estados y disponibilidad, y calcula requisitos y dependientes directos.
+- `layoutCorrelationGraph(graph)`: ubica una columna por año y calcula posiciones, dimensiones y rutas de las aristas.
+- `buildEdgePath(from, to)`: genera la curva SVG entre dos nodos.
 - `pruneProgress(plan, progress)`: conserva solo los estados de materias que siguen existiendo en el plan.
 - `validateStudyPlan(plan)`: detecta correlativas inexistentes, ids duplicados y ciclos.
 
@@ -133,6 +138,28 @@ Jerarquía: `pending < in_progress < regularized < approved`. Una materia regula
 El tablero vive en `src/components/dashboard/` y usa `buildDashboard` para combinar el plan con el progreso. Las materias se agrupan por año y se pueden buscar o filtrar por año, estado y disponibilidad.
 
 Cada fila muestra el estado actual, el cuatrimestre y, cuando corresponde, qué correlativa falta regularizar o aprobar. La disponibilidad es informativa: la app no impide marcar un estado aunque las correlativas no estén cumplidas, porque el usuario puede tener equivalencias o datos que el plan no refleja.
+
+El selector **Tablero / Grafo** permite cambiar de vista sin salir del dashboard. El tablero es la vista inicial y conserva las acciones de edición, borrado y respaldo.
+
+## Grafo de correlativas
+
+La pestaña **Grafo** muestra el plan completo agrupado por año. El modelo se construye en `buildCorrelationGraph`:
+
+- Ordena las materias por año, código y nombre.
+- Une `requiresRegularized` y `requiresApproved` en requisitos únicos.
+- Ignora ids inexistentes y auto-referencias.
+- Crea una sola arista por par origen/destino; si existen ambas exigencias, conserva `approved`.
+- Completa los dependientes directos de cada nodo.
+
+`layoutCorrelationGraph` ubica una columna por año con nodos de `176×80`, separación de `20` entre columnas y `12` entre filas. Las aristas se dibujan con `buildEdgePath` en un SVG decorativo; los nodos son botones HTML accesibles.
+
+La selección resalta la materia, sus requisitos y las materias que habilita, y atenúa el resto. El panel de detalle muestra el estado, los requisitos faltantes, las correlativas y los desbloqueos. El estado se puede cambiar desde el panel y se refleja en el tablero y en `localStorage`.
+
+- Arista verde sólida: la materia destino pide cursada regularizada.
+- Arista terracota punteada: la materia destino pide final aprobado.
+- Clic, Enter o Espacio seleccionan una materia; Escape o el botón de cierre limpian la selección.
+
+En desktop el panel queda a la derecha y es sticky; en mobile aparece arriba del mapa y el grafo se recorre con scroll horizontal. La vista no incluye zoom, arrastre, búsqueda ni filtros propios: esas operaciones siguen en el tablero. El grafo tampoco persiste posiciones ni selección.
 
 ## Edición y respaldo
 
@@ -203,4 +230,7 @@ Al guardar o editar un plan, el progreso se poda con `pruneProgress` para conser
 - **Ids estables al editar:** la edición conserva los ids de las materias para que el progreso sobreviva a cambios de nombre, año o correlativas.
 - **Respaldo versionado:** el JSON incluye `format`, `version` y `exportedAt`; una versión desconocida se rechaza con un mensaje claro.
 - **Validación en dos capas:** Zod valida la estructura persistida y la lógica de dominio valida la integridad de las correlativas.
+- **Grafo derivado, no persistido:** nodos, aristas y posiciones se calculan desde el plan y el progreso; no se guarda una copia que pueda quedar desactualizada.
+- **Nodos HTML y aristas SVG:** los botones conservan semántica y foco de teclado, mientras el SVG decora las relaciones sin duplicar la información accesible.
+- **Layout por año:** las columnas siguen el orden de la carrera y el scroll horizontal mantiene el mapa legible en pantallas chicas.
 - **Tests primero:** cada regla de negocio nueva se implementa con un test que falla antes.

@@ -17,7 +17,7 @@
 - Create: `src/lib/study-plan/graph.test.ts`
 - Modify: `src/lib/study-plan/index.ts`
 
-- [ ] **Step 1: Escribir los tests que fallan**
+- [x] **Step 1: Escribir los tests que fallan**
 
 Crear `src/lib/study-plan/graph.test.ts` con casos para:
 
@@ -65,13 +65,13 @@ Verificar:
 - Estados y disponibilidad se resuelven con el progreso.
 - `years` contiene `[1, 2, 3]`.
 
-- [ ] **Step 2: Correr el test y verificar que falla**
+- [x] **Step 2: Correr el test y verificar que falla**
 
 Run: `npx vitest run src/lib/study-plan/graph.test.ts`
 
 Expected: FAIL porque `graph.ts` no existe.
 
-- [ ] **Step 3: Implementar el modelo**
+- [x] **Step 3: Implementar el modelo**
 
 En `graph.ts`:
 
@@ -109,13 +109,13 @@ Implementar `buildCorrelationGraph(plan, progress)`:
 - Completar `dependentIds` en el nodo origen.
 - Exportar desde `index.ts`.
 
-- [ ] **Step 4: Correr el test y verificar que pasa**
+- [x] **Step 4: Correr el test y verificar que pasa**
 
 Run: `npx vitest run src/lib/study-plan/graph.test.ts`
 
 Expected: PASS.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/lib/study-plan/graph.ts src/lib/study-plan/graph.test.ts src/lib/study-plan/index.ts
@@ -131,7 +131,7 @@ git commit -m "feat: build correlation graph model"
 - Create: `src/lib/study-plan/graph-layout.test.ts`
 - Modify: `src/lib/study-plan/index.ts`
 
-- [ ] **Step 1: Escribir los tests que fallan**
+- [x] **Step 1: Escribir los tests que fallan**
 
 Crear `graph-layout.test.ts` con casos para:
 
@@ -142,13 +142,13 @@ Crear `graph-layout.test.ts` con casos para:
 - `buildEdgePath` entre años empieza en el borde derecho y termina en el izquierdo.
 - `buildEdgePath` en la misma columna empieza abajo y termina arriba cuando el destino está más abajo.
 
-- [ ] **Step 2: Correr el test y verificar que falla**
+- [x] **Step 2: Correr el test y verificar que falla**
 
 Run: `npx vitest run src/lib/study-plan/graph-layout.test.ts`
 
 Expected: FAIL porque `graph-layout.ts` no existe.
 
-- [ ] **Step 3: Implementar layout**
+- [x] **Step 3: Implementar layout**
 
 Constantes:
 
@@ -191,13 +191,13 @@ export interface CorrelationGraphLayout {
 
 Implementar `layoutCorrelationGraph(graph)` y `buildEdgePath(from, to)`.
 
-- [ ] **Step 4: Correr el test y verificar que pasa**
+- [x] **Step 4: Correr el test y verificar que pasa**
 
 Run: `npx vitest run src/lib/study-plan/graph-layout.test.ts`
 
 Expected: PASS.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/lib/study-plan/graph-layout.ts src/lib/study-plan/graph-layout.test.ts src/lib/study-plan/index.ts
@@ -212,11 +212,11 @@ git commit -m "feat: lay out correlation graph by year"
 - Create: `src/components/dashboard/correlation-graph.tsx`
 - Modify: `src/components/icons.tsx`
 
-- [ ] **Step 1: Leer la documentación de Next.js**
+- [x] **Step 1: Leer la documentación de Next.js**
 
 Leer la guía relevante de `node_modules/next/dist/docs/` sobre client components antes de escribir la UI.
 
-- [ ] **Step 2: Implementar el lienzo**
+- [x] **Step 2: Implementar el lienzo**
 
 `CorrelationGraph` recibe:
 
@@ -242,13 +242,13 @@ Incluir:
 - Aviso si no hay aristas; estado vacío si no hay materias.
 - `GraphIcon` en `icons.tsx`.
 
-- [ ] **Step 3: Verificar**
+- [x] **Step 3: Verificar**
 
 Run: `npm run check`
 
 Expected: PASS.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add src/components/dashboard/correlation-graph.tsx src/components/icons.tsx
@@ -264,7 +264,7 @@ git commit -m "feat: render interactive correlation graph"
 - Create: `src/components/dashboard/correlation-graph-view.tsx`
 - Modify: `src/components/dashboard/study-dashboard.tsx`
 
-- [ ] **Step 1: Implementar el panel**
+- [x] **Step 1: Implementar el panel**
 
 `GraphDetailPanel` recibe el nodo seleccionado, el grafo, el callback de estado, el callback de selección y el cierre. Debe mostrar:
 
@@ -275,7 +275,7 @@ git commit -m "feat: render interactive correlation graph"
 - Lista de materias que habilita, seleccionables.
 - Estado vacío con instrucciones si no hay selección.
 
-- [ ] **Step 2: Implementar la vista**
+- [x] **Step 2: Implementar la vista**
 
 `CorrelationGraphView`:
 
@@ -285,7 +285,7 @@ git commit -m "feat: render interactive correlation graph"
 - Renderiza mapa y panel con orden responsive.
 - Pasa el cambio de estado al callback existente.
 
-- [ ] **Step 3: Integrar el selector**
+- [x] **Step 3: Integrar el selector**
 
 En `StudyDashboard`:
 
@@ -294,7 +294,7 @@ En `StudyDashboard`:
 - Mantener encabezado, acciones y error de guardado en ambas vistas.
 - Renderizar `CorrelationGraphView` cuando corresponda.
 
-- [ ] **Step 4: Verificar**
+- [x] **Step 4: Verificar**
 
 Run: `npm run check`
 
@@ -307,7 +307,7 @@ Verificar manualmente:
 - Plan sin correlativas.
 - Consola sin errores.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/components/dashboard/graph-detail-panel.tsx src/components/dashboard/correlation-graph-view.tsx src/components/dashboard/study-dashboard.tsx
@@ -322,14 +322,14 @@ git commit -m "feat: add graph details and dashboard view"
 - Modify: `README.md`
 - Modify: `docs/DEVELOPMENT.md`
 
-- [ ] **Step 1: Actualizar documentación**
+- [x] **Step 1: Actualizar documentación**
 
 - Marcar Etapa 5 como completada.
 - Agregar el grafo a la intro y a las funcionalidades.
 - Documentar estructura, layout, tipos de arista, accesibilidad y límites.
 - Mantener el aviso de Etapa 6 pendiente.
 
-- [ ] **Step 2: Verificación final**
+- [x] **Step 2: Verificación final**
 
 Run:
 
@@ -340,13 +340,13 @@ npm run build
 
 Expected: lint, typecheck y todos los tests pasan; build estático de Next.js completa.
 
-- [ ] **Step 3: Revisar estado**
+- [x] **Step 3: Revisar estado**
 
 Run: `git status --short --branch`
 
 Expected: árbol limpio después del commit.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add README.md docs/DEVELOPMENT.md
