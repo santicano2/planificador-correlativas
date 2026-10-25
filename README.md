@@ -4,7 +4,7 @@ Subí el PDF de tu plan de estudios. La app extrae las materias y sus correlativ
 
 Nació de una necesidad concreta: saber qué materias se pueden cursar sin tener que cruzar a mano una planilla, un PDF y el estado de cada final.
 
-> **En desarrollo.** La importación desde PDF, la revisión, el guardado y el tablero de materias ya funcionan. La edición posterior y la exportación de respaldo llegan en la próxima etapa.
+> **En desarrollo.** La importación desde PDF, la revisión, el tablero, la edición y el respaldo ya funcionan. El grafo interactivo de correlativas llega en la próxima etapa.
 
 ## Qué podés hacer
 
@@ -13,6 +13,8 @@ Nació de una necesidad concreta: saber qué materias se pueden cursar sin tener
 - **Marcar el estado** de cada materia: pendiente, cursando, regularizada o aprobada.
 - **Ver qué materias están disponibles** y, si están bloqueadas, qué requisito falta.
 - **Seguir el progreso** de la carrera con un resumen claro.
+- **Editar el plan guardado** sin volver a importar el PDF.
+- **Exportar y restaurar un respaldo** con el plan y tu progreso.
 
 ## Cómo funciona
 
@@ -20,17 +22,18 @@ Nació de una necesidad concreta: saber qué materias se pueden cursar sin tener
 2. **Revisás la información.** Si alguna materia o correlativa no se detectó bien, la corregís en el momento.
 3. **Guardás el plan.** Queda en tu navegador, listo para marcar estados y seguir el cuatrimestre.
 4. **Marcás tu avance.** El tablero te muestra qué podés cursar, qué está bloqueado y cuánto progresaste.
+5. **Editás o respaldás.** Podés ajustar el plan guardado o descargar un JSON con tu progreso para restaurarlo después.
 
 ## Privacidad
 
-El PDF no se sube a ningún servidor: la extracción se hace localmente en el navegador. El plan y el progreso de las materias se guardan en el almacenamiento local de tu dispositivo y no se envían a terceros.
+El PDF no se sube a ningún servidor: la extracción se hace localmente en el navegador. El plan y el progreso de las materias se guardan en el almacenamiento local de tu dispositivo y no se envían a terceros. Los respaldos también se generan localmente y quedan en tu compu.
 
 ## Estado del proyecto
 
 - [x] **Etapa 1:** lógica de disponibilidad, progreso y validación de correlativas.
 - [x] **Etapa 2:** importación desde PDF, revisión y guardado local.
 - [x] **Etapa 3:** tablero de materias, estados y progreso.
-- [ ] **Etapa 4:** edición posterior y exportación de respaldo.
+- [x] **Etapa 4:** edición posterior y exportación de respaldo.
 - [ ] **Etapa 5:** grafo interactivo de correlativas.
 - [ ] **Etapa 6:** pulido, deploy y documentación final.
 

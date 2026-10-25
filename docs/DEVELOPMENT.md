@@ -46,9 +46,12 @@ La aplicación queda disponible en [http://localhost:3000](http://localhost:3000
 src/
   app/                     # App Router de Next.js
   components/
+    backup/                # Exportación y restauración de respaldos
     dashboard/             # Tablero, progreso y control de estados
     import/                # Flujo de importación y revisión
   lib/
+    backup/
+      study-plan-backup.ts # Formato JSON versionado y validación
     study-plan/
       types.ts             # Tipos del dominio
       status.ts            # Jerarquía y resolución de estados
@@ -131,6 +134,38 @@ El tablero vive en `src/components/dashboard/` y usa `buildDashboard` para combi
 
 Cada fila muestra el estado actual, el cuatrimestre y, cuando corresponde, qué correlativa falta regularizar o aprobar. La disponibilidad es informativa: la app no impide marcar un estado aunque las correlativas no estén cumplidas, porque el usuario puede tener equivalencias o datos que el plan no refleja.
 
+## Edición y respaldo
+
+El botón **Editar plan** convierte el plan guardado en un borrador con `createDraftFromStudyPlan`. Esa conversión conserva los ids, las correlativas y los datos opcionales, así que el progreso de las materias que siguen existiendo no se pierde. La edición reutiliza `ReviewPlan` con `mode="edit"` y la misma validación que la importación.
+
+Al guardar una edición, el progreso se poda con `pruneProgress`: los estados de materias eliminadas se descartan y las referencias a esas materias se limpian en el editor. Si se agrega una materia nueva, arranca sin estado.
+
+El respaldo es un JSON versionado que incluye plan y progreso:
+
+```json
+{
+  "format": "planificador-correlativas",
+  "version": 1,
+  "exportedAt": "2026-10-25T20:00:00.000Z",
+  "plan": {
+    "career": "...",
+    "university": "...",
+    "subjects": [
+      {
+        "id": "1",
+        "name": "...",
+        "year": 1,
+        "requiresRegularized": [],
+        "requiresApproved": []
+      }
+    ]
+  },
+  "progress": { "1": "approved" }
+}
+```
+
+`src/lib/backup/study-plan-backup.ts` serializa, parsea y valida el archivo con Zod, y además valida la integridad de las correlativas con `validateStudyPlan`. La restauración reemplaza plan y progreso, poda ids desconocidos y pide confirmación si ya hay un plan cargado. El archivo tiene un límite de 2 MB.
+
 ## Importación desde PDF
 
 La extracción se hace en el cliente:
@@ -155,7 +190,7 @@ Limitaciones conocidas:
 
 `src/lib/storage/study-progress-storage.ts` guarda el progreso por materia con la clave `planificador-correlativas:study-progress:v1`. Al leer, valida los estados con Zod y devuelve `{}` si el dato es inválido. `use-study-progress-storage.ts` sigue el mismo patrón de `useSyncExternalStore`.
 
-Al guardar un plan nuevo, el progreso se poda con `pruneProgress` para conservar solo las materias que siguen existiendo. Al borrar el plan se borran también el progreso y la vista vuelve al inicio.
+Al guardar o editar un plan, el progreso se poda con `pruneProgress` para conservar solo las materias que siguen existiendo. Al borrar el plan se borran también el progreso y la vista vuelve al inicio.
 
 ## Decisiones técnicas
 
@@ -165,5 +200,7 @@ Al guardar un plan nuevo, el progreso se poda con `pruneProgress` para conservar
 - **Extracción local:** PDF.js corre en el navegador con un worker copiado a `public/`; el archivo nunca se sube.
 - **La revisión es parte del producto:** el parser propone un borrador y la persona confirma o corrige antes de guardar.
 - **Progreso separado del plan:** el plan describe la carrera y el progreso guarda decisiones del usuario; mantenerlos en claves distintas permite reimportar o editar el plan sin mezclar datos.
+- **Ids estables al editar:** la edición conserva los ids de las materias para que el progreso sobreviva a cambios de nombre, año o correlativas.
+- **Respaldo versionado:** el JSON incluye `format`, `version` y `exportedAt`; una versión desconocida se rechaza con un mensaje claro.
 - **Validación en dos capas:** Zod valida la estructura persistida y la lógica de dominio valida la integridad de las correlativas.
 - **Tests primero:** cada regla de negocio nueva se implementa con un test que falla antes.
