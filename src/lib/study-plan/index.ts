@@ -3,6 +3,12 @@ export type {
   MissingRequirement,
   SubjectAvailability,
 } from "./availability";
+export { buildDashboard, pruneProgress } from "./dashboard";
+export type {
+  DashboardMissingRequirement,
+  DashboardModel,
+  DashboardRow,
+} from "./dashboard";
 export { getProgressSummary } from "./progress";
 export type { ProgressSummary } from "./progress";
 export { validateStudyPlan } from "./validation";
