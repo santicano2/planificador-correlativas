@@ -27,6 +27,7 @@ import { SubjectEditor } from "./subject-editor";
 interface ReviewPlanProps {
   draft: DraftStudyPlan;
   sourceName: string | null;
+  mode?: "import" | "edit";
   onChange: (draft: DraftStudyPlan) => void;
   onSave: (plan: StudyPlan) => void;
   onCancel: () => void;
@@ -79,10 +80,12 @@ function sortSubjects(subjects: DraftSubject[]): DraftSubject[] {
 export function ReviewPlan({
   draft,
   sourceName,
+  mode = "import",
   onChange,
   onSave,
   onCancel,
 }: ReviewPlanProps) {
+  const isEdit = mode === "edit";
   const [editingId, setEditingId] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [yearFilter, setYearFilter] = useState<"all" | number>("all");
@@ -215,14 +218,15 @@ export function ReviewPlan({
       <div className="mb-6 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div>
           <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-terracotta">
-            Paso 2 de 2 · Revisión
+            {isEdit ? "Edición del plan" : "Paso 2 de 2 · Revisión"}
           </p>
           <h1 className="mt-2 max-w-3xl font-display text-4xl font-semibold leading-[0.98] tracking-tight text-ink sm:text-5xl">
-            Revisá lo que encontramos
+            {isEdit ? "Editá tu plan" : "Revisá lo que encontramos"}
           </h1>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-ink-soft sm:text-base">
-            El PDF no siempre sale perfecto. Corregí nombres, años y
-            correlativas antes de guardar. Nada se sube a un servidor.
+            {isEdit
+              ? "Ajustá materias, años, cuatrimestres y correlativas. Al guardar se conserva el progreso de las materias que sigan existiendo."
+              : "El PDF no siempre sale perfecto. Corregí nombres, años y correlativas antes de guardar. Nada se sube a un servidor."}
           </p>
         </div>
 
@@ -238,7 +242,7 @@ export function ReviewPlan({
             onClick={onCancel}
             className="rounded-full px-3 py-2 text-sm font-semibold text-ink-soft transition hover:bg-ink/5 hover:text-ink"
           >
-            Empezar de nuevo
+            {isEdit ? "Volver al tablero" : "Empezar de nuevo"}
           </button>
         </div>
       </div>
@@ -588,7 +592,7 @@ export function ReviewPlan({
             disabled={!canSave}
             className="inline-flex items-center justify-center gap-2 rounded-full bg-forest px-5 py-2.5 text-sm font-semibold text-paper transition hover:bg-forest-deep disabled:cursor-not-allowed disabled:opacity-40"
           >
-            Guardar plan
+            {isEdit ? "Guardar cambios" : "Guardar plan"}
             <span aria-hidden="true">→</span>
           </button>
         </div>

@@ -8,6 +8,7 @@ import {
   CheckIcon,
   FileIcon,
   LockIcon,
+  PencilIcon,
   SearchIcon,
   SparkIcon,
   TrashIcon,
@@ -33,6 +34,7 @@ interface StudyDashboardProps {
   plan: StudyPlan;
   progress: StudyProgress;
   onStatusChange: (subjectId: string, status: SubjectStatus) => void;
+  onEdit: () => void;
   onImportAnother: () => void;
   onClear: () => void;
 }
@@ -51,6 +53,7 @@ export function StudyDashboard({
   plan,
   progress,
   onStatusChange,
+  onEdit,
   onImportAnother,
   onClear,
 }: StudyDashboardProps) {
@@ -195,6 +198,14 @@ export function StudyDashboard({
             </div>
           ) : (
             <>
+              <button
+                type="button"
+                onClick={onEdit}
+                className="inline-flex items-center gap-1.5 rounded-full border border-ink/15 px-3 py-2 text-xs font-semibold text-ink transition hover:border-forest hover:text-forest"
+              >
+                <PencilIcon className="size-3.5" />
+                Editar plan
+              </button>
               <button
                 type="button"
                 onClick={() => setIsConfirmingClear(true)}

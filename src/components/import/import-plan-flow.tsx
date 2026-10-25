@@ -13,6 +13,7 @@ import {
 import { PdfExtractionError, extractPdf } from "@/lib/pdf/extract-text";
 import { parseStudyPlan } from "@/lib/pdf/parse-plan";
 import {
+  createDraftFromStudyPlan,
   createDraftPlan,
   type DraftStudyPlan,
 } from "@/lib/import/draft-plan";
@@ -36,7 +37,7 @@ import {
 import { ReviewPlan } from "./review-plan";
 import { UploadPanel } from "./upload-panel";
 
-type View = "home" | "review" | "saved";
+type View = "home" | "review" | "edit" | "saved";
 
 const EXAMPLE_PATH = "/examples/plan-2014-sistemas.pdf";
 const EXAMPLE_UNIVERSITY = "Universidad Nacional de La Plata";
@@ -64,6 +65,7 @@ export function ImportPlanFlow() {
   const [savedPlan, setSavedPlan] = useState<StudyPlan | null>(null);
   const storedPlan = useStoredStudyPlan();
   const progress = useStoredStudyProgress();
+  const planToShow = savedPlan ?? storedPlan;
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -171,6 +173,26 @@ export function ImportPlanFlow() {
     saveStoredStudyProgress(nextProgress);
   };
 
+  const handleEdit = () => {
+    if (!planToShow) {
+      return;
+    }
+
+    setDraft(createDraftFromStudyPlan(planToShow));
+    setSourceName(null);
+    setError(null);
+    setView("edit");
+  };
+
+  const handleCancelReview = () => {
+    const wasEditing = view === "edit";
+
+    setDraft(null);
+    setSourceName(null);
+    setError(null);
+    setView(wasEditing ? "saved" : "home");
+  };
+
   const handleStartOver = () => {
     setSavedPlan(null);
     setDraft(null);
@@ -178,8 +200,6 @@ export function ImportPlanFlow() {
     setError(null);
     setView("home");
   };
-
-  const planToShow = savedPlan ?? storedPlan;
 
   return (
     <div className="min-h-screen">
@@ -288,13 +308,14 @@ export function ImportPlanFlow() {
           </>
         ) : null}
 
-        {view === "review" && draft ? (
+        {(view === "review" || view === "edit") && draft ? (
           <ReviewPlan
             draft={draft}
             sourceName={sourceName}
+            mode={view === "edit" ? "edit" : "import"}
             onChange={setDraft}
             onSave={handleSave}
-            onCancel={handleStartOver}
+            onCancel={handleCancelReview}
           />
         ) : null}
 
@@ -303,6 +324,7 @@ export function ImportPlanFlow() {
             plan={planToShow}
             progress={progress}
             onStatusChange={handleStatusChange}
+            onEdit={handleEdit}
             onImportAnother={handleStartOver}
             onClear={handleClearStored}
           />
