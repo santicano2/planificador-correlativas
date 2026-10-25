@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 
+import { BackupActions } from "@/components/backup/backup-actions";
 import {
   AlertIcon,
   ArrowRightIcon,
@@ -13,6 +14,7 @@ import {
   SparkIcon,
   TrashIcon,
 } from "@/components/icons";
+import type { StudyPlanBackup } from "@/lib/backup/study-plan-backup";
 import {
   buildDashboard,
   type DashboardRow,
@@ -35,6 +37,7 @@ interface StudyDashboardProps {
   progress: StudyProgress;
   onStatusChange: (subjectId: string, status: SubjectStatus) => void;
   onEdit: () => void;
+  onRestore: (backup: StudyPlanBackup) => void;
   onImportAnother: () => void;
   onClear: () => void;
 }
@@ -54,6 +57,7 @@ export function StudyDashboard({
   progress,
   onStatusChange,
   onEdit,
+  onRestore,
   onImportAnother,
   onClear,
 }: StudyDashboardProps) {
@@ -242,6 +246,15 @@ export function StudyDashboard({
           summary={dashboard.summary}
           availableCount={dashboard.availableCount}
           blockedCount={dashboard.blockedCount}
+        />
+      </div>
+
+      <div className="mt-5">
+        <BackupActions
+          variant="dashboard"
+          currentPlan={plan}
+          progress={progress}
+          onRestore={onRestore}
         />
       </div>
 

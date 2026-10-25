@@ -111,6 +111,16 @@ export function SparkIcon(props: IconProps) {
   );
 }
 
+export function DownloadIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" {...baseProps} {...props}>
+      <path d="M12 4v12" />
+      <path d="m7 11 5 5 5-5" />
+      <path d="M4 20h16" />
+    </svg>
+  );
+}
+
 export function PencilIcon(props: IconProps) {
   return (
     <svg viewBox="0 0 24 24" {...baseProps} {...props}>

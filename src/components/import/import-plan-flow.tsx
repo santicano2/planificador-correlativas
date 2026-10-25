@@ -17,7 +17,9 @@ import {
   createDraftPlan,
   type DraftStudyPlan,
 } from "@/lib/import/draft-plan";
+import { BackupActions } from "@/components/backup/backup-actions";
 import { StudyDashboard } from "@/components/dashboard/study-dashboard";
+import type { StudyPlanBackup } from "@/lib/backup/study-plan-backup";
 import {
   clearStoredStudyProgress,
   saveStoredStudyProgress,
@@ -193,6 +195,18 @@ export function ImportPlanFlow() {
     setView(wasEditing ? "saved" : "home");
   };
 
+  const handleRestore = (backup: StudyPlanBackup) => {
+    const nextProgress = pruneProgress(backup.plan, backup.progress);
+
+    saveStoredStudyPlan(backup.plan);
+    saveStoredStudyProgress(nextProgress);
+    setSavedPlan(backup.plan);
+    setDraft(null);
+    setSourceName(null);
+    setError(null);
+    setView("saved");
+  };
+
   const handleStartOver = () => {
     setSavedPlan(null);
     setDraft(null);
@@ -301,6 +315,14 @@ export function ImportPlanFlow() {
                   El PDF se procesa en tu navegador. No se sube a ningún
                   servidor ni se guarda en la nube.
                 </p>
+
+                <div className="mt-3">
+                  <BackupActions
+                    variant="home"
+                    currentPlan={storedPlan}
+                    onRestore={handleRestore}
+                  />
+                </div>
               </div>
             </section>
 
@@ -325,6 +347,7 @@ export function ImportPlanFlow() {
             progress={progress}
             onStatusChange={handleStatusChange}
             onEdit={handleEdit}
+            onRestore={handleRestore}
             onImportAnother={handleStartOver}
             onClear={handleClearStored}
           />
