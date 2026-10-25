@@ -12,7 +12,10 @@ const statusSchema = z.enum([
   "approved",
 ]);
 
-const studyProgressSchema = z.record(z.string().min(1), statusSchema);
+export const studyProgressSchema = z.record(
+  z.string().min(1),
+  statusSchema,
+);
 
 type StorageLike = Pick<Storage, "getItem" | "setItem" | "removeItem">;
 

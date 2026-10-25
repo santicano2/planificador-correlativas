@@ -14,7 +14,7 @@ const subjectSchema = z.object({
   requiresApproved: z.array(z.string().min(1)),
 });
 
-const studyPlanSchema = z.object({
+export const studyPlanSchema = z.object({
   career: z.string(),
   university: z.string(),
   planYear: z.number().int().optional(),
