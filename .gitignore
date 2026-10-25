@@ -24,7 +24,7 @@
 .DS_Store
 *.pem
 .playwright-cli/
-dev-server.log*
+dev-server*.log*
 
 
 # debug
