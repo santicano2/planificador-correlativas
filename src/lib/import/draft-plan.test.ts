@@ -1,6 +1,11 @@
 import { describe, expect, it } from "vitest";
 
-import { createDraftPlan, createEmptySubject, toStudyPlan } from "./draft-plan";
+import {
+  createDraftFromStudyPlan,
+  createDraftPlan,
+  createEmptySubject,
+  toStudyPlan,
+} from "./draft-plan";
 import type { ParsedStudyPlan } from "../pdf/types";
 
 const parsedPlan: ParsedStudyPlan = {
@@ -110,6 +115,43 @@ describe("createEmptySubject", () => {
 
     expect(first.id).toBe("nueva-materia");
     expect(second.id).toBe("nueva-materia-2");
+  });
+});
+
+describe("createDraftFromStudyPlan", () => {
+  it("preserves ids, metadata and prerequisites", () => {
+    const plan = toStudyPlan(createDraftPlan(parsedPlan));
+    const draft = createDraftFromStudyPlan(plan);
+
+    expect(draft.subjects).toEqual([
+      {
+        id: "1",
+        code: "1",
+        name: "Programación de Computadoras",
+        year: 1,
+        term: "annual",
+        requiresRegularized: [],
+        requiresApproved: [],
+        warnings: [],
+      },
+      {
+        id: "2",
+        code: "2",
+        name: "Matemática 1",
+        year: 1,
+        term: "1",
+        requiresRegularized: ["1"],
+        requiresApproved: [],
+        warnings: [],
+      },
+    ]);
+    expect(draft.warnings).toEqual([]);
+  });
+
+  it("round-trips without losing plan data", () => {
+    const plan = toStudyPlan(createDraftPlan(parsedPlan));
+
+    expect(toStudyPlan(createDraftFromStudyPlan(plan))).toEqual(plan);
   });
 });
 

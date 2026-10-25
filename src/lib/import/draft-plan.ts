@@ -108,6 +108,25 @@ export function createDraftPlan(parsed: ParsedStudyPlan): DraftStudyPlan {
   };
 }
 
+export function createDraftFromStudyPlan(plan: StudyPlan): DraftStudyPlan {
+  return {
+    career: plan.career,
+    university: plan.university,
+    planYear: plan.planYear,
+    warnings: [],
+    subjects: plan.subjects.map((subject) => ({
+      id: subject.id,
+      code: subject.code ?? "",
+      name: subject.name,
+      year: subject.year,
+      term: subject.term,
+      requiresRegularized: [...subject.requiresRegularized],
+      requiresApproved: [...subject.requiresApproved],
+      warnings: [],
+    })),
+  };
+}
+
 export function createEmptySubject(subjects: DraftSubject[]): DraftSubject {
   const used = new Set(subjects.map((subject) => subject.id));
 
