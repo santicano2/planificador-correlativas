@@ -21,7 +21,6 @@ import {
   type StudyPlan,
   type StudyProgress,
   type SubjectStatus,
-  type SubjectTerm,
 } from "@/lib/study-plan";
 
 import { ProgressOverview } from "./progress-overview";
@@ -31,6 +30,7 @@ import {
   STATUS_DOT_CLASSES,
   STATUS_LABELS,
 } from "./status-meta";
+import { TERM_LABELS } from "./term-meta";
 
 interface StudyDashboardProps {
   plan: StudyPlan;
@@ -45,12 +45,6 @@ interface StudyDashboardProps {
 type YearFilter = "all" | number;
 type StatusFilter = "all" | SubjectStatus;
 type AvailabilityFilter = "all" | "available" | "blocked";
-
-const TERM_LABELS: Record<SubjectTerm, string> = {
-  "1": "1º cuatrimestre",
-  "2": "2º cuatrimestre",
-  annual: "Anual",
-};
 
 export function StudyDashboard({
   plan,

@@ -147,3 +147,14 @@ export function LockIcon(props: IconProps) {
     </svg>
   );
 }
+
+export function GraphIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" {...baseProps} {...props}>
+      <circle cx="6" cy="6" r="2.5" />
+      <circle cx="18" cy="6" r="2.5" />
+      <circle cx="12" cy="18" r="2.5" />
+      <path d="M8.5 6h7M7.3 8.2l3.5 7.6M16.7 8.2l-3.5 7.6" />
+    </svg>
+  );
+}
