@@ -15,6 +15,21 @@ export type {
   CorrelationGraphEdge,
   CorrelationGraphNode,
 } from "./graph";
+export {
+  buildEdgePath,
+  GRAPH_COLUMN_GAP,
+  GRAPH_HEADER_HEIGHT,
+  GRAPH_NODE_HEIGHT,
+  GRAPH_NODE_WIDTH,
+  GRAPH_PADDING,
+  GRAPH_ROW_GAP,
+  layoutCorrelationGraph,
+} from "./graph-layout";
+export type {
+  CorrelationGraphLayout,
+  GraphNodeLayout,
+  GraphYearColumn,
+} from "./graph-layout";
 export { getProgressSummary } from "./progress";
 export type { ProgressSummary } from "./progress";
 export { validateStudyPlan } from "./validation";
