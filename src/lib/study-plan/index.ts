@@ -9,6 +9,12 @@ export type {
   DashboardModel,
   DashboardRow,
 } from "./dashboard";
+export { buildCorrelationGraph } from "./graph";
+export type {
+  CorrelationGraph,
+  CorrelationGraphEdge,
+  CorrelationGraphNode,
+} from "./graph";
 export { getProgressSummary } from "./progress";
 export type { ProgressSummary } from "./progress";
 export { validateStudyPlan } from "./validation";
