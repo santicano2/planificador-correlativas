@@ -16,14 +16,23 @@ import {
   createDraftPlan,
   type DraftStudyPlan,
 } from "@/lib/import/draft-plan";
+import { StudyDashboard } from "@/components/dashboard/study-dashboard";
+import {
+  clearStoredStudyProgress,
+  saveStoredStudyProgress,
+  useStoredStudyProgress,
+} from "@/lib/storage/use-study-progress-storage";
 import {
   clearStoredStudyPlan,
   saveStoredStudyPlan,
   useStoredStudyPlan,
 } from "@/lib/storage/use-study-plan-storage";
-import type { StudyPlan } from "@/lib/study-plan";
+import {
+  pruneProgress,
+  type StudyPlan,
+  type SubjectStatus,
+} from "@/lib/study-plan";
 
-import { PlanSaved } from "./plan-saved";
 import { ReviewPlan } from "./review-plan";
 import { UploadPanel } from "./upload-panel";
 
@@ -54,6 +63,7 @@ export function ImportPlanFlow() {
   const [sourceName, setSourceName] = useState<string | null>(null);
   const [savedPlan, setSavedPlan] = useState<StudyPlan | null>(null);
   const storedPlan = useStoredStudyPlan();
+  const progress = useStoredStudyProgress();
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -124,7 +134,10 @@ export function ImportPlanFlow() {
   };
 
   const handleSave = (plan: StudyPlan) => {
+    const nextProgress = pruneProgress(plan, progress);
+
     saveStoredStudyPlan(plan);
+    saveStoredStudyProgress(nextProgress);
     setSavedPlan(plan);
     setDraft(null);
     setSourceName(null);
@@ -134,6 +147,7 @@ export function ImportPlanFlow() {
   const handleClearStored = () => {
     try {
       clearStoredStudyPlan();
+      clearStoredStudyProgress();
     } catch {
       // Si el navegador bloquea el storage, igual limpiamos la vista.
     }
@@ -143,6 +157,18 @@ export function ImportPlanFlow() {
     setSourceName(null);
     setError(null);
     setView("home");
+  };
+
+  const handleStatusChange = (subjectId: string, status: SubjectStatus) => {
+    const nextProgress = { ...progress };
+
+    if (status === "pending") {
+      delete nextProgress[subjectId];
+    } else {
+      nextProgress[subjectId] = status;
+    }
+
+    saveStoredStudyProgress(nextProgress);
   };
 
   const handleStartOver = () => {
@@ -273,8 +299,10 @@ export function ImportPlanFlow() {
         ) : null}
 
         {view === "saved" && planToShow ? (
-          <PlanSaved
+          <StudyDashboard
             plan={planToShow}
+            progress={progress}
+            onStatusChange={handleStatusChange}
             onImportAnother={handleStartOver}
             onClear={handleClearStored}
           />
