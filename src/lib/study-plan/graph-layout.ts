@@ -1,7 +1,7 @@
 import type { CorrelationGraph, CorrelationGraphNode } from "./graph";
 
 export const GRAPH_NODE_WIDTH = 176;
-export const GRAPH_NODE_HEIGHT = 72;
+export const GRAPH_NODE_HEIGHT = 80;
 export const GRAPH_COLUMN_GAP = 20;
 export const GRAPH_ROW_GAP = 12;
 export const GRAPH_PADDING = 16;

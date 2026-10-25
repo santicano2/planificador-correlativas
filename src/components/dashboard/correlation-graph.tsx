@@ -322,13 +322,16 @@ function GraphLegend() {
         </span>
       ))}
       <span className="h-3 w-px bg-ink/10" />
+      <span className="font-mono text-[8px] uppercase tracking-[0.12em] text-ink-soft/70">
+        Correlativa
+      </span>
       <span className="inline-flex items-center gap-1.5">
         <span className="h-0.5 w-4 bg-forest" />
-        Regularizada
+        Pide regularizada
       </span>
       <span className="inline-flex items-center gap-1.5">
         <span className="w-4 border-t-2 border-dashed border-terracotta" />
-        Aprobada
+        Pide aprobada
       </span>
     </div>
   );

@@ -13,13 +13,35 @@ interface StatusControlProps {
   subjectName: string;
   value: SubjectStatus;
   onChange: (status: SubjectStatus) => void;
+  compact?: boolean;
 }
 
 export function StatusControl({
   subjectName,
   value,
   onChange,
+  compact = false,
 }: StatusControlProps) {
+  if (compact) {
+    return (
+      <label className="block">
+        <span className="sr-only">Estado de {subjectName}</span>
+        <select
+          value={value}
+          aria-label={`Estado de ${subjectName}`}
+          onChange={(event) => onChange(event.target.value as SubjectStatus)}
+          className="w-full rounded-full border border-ink/15 bg-paper px-3 py-2 text-xs font-semibold text-ink"
+        >
+          {STATUS_ORDER.map((status) => (
+            <option key={status} value={status}>
+              {STATUS_LABELS[status]}
+            </option>
+          ))}
+        </select>
+      </label>
+    );
+  }
+
   return (
     <>
       <div

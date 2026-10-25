@@ -110,13 +110,13 @@ describe("buildEdgePath", () => {
 
   it("routes edges from the right edge to the left edge across years", () => {
     expect(buildEdgePath(intro, algorithms)).toBe(
-      "M 192 84 C 204 84, 200 84, 212 84",
+      "M 192 88 C 204 88, 200 88, 212 88",
     );
   });
 
   it("routes edges vertically within the same column", () => {
     expect(buildEdgePath(algorithms, databases)).toBe(
-      "M 300 120 C 318 120, 318 132, 300 132",
+      "M 300 128 C 318 128, 318 140, 300 140",
     );
   });
 

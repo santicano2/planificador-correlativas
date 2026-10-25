@@ -8,6 +8,7 @@ import {
   ArrowRightIcon,
   CheckIcon,
   FileIcon,
+  GraphIcon,
   LockIcon,
   PencilIcon,
   SearchIcon,
@@ -23,6 +24,7 @@ import {
   type SubjectStatus,
 } from "@/lib/study-plan";
 
+import { CorrelationGraphView } from "./correlation-graph-view";
 import { ProgressOverview } from "./progress-overview";
 import { StatusControl } from "./status-control";
 import {
@@ -45,6 +47,7 @@ interface StudyDashboardProps {
 type YearFilter = "all" | number;
 type StatusFilter = "all" | SubjectStatus;
 type AvailabilityFilter = "all" | "available" | "blocked";
+type DashboardView = "table" | "graph";
 
 export function StudyDashboard({
   plan,
@@ -62,6 +65,7 @@ export function StudyDashboard({
     useState<AvailabilityFilter>("all");
   const [isConfirmingClear, setIsConfirmingClear] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
+  const [view, setView] = useState<DashboardView>("table");
 
   const dashboard = useMemo(
     () => buildDashboard(plan, progress),
@@ -235,6 +239,49 @@ export function StudyDashboard({
         </div>
       ) : null}
 
+      <div
+        role="group"
+        aria-label="Vista del plan"
+        className="mt-6 flex w-fit items-center gap-1 rounded-full border border-ink/12 bg-paper-light p-1"
+      >
+        <button
+          type="button"
+          aria-pressed={view === "table"}
+          onClick={() => setView("table")}
+          className={[
+            "inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition",
+            view === "table"
+              ? "bg-forest text-paper"
+              : "text-ink-soft hover:bg-ink/5 hover:text-ink",
+          ].join(" ")}
+        >
+          <FileIcon className="size-3.5" />
+          Tablero
+        </button>
+        <button
+          type="button"
+          aria-pressed={view === "graph"}
+          onClick={() => setView("graph")}
+          className={[
+            "inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition",
+            view === "graph"
+              ? "bg-forest text-paper"
+              : "text-ink-soft hover:bg-ink/5 hover:text-ink",
+          ].join(" ")}
+        >
+          <GraphIcon className="size-3.5" />
+          Grafo
+        </button>
+      </div>
+
+      {view === "graph" ? (
+        <CorrelationGraphView
+          plan={plan}
+          progress={progress}
+          onStatusChange={updateStatus}
+        />
+      ) : (
+        <>
       <div className="mt-6">
         <ProgressOverview
           summary={dashboard.summary}
@@ -389,6 +436,8 @@ export function StudyDashboard({
             );
           })}
         </div>
+      )}
+        </>
       )}
     </div>
   );
