@@ -4,7 +4,7 @@ Subí el PDF de tu plan de estudios. La app extrae las materias y sus correlativ
 
 Nació de una necesidad concreta: saber qué materias se pueden cursar sin tener que cruzar a mano una planilla, un PDF y el estado de cada final.
 
-> **En desarrollo.** La importación desde PDF, la revisión, el tablero, la edición, el respaldo y el grafo interactivo ya funcionan. La próxima etapa es el pulido y el deploy.
+> **Demo:** [planificador-correlativas-woad.vercel.app](https://planificador-correlativas-woad.vercel.app/). La importación desde PDF, la revisión, el tablero, la edición, el respaldo y el grafo interactivo ya funcionan.
 
 ## Qué podés hacer
 
@@ -36,7 +36,7 @@ El PDF no se sube a ningún servidor: la extracción se hace localmente en el na
 - [x] **Etapa 3:** tablero de materias, estados y progreso.
 - [x] **Etapa 4:** edición posterior y exportación de respaldo.
 - [x] **Etapa 5:** grafo interactivo de correlativas.
-- [ ] **Etapa 6:** pulido, deploy y documentación final.
+- [x] **Etapa 6:** deploy en Vercel y documentación final.
 
 ## Desarrollo
 

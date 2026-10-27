@@ -16,6 +16,36 @@ npm run dev
 
 La aplicación queda disponible en [http://localhost:3000](http://localhost:3000).
 
+Producción: [https://planificador-correlativas-woad.vercel.app/](https://planificador-correlativas-woad.vercel.app/).
+
+## Deploy en Vercel
+
+El proyecto se despliega desde el repositorio de GitHub [`santicano2/planificador-correlativas`](https://github.com/santicano2/planificador-correlativas), con producción en la rama `main`.
+
+Configuración del proyecto en Vercel:
+
+- Framework Preset: **Next.js**.
+- Root Directory: `./`.
+- Install Command: `npm install`.
+- Build Command: `npm run build`.
+- Output Directory: automático de Next.js.
+- Environment Variables: ninguna.
+- Production Branch: `main`.
+
+El Build Command debe ser `npm run build` y no `next build` directo: el script `prebuild` copia `node_modules/pdfjs-dist/build/pdf.worker.min.mjs` a `public/pdf.worker.min.mjs`. Ese archivo está ignorado por Git y se genera en cada build; si falta, la importación de PDFs falla en producción. Se puede verificar en `https://planificador-correlativas-woad.vercel.app/pdf.worker.min.mjs`.
+
+Cada push a `main` dispara un deploy de producción. Las ramas y pull requests generan preview deployments. Para volver a una versión anterior, usar **Deployments → deployment deseado → Promote to Production** o **Rollback** en Vercel.
+
+Checklist de smoke test después de un deploy:
+
+- La home carga y el PDF de ejemplo se importa y revisa.
+- El plan se guarda y el tablero muestra progreso y disponibilidad.
+- El estado de una materia persiste al recargar.
+- La pestaña Grafo selecciona materias, muestra el panel y permite cambiar el estado.
+- La edición conserva el progreso y el respaldo se exporta y restaura.
+- En mobile el grafo hace scroll horizontal y el detalle aparece arriba.
+- La consola no muestra errores y `/pdf.worker.min.mjs` responde `200`.
+
 ## Scripts
 
 | Comando | Qué hace |
