@@ -88,6 +88,7 @@ src/
       availability.ts      # Disponibilidad de materias
       progress.ts          # Resumen de progreso
       dashboard.ts         # Modelo del tablero y poda de progreso
+      term.ts              # Selección de cuatrimestre y poda de materias
       graph.ts             # Nodos, aristas y dependencias del grafo
       graph-layout.ts      # Columnas por año y rutas SVG
       validation.ts        # Validación de planes
@@ -103,8 +104,10 @@ src/
     storage/
       study-plan-storage.ts # Persistencia del plan con Zod y localStorage
       study-progress-storage.ts # Persistencia del progreso por materia
+      study-term-selection-storage.ts # Persistencia de la selección de cuatrimestre
       use-study-plan-storage.ts # Hook de React sobre el storage del plan
       use-study-progress-storage.ts # Hook de React sobre el progreso
+      use-study-term-selection-storage.ts # Hook de React sobre la selección
 scripts/
   copy-pdf-worker.mjs      # Copia el worker de PDF.js a public/
 public/
@@ -157,6 +160,9 @@ Jerarquía: `pending < in_progress < regularized < approved`. Una materia regula
 - `getSubjectAvailability(subject, progress)`: devuelve `available` o `blocked` con los requisitos faltantes.
 - `getProgressSummary(plan, progress)`: calcula total, aprobadas, restantes, porcentaje y conteo por estado.
 - `buildDashboard(plan, progress)`: arma las filas del tablero con estado, disponibilidad y nombres de correlativas faltantes.
+- `buildTermPlan(plan, progress, selection)`: arma las filas del cuatrimestre, separa materias disponibles de bloqueadas y cuenta advertencias.
+- `toggleTermSelection(plan, progress, selection, subjectId)`: agrega o quita una materia pendiente de la selección.
+- `pruneTermSelection(plan, progress, selection)`: conserva solo materias que siguen existiendo y pendientes.
 - `buildCorrelationGraph(plan, progress)`: arma nodos y aristas del grafo, resuelve estados y disponibilidad, y calcula requisitos y dependientes directos.
 - `layoutCorrelationGraph(graph)`: ubica una columna por año y calcula posiciones, dimensiones y rutas de las aristas.
 - `buildEdgePath(from, to)`: genera la curva SVG entre dos nodos.
@@ -169,7 +175,17 @@ El tablero vive en `src/components/dashboard/` y usa `buildDashboard` para combi
 
 Cada fila muestra el estado actual, el cuatrimestre y, cuando corresponde, qué correlativa falta regularizar o aprobar. La disponibilidad es informativa: la app no impide marcar un estado aunque las correlativas no estén cumplidas, porque el usuario puede tener equivalencias o datos que el plan no refleja.
 
-El selector **Tablero / Grafo** permite cambiar de vista sin salir del dashboard. El tablero es la vista inicial y conserva las acciones de edición, borrado y respaldo.
+El selector **Tablero / Cuatrimestre / Grafo** permite cambiar de vista sin salir del dashboard. El tablero es la vista inicial y conserva las acciones de edición, borrado y respaldo.
+
+## Plan de cuatrimestre
+
+La pestaña **Cuatrimestre** permite elegir qué materias pendientes querés cursar. La selección es una lista de ids independiente del progreso y se guarda en `planificador-correlativas:study-term-selection:v1`.
+
+`buildTermPlan` combina el plan, el progreso y la selección. Solo las materias pendientes se pueden seleccionar; las bloqueadas también, pero se muestran en una sección de advertencias con la correlativa que falta. El resumen indica cuántas materias hay en el cuatrimestre, cuántas están disponibles y cuántas tienen advertencias.
+
+La selección se poda automáticamente con `pruneTermSelection` cuando una materia deja de existir o deja de estar pendiente, al editar el plan, al cambiar un estado y al restaurar un respaldo. En el Tablero y en el Grafo, las materias seleccionadas muestran el indicador **En mi cuatrimestre**; esas vistas no modifican la selección.
+
+No se modelan horas, créditos, cupos ni múltiples cuatrimestres. La selección tampoco cambia el estado de la materia: marcar “Cursando” sigue siendo una acción separada.
 
 ## Grafo de correlativas
 
@@ -197,12 +213,12 @@ El botón **Editar plan** convierte el plan guardado en un borrador con `createD
 
 Al guardar una edición, el progreso se poda con `pruneProgress`: los estados de materias eliminadas se descartan y las referencias a esas materias se limpian en el editor. Si se agrega una materia nueva, arranca sin estado.
 
-El respaldo es un JSON versionado que incluye plan y progreso:
+El respaldo es un JSON versionado que incluye plan, progreso y selección de cuatrimestre:
 
 ```json
 {
   "format": "planificador-correlativas",
-  "version": 1,
+  "version": 2,
   "exportedAt": "2026-10-25T20:00:00.000Z",
   "plan": {
     "career": "...",
@@ -217,11 +233,12 @@ El respaldo es un JSON versionado que incluye plan y progreso:
       }
     ]
   },
-  "progress": { "1": "approved" }
+  "progress": { "1": "approved" },
+  "termSelection": { "subjectIds": ["1"] }
 }
 ```
 
-`src/lib/backup/study-plan-backup.ts` serializa, parsea y valida el archivo con Zod, y además valida la integridad de las correlativas con `validateStudyPlan`. La restauración reemplaza plan y progreso, poda ids desconocidos y pide confirmación si ya hay un plan cargado. El archivo tiene un límite de 2 MB.
+`src/lib/backup/study-plan-backup.ts` serializa, parsea y valida el archivo con Zod, y además valida la integridad de las correlativas con `validateStudyPlan`. La restauración reemplaza plan, progreso y selección, poda ids desconocidos y pide confirmación si ya hay un plan cargado. Los respaldos v1 se aceptan y se normalizan a v2 con una selección vacía. El archivo tiene un límite de 2 MB.
 
 ## Importación desde PDF
 
@@ -247,7 +264,9 @@ Limitaciones conocidas:
 
 `src/lib/storage/study-progress-storage.ts` guarda el progreso por materia con la clave `planificador-correlativas:study-progress:v1`. Al leer, valida los estados con Zod y devuelve `{}` si el dato es inválido. `use-study-progress-storage.ts` sigue el mismo patrón de `useSyncExternalStore`.
 
-Al guardar o editar un plan, el progreso se poda con `pruneProgress` para conservar solo las materias que siguen existiendo. Al borrar el plan se borran también el progreso y la vista vuelve al inicio.
+`src/lib/storage/study-term-selection-storage.ts` guarda la selección de cuatrimestre con la clave `planificador-correlativas:study-term-selection:v1`. Al leer, valida que `subjectIds` sea un array de strings y devuelve una selección vacía si el dato es inválido. `use-study-term-selection-storage.ts` usa el mismo patrón.
+
+Al guardar o editar un plan, el progreso se poda con `pruneProgress` y la selección con `pruneTermSelection` para conservar solo las materias que siguen existiendo y pendientes. Al borrar el plan se borran también el progreso, la selección y la vista vuelve al inicio.
 
 ## Decisiones técnicas
 
@@ -257,9 +276,11 @@ Al guardar o editar un plan, el progreso se poda con `pruneProgress` para conser
 - **Extracción local:** PDF.js corre en el navegador con un worker copiado a `public/`; el archivo nunca se sube.
 - **La revisión es parte del producto:** el parser propone un borrador y la persona confirma o corrige antes de guardar.
 - **Progreso separado del plan:** el plan describe la carrera y el progreso guarda decisiones del usuario; mantenerlos en claves distintas permite reimportar o editar el plan sin mezclar datos.
+- **Cuatrimestre como selección, no como estado:** la selección guarda solo ids de materias pendientes y se poda de forma derivada; no duplica estados ni introduce una máquina de estados paralela.
 - **Ids estables al editar:** la edición conserva los ids de las materias para que el progreso sobreviva a cambios de nombre, año o correlativas.
 - **Respaldo versionado:** el JSON incluye `format`, `version` y `exportedAt`; una versión desconocida se rechaza con un mensaje claro.
 - **Validación en dos capas:** Zod valida la estructura persistida y la lógica de dominio valida la integridad de las correlativas.
+- **Indicador compartido:** Tablero y Grafo solo muestran que una materia está en el cuatrimestre; la edición de la selección queda concentrada en una sola vista.
 - **Grafo derivado, no persistido:** nodos, aristas y posiciones se calculan desde el plan y el progreso; no se guarda una copia que pueda quedar desactualizada.
 - **Nodos HTML y aristas SVG:** los botones conservan semántica y foco de teclado, mientras el SVG decora las relaciones sin duplicar la información accesible.
 - **Layout por año:** las columnas siguen el orden de la carrera y el scroll horizontal mantiene el mapa legible en pantallas chicas.
