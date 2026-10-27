@@ -207,8 +207,10 @@ export function BackupActions({
           <p className="mt-1 text-xs leading-5 text-ink-soft">
             Vas a reemplazar <strong>{currentPlan?.career}</strong> por{" "}
             <strong>{pendingBackup.plan.career}</strong>. Se restaurarán{" "}
-            {pendingBackup.plan.subjects.length} materias y{" "}
-            {Object.keys(pendingBackup.progress).length} estados guardados.
+            {pendingBackup.plan.subjects.length} materias,{" "}
+            {Object.keys(pendingBackup.progress).length} estados guardados y{" "}
+            {pendingBackup.termSelection.subjectIds.length} materias en tu
+            cuatrimestre.
           </p>
           <div className="mt-3 flex flex-wrap items-center gap-2">
             <button

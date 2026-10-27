@@ -31,8 +31,15 @@ import {
   useStoredStudyPlan,
 } from "@/lib/storage/use-study-plan-storage";
 import {
+  clearStoredStudyTermSelection,
+  saveStoredStudyTermSelection,
+  useStoredStudyTermSelection,
+} from "@/lib/storage/use-study-term-selection-storage";
+import {
   pruneProgress,
+  pruneTermSelection,
   type StudyPlan,
+  type StudyTermSelection,
   type SubjectStatus,
 } from "@/lib/study-plan";
 
@@ -58,6 +65,13 @@ function errorMessage(error: unknown): string {
   return "No pudimos leer el PDF. Probá con otro archivo o revisá que no esté protegido.";
 }
 
+function sameSubjectIds(a: string[], b: string[]): boolean {
+  return (
+    a.length === b.length &&
+    a.every((subjectId, index) => subjectId === b[index])
+  );
+}
+
 export function ImportPlanFlow() {
   const [view, setView] = useState<View>("home");
   const [isBusy, setIsBusy] = useState(false);
@@ -67,11 +81,30 @@ export function ImportPlanFlow() {
   const [savedPlan, setSavedPlan] = useState<StudyPlan | null>(null);
   const storedPlan = useStoredStudyPlan();
   const progress = useStoredStudyProgress();
+  const termSelection = useStoredStudyTermSelection();
   const planToShow = savedPlan ?? storedPlan;
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [view]);
+
+  useEffect(() => {
+    if (!planToShow) {
+      return;
+    }
+
+    const pruned = pruneTermSelection(
+      planToShow,
+      progress,
+      termSelection,
+    );
+
+    if (!sameSubjectIds(pruned.subjectIds, termSelection.subjectIds)) {
+      try {
+        saveStoredStudyTermSelection(pruned);
+      } catch {}
+    }
+  }, [planToShow, progress, termSelection]);
 
   const processFile = async (file: File, universityHint?: string) => {
     if (!isPdf(file)) {
@@ -139,9 +172,15 @@ export function ImportPlanFlow() {
 
   const handleSave = (plan: StudyPlan) => {
     const nextProgress = pruneProgress(plan, progress);
+    const nextTermSelection = pruneTermSelection(
+      plan,
+      nextProgress,
+      termSelection,
+    );
 
     saveStoredStudyPlan(plan);
     saveStoredStudyProgress(nextProgress);
+    saveStoredStudyTermSelection(nextTermSelection);
     setSavedPlan(plan);
     setDraft(null);
     setSourceName(null);
@@ -152,6 +191,7 @@ export function ImportPlanFlow() {
     try {
       clearStoredStudyPlan();
       clearStoredStudyProgress();
+      clearStoredStudyTermSelection();
     } catch {
       // Si el navegador bloquea el storage, igual limpiamos la vista.
     }
@@ -173,6 +213,24 @@ export function ImportPlanFlow() {
     }
 
     saveStoredStudyProgress(nextProgress);
+
+    if (planToShow) {
+      saveStoredStudyTermSelection(
+        pruneTermSelection(planToShow, nextProgress, termSelection),
+      );
+    }
+  };
+
+  const handleTermSelectionChange = (
+    selection: StudyTermSelection,
+  ) => {
+    if (!planToShow) {
+      return;
+    }
+
+    saveStoredStudyTermSelection(
+      pruneTermSelection(planToShow, progress, selection),
+    );
   };
 
   const handleEdit = () => {
@@ -197,9 +255,15 @@ export function ImportPlanFlow() {
 
   const handleRestore = (backup: StudyPlanBackup) => {
     const nextProgress = pruneProgress(backup.plan, backup.progress);
+    const nextTermSelection = pruneTermSelection(
+      backup.plan,
+      nextProgress,
+      backup.termSelection,
+    );
 
     saveStoredStudyPlan(backup.plan);
     saveStoredStudyProgress(nextProgress);
+    saveStoredStudyTermSelection(nextTermSelection);
     setSavedPlan(backup.plan);
     setDraft(null);
     setSourceName(null);
@@ -345,7 +409,9 @@ export function ImportPlanFlow() {
           <StudyDashboard
             plan={planToShow}
             progress={progress}
+            termSelection={termSelection}
             onStatusChange={handleStatusChange}
+            onTermSelectionChange={handleTermSelectionChange}
             onEdit={handleEdit}
             onRestore={handleRestore}
             onImportAnother={handleStartOver}
