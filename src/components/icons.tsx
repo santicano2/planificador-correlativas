@@ -139,6 +139,16 @@ export function BookIcon(props: IconProps) {
   );
 }
 
+export function CalendarIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" {...baseProps} {...props}>
+      <rect x="3" y="5" width="18" height="16" rx="2" />
+      <path d="M8 3v4M16 3v4M3 11h18" />
+      <path d="M8 15h2M14 15h2M8 18h2M14 18h2" />
+    </svg>
+  );
+}
+
 export function LockIcon(props: IconProps) {
   return (
     <svg viewBox="0 0 24 24" {...baseProps} {...props}>

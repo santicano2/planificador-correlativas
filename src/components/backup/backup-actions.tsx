@@ -10,7 +10,11 @@ import {
   serializeStudyPlanBackup,
   type StudyPlanBackup,
 } from "@/lib/backup/study-plan-backup";
-import type { StudyPlan, StudyProgress } from "@/lib/study-plan";
+import type {
+  StudyPlan,
+  StudyProgress,
+  StudyTermSelection,
+} from "@/lib/study-plan";
 
 const MAX_BACKUP_BYTES = 2 * 1024 * 1024;
 
@@ -18,6 +22,7 @@ interface BackupActionsProps {
   variant: "dashboard" | "home";
   currentPlan?: StudyPlan | null;
   progress?: StudyProgress;
+  termSelection?: StudyTermSelection;
   onRestore: (backup: StudyPlanBackup) => void;
 }
 
@@ -25,6 +30,7 @@ export function BackupActions({
   variant,
   currentPlan,
   progress,
+  termSelection,
   onRestore,
 }: BackupActionsProps) {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -47,9 +53,16 @@ export function BackupActions({
     setError(null);
 
     try {
-      const blob = new Blob([serializeStudyPlanBackup(currentPlan, progress)], {
-        type: "application/json",
-      });
+      const blob = new Blob(
+        [
+          serializeStudyPlanBackup(
+            currentPlan,
+            progress,
+            termSelection ?? { subjectIds: [] },
+          ),
+        ],
+        { type: "application/json" },
+      );
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
 
