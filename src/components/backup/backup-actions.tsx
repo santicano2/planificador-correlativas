@@ -151,7 +151,7 @@ export function BackupActions({
           </h2>
           <p className="mt-0.5 text-xs leading-5 text-ink-soft">
             {variant === "dashboard"
-              ? "Descargá una copia del plan y tu progreso, o restaurá un archivo."
+              ? "Descargá una copia del plan, tu progreso y tu cuatrimestre, o restaurá un archivo."
               : "Restaurá un plan exportado desde otro navegador o después de borrarlo."}
           </p>
         </div>
