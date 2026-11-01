@@ -9,6 +9,18 @@ export type {
   DashboardModel,
   DashboardRow,
 } from "./dashboard";
+export {
+  buildTermPlan,
+  EMPTY_TERM_SELECTION,
+  pruneTermSelection,
+  toggleTermSelection,
+} from "./term";
+export type {
+  StudyTermSelection,
+  TermPlanModel,
+  TermPlanRow,
+  TermPlanSummary,
+} from "./term";
 export { buildCorrelationGraph } from "./graph";
 export type {
   CorrelationGraph,

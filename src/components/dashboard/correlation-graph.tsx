@@ -2,12 +2,18 @@
 
 import { useId } from "react";
 
-import { AlertIcon, LockIcon, SparkIcon } from "@/components/icons";
+import {
+  AlertIcon,
+  CalendarIcon,
+  LockIcon,
+  SparkIcon,
+} from "@/components/icons";
 import {
   buildEdgePath,
   type CorrelationGraph,
   type CorrelationGraphLayout,
   type GraphNodeLayout,
+  type StudyTermSelection,
 } from "@/lib/study-plan";
 
 import {
@@ -21,6 +27,7 @@ import { TERM_SHORT_LABELS } from "./term-meta";
 interface CorrelationGraphProps {
   graph: CorrelationGraph;
   layout: CorrelationGraphLayout;
+  termSelection: StudyTermSelection;
   selectedId: string | null;
   onSelect: (subjectId: string) => void;
   onClear: () => void;
@@ -29,10 +36,12 @@ interface CorrelationGraphProps {
 export function CorrelationGraph({
   graph,
   layout,
+  termSelection,
   selectedId,
   onSelect,
   onClear,
 }: CorrelationGraphProps) {
+  const termIds = new Set(termSelection.subjectIds);
   const rawId = useId();
   const markerBase = rawId.replace(/[^a-zA-Z0-9_-]/g, "");
   const regularizedMarkerId = `correlation-arrow-${markerBase}-regularized`;
@@ -219,6 +228,7 @@ export function CorrelationGraph({
               isSelected={nodeLayout.node.subject.id === selectedId}
               isRelated={relatedIds.has(nodeLayout.node.subject.id)}
               isDimmed={Boolean(selectedNode) && !relatedIds.has(nodeLayout.node.subject.id)}
+              isInTermPlan={termIds.has(nodeLayout.node.subject.id)}
               onSelect={onSelect}
             />
           ))}
@@ -237,12 +247,14 @@ function GraphNode({
   isSelected,
   isRelated,
   isDimmed,
+  isInTermPlan,
   onSelect,
 }: {
   nodeLayout: GraphNodeLayout;
   isSelected: boolean;
   isRelated: boolean;
   isDimmed: boolean;
+  isInTermPlan: boolean;
   onSelect: (subjectId: string) => void;
 }) {
   const { node } = nodeLayout;
@@ -257,6 +269,7 @@ function GraphNode({
     subject.code ? `código ${subject.code}` : null,
     STATUS_LABELS[status],
     availabilityLabel,
+    isInTermPlan ? "en mi cuatrimestre" : null,
   ]
     .filter(Boolean)
     .join(", ");
@@ -289,6 +302,9 @@ function GraphNode({
           {subject.code || "—"}
         </span>
         <span className="flex items-center gap-1">
+          {isInTermPlan ? (
+            <CalendarIcon className="size-3.5 text-forest" />
+          ) : null}
           {isPending && isAvailable ? (
             <SparkIcon className="size-3.5 text-forest" />
           ) : null}

@@ -10,7 +10,11 @@ import {
   serializeStudyPlanBackup,
   type StudyPlanBackup,
 } from "@/lib/backup/study-plan-backup";
-import type { StudyPlan, StudyProgress } from "@/lib/study-plan";
+import type {
+  StudyPlan,
+  StudyProgress,
+  StudyTermSelection,
+} from "@/lib/study-plan";
 
 const MAX_BACKUP_BYTES = 2 * 1024 * 1024;
 
@@ -18,6 +22,7 @@ interface BackupActionsProps {
   variant: "dashboard" | "home";
   currentPlan?: StudyPlan | null;
   progress?: StudyProgress;
+  termSelection?: StudyTermSelection;
   onRestore: (backup: StudyPlanBackup) => void;
 }
 
@@ -25,6 +30,7 @@ export function BackupActions({
   variant,
   currentPlan,
   progress,
+  termSelection,
   onRestore,
 }: BackupActionsProps) {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -47,9 +53,16 @@ export function BackupActions({
     setError(null);
 
     try {
-      const blob = new Blob([serializeStudyPlanBackup(currentPlan, progress)], {
-        type: "application/json",
-      });
+      const blob = new Blob(
+        [
+          serializeStudyPlanBackup(
+            currentPlan,
+            progress,
+            termSelection ?? { subjectIds: [] },
+          ),
+        ],
+        { type: "application/json" },
+      );
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
 
@@ -138,7 +151,7 @@ export function BackupActions({
           </h2>
           <p className="mt-0.5 text-xs leading-5 text-ink-soft">
             {variant === "dashboard"
-              ? "Descargá una copia del plan y tu progreso, o restaurá un archivo."
+              ? "Descargá una copia del plan, tu progreso y tu cuatrimestre, o restaurá un archivo."
               : "Restaurá un plan exportado desde otro navegador o después de borrarlo."}
           </p>
         </div>
@@ -194,8 +207,10 @@ export function BackupActions({
           <p className="mt-1 text-xs leading-5 text-ink-soft">
             Vas a reemplazar <strong>{currentPlan?.career}</strong> por{" "}
             <strong>{pendingBackup.plan.career}</strong>. Se restaurarán{" "}
-            {pendingBackup.plan.subjects.length} materias y{" "}
-            {Object.keys(pendingBackup.progress).length} estados guardados.
+            {pendingBackup.plan.subjects.length} materias,{" "}
+            {Object.keys(pendingBackup.progress).length} estados guardados y{" "}
+            {pendingBackup.termSelection.subjectIds.length} materias en tu
+            cuatrimestre.
           </p>
           <div className="mt-3 flex flex-wrap items-center gap-2">
             <button

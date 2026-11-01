@@ -2,14 +2,16 @@ import { z } from "zod";
 
 import { studyPlanSchema } from "../storage/study-plan-storage";
 import { studyProgressSchema } from "../storage/study-progress-storage";
+import { studyTermSelectionSchema } from "../storage/study-term-selection-storage";
 import {
   validateStudyPlan,
   type StudyPlan,
   type StudyProgress,
+  type StudyTermSelection,
 } from "../study-plan";
 
 export const STUDY_PLAN_BACKUP_FORMAT = "planificador-correlativas";
-export const STUDY_PLAN_BACKUP_VERSION = 1;
+export const STUDY_PLAN_BACKUP_VERSION = 2;
 
 const backupPlanSchema = studyPlanSchema.refine(
   (plan) =>
@@ -19,15 +21,35 @@ const backupPlanSchema = studyPlanSchema.refine(
   { message: "El plan del respaldo está incompleto." },
 );
 
-const backupSchema = z.object({
+const backupBaseSchema = z.object({
   format: z.literal(STUDY_PLAN_BACKUP_FORMAT),
-  version: z.literal(STUDY_PLAN_BACKUP_VERSION),
   exportedAt: z.iso.datetime(),
   plan: backupPlanSchema,
   progress: studyProgressSchema,
 });
 
-export type StudyPlanBackup = z.infer<typeof backupSchema>;
+const backupV1Schema = backupBaseSchema.extend({
+  version: z.literal(1),
+});
+
+const backupV2Schema = backupBaseSchema.extend({
+  version: z.literal(2),
+  termSelection: studyTermSelectionSchema,
+});
+
+const backupSchema = z.discriminatedUnion("version", [
+  backupV1Schema,
+  backupV2Schema,
+]);
+
+export interface StudyPlanBackup {
+  format: typeof STUDY_PLAN_BACKUP_FORMAT;
+  version: typeof STUDY_PLAN_BACKUP_VERSION;
+  exportedAt: string;
+  plan: StudyPlan;
+  progress: StudyProgress;
+  termSelection: StudyTermSelection;
+}
 
 export class StudyPlanBackupError extends Error {
   constructor(message: string) {
@@ -43,6 +65,7 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 export function createStudyPlanBackup(
   plan: StudyPlan,
   progress: StudyProgress,
+  termSelection: StudyTermSelection,
   exportedAt = new Date(),
 ): StudyPlanBackup {
   return {
@@ -51,16 +74,18 @@ export function createStudyPlanBackup(
     exportedAt: exportedAt.toISOString(),
     plan,
     progress,
+    termSelection,
   };
 }
 
 export function serializeStudyPlanBackup(
   plan: StudyPlan,
   progress: StudyProgress,
+  termSelection: StudyTermSelection,
   exportedAt = new Date(),
 ): string {
   return JSON.stringify(
-    createStudyPlanBackup(plan, progress, exportedAt),
+    createStudyPlanBackup(plan, progress, termSelection, exportedAt),
     null,
     2,
   );
@@ -81,7 +106,8 @@ export function parseStudyPlanBackup(raw: string): StudyPlanBackup {
     if (
       isRecord(candidate) &&
       candidate.format === STUDY_PLAN_BACKUP_FORMAT &&
-      candidate.version !== STUDY_PLAN_BACKUP_VERSION
+      candidate.version !== 1 &&
+      candidate.version !== 2
     ) {
       throw new StudyPlanBackupError(
         "El respaldo usa una versión no compatible.",
@@ -101,7 +127,17 @@ export function parseStudyPlanBackup(raw: string): StudyPlanBackup {
     );
   }
 
-  return parsed.data;
+  return {
+    format: parsed.data.format,
+    version: STUDY_PLAN_BACKUP_VERSION,
+    exportedAt: parsed.data.exportedAt,
+    plan: parsed.data.plan,
+    progress: parsed.data.progress,
+    termSelection:
+      parsed.data.version === 2
+        ? parsed.data.termSelection
+        : { subjectIds: [] },
+  };
 }
 
 function slugifyFilename(value: string): string {

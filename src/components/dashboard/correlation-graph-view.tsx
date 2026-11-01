@@ -7,6 +7,7 @@ import {
   layoutCorrelationGraph,
   type StudyPlan,
   type StudyProgress,
+  type StudyTermSelection,
   type SubjectStatus,
 } from "@/lib/study-plan";
 
@@ -16,12 +17,14 @@ import { GraphDetailPanel } from "./graph-detail-panel";
 interface CorrelationGraphViewProps {
   plan: StudyPlan;
   progress: StudyProgress;
+  termSelection: StudyTermSelection;
   onStatusChange: (subjectId: string, status: SubjectStatus) => void;
 }
 
 export function CorrelationGraphView({
   plan,
   progress,
+  termSelection,
   onStatusChange,
 }: CorrelationGraphViewProps) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -43,6 +46,7 @@ export function CorrelationGraphView({
         <CorrelationGraph
           graph={graph}
           layout={layout}
+          termSelection={termSelection}
           selectedId={selectedNode ? selectedId : null}
           onSelect={setSelectedId}
           onClear={() => setSelectedId(null)}
@@ -53,6 +57,11 @@ export function CorrelationGraphView({
         <GraphDetailPanel
           graph={graph}
           node={selectedNode}
+          isInTermPlan={
+            selectedNode
+              ? termSelection.subjectIds.includes(selectedNode.subject.id)
+              : false
+          }
           onSelect={setSelectedId}
           onClear={() => setSelectedId(null)}
           onStatusChange={onStatusChange}

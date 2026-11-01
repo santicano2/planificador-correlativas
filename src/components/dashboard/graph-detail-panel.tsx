@@ -2,6 +2,7 @@
 
 import {
   AlertIcon,
+  CalendarIcon,
   LockIcon,
   SparkIcon,
   XIcon,
@@ -19,6 +20,7 @@ import { TERM_LABELS } from "./term-meta";
 interface GraphDetailPanelProps {
   graph: CorrelationGraph;
   node: CorrelationGraphNode | null;
+  isInTermPlan: boolean;
   onSelect: (subjectId: string) => void;
   onClear: () => void;
   onStatusChange: (subjectId: string, status: SubjectStatus) => void;
@@ -27,6 +29,7 @@ interface GraphDetailPanelProps {
 export function GraphDetailPanel({
   graph,
   node,
+  isInTermPlan,
   onSelect,
   onClear,
   onStatusChange,
@@ -95,6 +98,12 @@ export function GraphDetailPanel({
               ? TERM_LABELS[subject.term]
               : "Cuatrimestre sin definir"}
           </p>
+          {isInTermPlan ? (
+            <p className="mt-2 inline-flex items-center gap-1 rounded-full border border-forest/20 bg-forest/5 px-2 py-0.5 font-mono text-[8px] uppercase tracking-[0.1em] text-forest">
+              <CalendarIcon className="size-3" />
+              En mi cuatrimestre
+            </p>
+          ) : null}
         </div>
 
         <button

@@ -4,7 +4,7 @@ Subí el PDF de tu plan de estudios. La app extrae las materias y sus correlativ
 
 Nació de una necesidad concreta: saber qué materias se pueden cursar sin tener que cruzar a mano una planilla, un PDF y el estado de cada final.
 
-> **Demo:** [planificador-correlativas-woad.vercel.app](https://planificador-correlativas-woad.vercel.app/). La importación desde PDF, la revisión, el tablero, la edición, el respaldo y el grafo interactivo ya funcionan.
+> **Demo:** [planificador-correlativas-woad.vercel.app](https://planificador-correlativas-woad.vercel.app/). La importación desde PDF, la revisión, el tablero, el plan de cuatrimestre, la edición, el respaldo y el grafo interactivo ya funcionan.
 
 ## Qué podés hacer
 
@@ -12,6 +12,7 @@ Nació de una necesidad concreta: saber qué materias se pueden cursar sin tener
 - **Revisar y corregir** las materias, años, cuatrimestres y correlativas detectadas.
 - **Marcar el estado** de cada materia: pendiente, cursando, regularizada o aprobada.
 - **Ver qué materias están disponibles** y, si están bloqueadas, qué requisito falta.
+- **Armar tu cuatrimestre** eligiendo materias pendientes y viendo advertencias si todavía tienen correlativas sin cumplir.
 - **Seguir el progreso** de la carrera con un resumen claro.
 - **Explorar el grafo de correlativas** por año, con el detalle de requisitos y materias que habilita cada materia.
 - **Editar el plan guardado** sin volver a importar el PDF.
@@ -22,12 +23,12 @@ Nació de una necesidad concreta: saber qué materias se pueden cursar sin tener
 1. **Subís el PDF.** El texto se procesa directamente en tu navegador.
 2. **Revisás la información.** Si alguna materia o correlativa no se detectó bien, la corregís en el momento.
 3. **Guardás el plan.** Queda en tu navegador, listo para marcar estados y seguir el cuatrimestre.
-4. **Marcás tu avance.** El tablero te muestra qué podés cursar, qué está bloqueado y cuánto progresaste. La pestaña Grafo te deja explorar las correlativas materia por materia.
-5. **Editás o respaldás.** Podés ajustar el plan guardado o descargar un JSON con tu progreso para restaurarlo después.
+4. **Marcás tu avance.** El tablero te muestra qué podés cursar, qué está bloqueado y cuánto progresaste. La pestaña Cuatrimestre te deja elegir las materias que querés cursar y la pestaña Grafo te deja explorar las correlativas materia por materia.
+5. **Editás o respaldás.** Podés ajustar el plan guardado o descargar un JSON con tu progreso y tu cuatrimestre para restaurarlo después.
 
 ## Privacidad
 
-El PDF no se sube a ningún servidor: la extracción se hace localmente en el navegador. El plan y el progreso de las materias se guardan en el almacenamiento local de tu dispositivo y no se envían a terceros. Los respaldos también se generan localmente y quedan en tu compu.
+El PDF no se sube a ningún servidor: la extracción se hace localmente en el navegador. El plan, el progreso de las materias y tu selección de cuatrimestre se guardan en el almacenamiento local de tu dispositivo y no se envían a terceros. Los respaldos también se generan localmente y quedan en tu compu.
 
 ## Estado del proyecto
 
@@ -37,6 +38,7 @@ El PDF no se sube a ningún servidor: la extracción se hace localmente en el na
 - [x] **Etapa 4:** edición posterior y exportación de respaldo.
 - [x] **Etapa 5:** grafo interactivo de correlativas.
 - [x] **Etapa 6:** deploy en Vercel y documentación final.
+- [x] **Etapa 7:** plan de cuatrimestre con selección local y advertencias.
 
 ## Desarrollo
 

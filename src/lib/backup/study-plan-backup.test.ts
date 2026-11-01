@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 
+import type { StudyTermSelection } from "../study-plan/term";
 import type { StudyPlan, StudyProgress } from "../study-plan/types";
 import {
   createBackupFilename,
@@ -29,11 +30,17 @@ const plan: StudyPlan = {
 };
 
 const progress: StudyProgress = { "1": "approved" };
+const termSelection: StudyTermSelection = { subjectIds: ["1"] };
 const date = new Date("2026-10-25T12:00:00.000Z");
 
 describe("study plan backup", () => {
   it("creates a versioned backup", () => {
-    const backup = createStudyPlanBackup(plan, progress, date);
+    const backup = createStudyPlanBackup(
+      plan,
+      progress,
+      termSelection,
+      date,
+    );
 
     expect(backup).toEqual({
       format: STUDY_PLAN_BACKUP_FORMAT,
@@ -41,14 +48,34 @@ describe("study plan backup", () => {
       exportedAt: "2026-10-25T12:00:00.000Z",
       plan,
       progress,
+      termSelection,
     });
   });
 
-  it("round-trips plan and progress through JSON", () => {
-    const serialized = serializeStudyPlanBackup(plan, progress, date);
+  it("round-trips plan, progress and term selection through JSON", () => {
+    const serialized = serializeStudyPlanBackup(
+      plan,
+      progress,
+      termSelection,
+      date,
+    );
 
     expect(parseStudyPlanBackup(serialized)).toEqual(
-      createStudyPlanBackup(plan, progress, date),
+      createStudyPlanBackup(plan, progress, termSelection, date),
+    );
+  });
+
+  it("reads a version 1 backup with an empty term selection", () => {
+    const raw = JSON.stringify({
+      format: STUDY_PLAN_BACKUP_FORMAT,
+      version: 1,
+      exportedAt: "2026-10-25T12:00:00.000Z",
+      plan,
+      progress,
+    });
+
+    expect(parseStudyPlanBackup(raw)).toEqual(
+      createStudyPlanBackup(plan, progress, { subjectIds: [] }, date),
     );
   });
 
@@ -61,7 +88,7 @@ describe("study plan backup", () => {
 
   it("rejects a file from another app", () => {
     const raw = JSON.stringify({
-      ...createStudyPlanBackup(plan, progress, date),
+      ...createStudyPlanBackup(plan, progress, termSelection, date),
       format: "otra-app",
     });
 
@@ -72,8 +99,8 @@ describe("study plan backup", () => {
 
   it("rejects an unsupported version", () => {
     const raw = JSON.stringify({
-      ...createStudyPlanBackup(plan, progress, date),
-      version: 2,
+      ...createStudyPlanBackup(plan, progress, termSelection, date),
+      version: 3,
     });
 
     expect(() => parseStudyPlanBackup(raw)).toThrow("versión no compatible");
@@ -81,7 +108,7 @@ describe("study plan backup", () => {
 
   it("rejects an incomplete plan", () => {
     const raw = JSON.stringify({
-      ...createStudyPlanBackup(plan, progress, date),
+      ...createStudyPlanBackup(plan, progress, termSelection, date),
       plan: { ...plan, career: "" },
     });
 
@@ -92,7 +119,7 @@ describe("study plan backup", () => {
 
   it("rejects invalid correlatives", () => {
     const raw = JSON.stringify({
-      ...createStudyPlanBackup(plan, progress, date),
+      ...createStudyPlanBackup(plan, progress, termSelection, date),
       plan: {
         ...plan,
         subjects: [

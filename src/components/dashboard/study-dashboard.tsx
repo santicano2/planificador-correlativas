@@ -6,6 +6,7 @@ import { BackupActions } from "@/components/backup/backup-actions";
 import {
   AlertIcon,
   ArrowRightIcon,
+  CalendarIcon,
   CheckIcon,
   FileIcon,
   GraphIcon,
@@ -21,12 +22,15 @@ import {
   type DashboardRow,
   type StudyPlan,
   type StudyProgress,
+  type StudyTermSelection,
   type SubjectStatus,
 } from "@/lib/study-plan";
 
 import { CorrelationGraphView } from "./correlation-graph-view";
+import { formatMissing } from "./missing-format";
 import { ProgressOverview } from "./progress-overview";
 import { StatusControl } from "./status-control";
+import { TermPlanView } from "./term-plan-view";
 import {
   STATUS_BORDER_CLASSES,
   STATUS_DOT_CLASSES,
@@ -37,7 +41,9 @@ import { TERM_LABELS } from "./term-meta";
 interface StudyDashboardProps {
   plan: StudyPlan;
   progress: StudyProgress;
+  termSelection: StudyTermSelection;
   onStatusChange: (subjectId: string, status: SubjectStatus) => void;
+  onTermSelectionChange: (selection: StudyTermSelection) => void;
   onEdit: () => void;
   onRestore: (backup: StudyPlanBackup) => void;
   onImportAnother: () => void;
@@ -47,12 +53,14 @@ interface StudyDashboardProps {
 type YearFilter = "all" | number;
 type StatusFilter = "all" | SubjectStatus;
 type AvailabilityFilter = "all" | "available" | "blocked";
-type DashboardView = "table" | "graph";
+type DashboardView = "table" | "term" | "graph";
 
 export function StudyDashboard({
   plan,
   progress,
+  termSelection,
   onStatusChange,
+  onTermSelectionChange,
   onEdit,
   onRestore,
   onImportAnother,
@@ -77,6 +85,10 @@ export function StudyDashboard({
         (a, b) => a - b,
       ),
     [plan.subjects],
+  );
+  const selectedTermIds = useMemo(
+    () => new Set(termSelection.subjectIds),
+    [termSelection],
   );
 
   const hasFilters =
@@ -260,6 +272,20 @@ export function StudyDashboard({
         </button>
         <button
           type="button"
+          aria-pressed={view === "term"}
+          onClick={() => setView("term")}
+          className={[
+            "inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition",
+            view === "term"
+              ? "bg-forest text-paper"
+              : "text-ink-soft hover:bg-ink/5 hover:text-ink",
+          ].join(" ")}
+        >
+          <CalendarIcon className="size-3.5" />
+          Cuatrimestre
+        </button>
+        <button
+          type="button"
           aria-pressed={view === "graph"}
           onClick={() => setView("graph")}
           className={[
@@ -278,7 +304,15 @@ export function StudyDashboard({
         <CorrelationGraphView
           plan={plan}
           progress={progress}
+          termSelection={termSelection}
           onStatusChange={updateStatus}
+        />
+      ) : view === "term" ? (
+        <TermPlanView
+          plan={plan}
+          progress={progress}
+          selection={termSelection}
+          onSelectionChange={onTermSelectionChange}
         />
       ) : (
         <>
@@ -295,6 +329,7 @@ export function StudyDashboard({
           variant="dashboard"
           currentPlan={plan}
           progress={progress}
+          termSelection={termSelection}
           onRestore={onRestore}
         />
       </div>
@@ -428,6 +463,7 @@ export function StudyDashboard({
                     <SubjectRow
                       key={row.subject.id}
                       row={row}
+                      isInTermPlan={selectedTermIds.has(row.subject.id)}
                       onStatusChange={updateStatus}
                     />
                   ))}
@@ -445,9 +481,11 @@ export function StudyDashboard({
 
 function SubjectRow({
   row,
+  isInTermPlan,
   onStatusChange,
 }: {
   row: DashboardRow;
+  isInTermPlan: boolean;
   onStatusChange: (subjectId: string, status: SubjectStatus) => void;
 }) {
   const { subject, status, availability, missing } = row;
@@ -467,6 +505,12 @@ function SubjectRow({
             <h3 className="font-display text-lg font-semibold leading-tight text-ink">
               {subject.name}
             </h3>
+            {isInTermPlan ? (
+              <span className="inline-flex items-center gap-1 rounded-full border border-forest/20 bg-forest/5 px-2 py-0.5 font-mono text-[8px] uppercase tracking-[0.1em] text-forest">
+                <CalendarIcon className="size-3" />
+                En mi cuatrimestre
+              </span>
+            ) : null}
           </div>
 
           <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] text-ink-soft">
@@ -557,15 +601,4 @@ function SubjectHint({
       Materia aprobada
     </p>
   );
-}
-
-function formatMissing(
-  missing: DashboardRow["missing"],
-): string {
-  return missing
-    .map(
-      (requirement) =>
-        `falta ${requirement.requiredStatus === "regularized" ? "regularizar" : "aprobar"} ${requirement.subjectName}`,
-    )
-    .join(" · ");
 }
