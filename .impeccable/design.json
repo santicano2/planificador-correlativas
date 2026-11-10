@@ -1,0 +1,600 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-01T18:15:00Z",
+  "title": "Design System: Planificador de Correlativas",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Línea cobalto",
+        "canonical": "#0b57d0",
+        "tonalRamp": [
+          "color-mix(in oklab, #0b57d0 15%, black)",
+          "color-mix(in oklab, #0b57d0 30%, black)",
+          "color-mix(in oklab, #0b57d0 45%, black)",
+          "#0b57d0",
+          "color-mix(in oklab, #0b57d0 80%, white)",
+          "color-mix(in oklab, #0b57d0 60%, white)",
+          "color-mix(in oklab, #0b57d0 40%, white)",
+          "color-mix(in oklab, #0b57d0 20%, white)"
+        ]
+      },
+      "primary-deep": {
+        "role": "primary",
+        "displayName": "Cobalto profundo",
+        "canonical": "#073f9c",
+        "tonalRamp": [
+          "color-mix(in oklab, #073f9c 15%, black)",
+          "color-mix(in oklab, #073f9c 30%, black)",
+          "color-mix(in oklab, #073f9c 45%, black)",
+          "#073f9c",
+          "color-mix(in oklab, #073f9c 80%, white)",
+          "color-mix(in oklab, #073f9c 60%, white)",
+          "color-mix(in oklab, #073f9c 40%, white)",
+          "color-mix(in oklab, #073f9c 20%, white)"
+        ]
+      },
+      "primary-soft": {
+        "role": "primary",
+        "displayName": "Cobalto lavado",
+        "canonical": "#dbe7fb",
+        "tonalRamp": [
+          "color-mix(in oklab, #dbe7fb 15%, black)",
+          "color-mix(in oklab, #dbe7fb 30%, black)",
+          "color-mix(in oklab, #dbe7fb 45%, black)",
+          "#dbe7fb",
+          "color-mix(in oklab, #dbe7fb 80%, white)",
+          "color-mix(in oklab, #dbe7fb 60%, white)",
+          "color-mix(in oklab, #dbe7fb 40%, white)",
+          "color-mix(in oklab, #dbe7fb 20%, white)"
+        ]
+      },
+      "signal": {
+        "role": "secondary",
+        "displayName": "Señal roja",
+        "canonical": "#c5221f",
+        "tonalRamp": [
+          "color-mix(in oklab, #c5221f 15%, black)",
+          "color-mix(in oklab, #c5221f 30%, black)",
+          "color-mix(in oklab, #c5221f 45%, black)",
+          "#c5221f",
+          "color-mix(in oklab, #c5221f 80%, white)",
+          "color-mix(in oklab, #c5221f 60%, white)",
+          "color-mix(in oklab, #c5221f 40%, white)",
+          "color-mix(in oklab, #c5221f 20%, white)"
+        ]
+      },
+      "signal-deep": {
+        "role": "secondary",
+        "displayName": "Rojo profundo",
+        "canonical": "#9f1b18",
+        "tonalRamp": [
+          "color-mix(in oklab, #9f1b18 15%, black)",
+          "color-mix(in oklab, #9f1b18 30%, black)",
+          "color-mix(in oklab, #9f1b18 45%, black)",
+          "#9f1b18",
+          "color-mix(in oklab, #9f1b18 80%, white)",
+          "color-mix(in oklab, #9f1b18 60%, white)",
+          "color-mix(in oklab, #9f1b18 40%, white)",
+          "color-mix(in oklab, #9f1b18 20%, white)"
+        ]
+      },
+      "signal-soft": {
+        "role": "secondary",
+        "displayName": "Rojo lavado",
+        "canonical": "#fbe3e1",
+        "tonalRamp": [
+          "color-mix(in oklab, #fbe3e1 15%, black)",
+          "color-mix(in oklab, #fbe3e1 30%, black)",
+          "color-mix(in oklab, #fbe3e1 45%, black)",
+          "#fbe3e1",
+          "color-mix(in oklab, #fbe3e1 80%, white)",
+          "color-mix(in oklab, #fbe3e1 60%, white)",
+          "color-mix(in oklab, #fbe3e1 40%, white)",
+          "color-mix(in oklab, #fbe3e1 20%, white)"
+        ]
+      },
+      "warning": {
+        "role": "tertiary",
+        "displayName": "Ámbar de servicio",
+        "canonical": "#a35b00",
+        "tonalRamp": [
+          "color-mix(in oklab, #a35b00 15%, black)",
+          "color-mix(in oklab, #a35b00 30%, black)",
+          "color-mix(in oklab, #a35b00 45%, black)",
+          "#a35b00",
+          "color-mix(in oklab, #a35b00 80%, white)",
+          "color-mix(in oklab, #a35b00 60%, white)",
+          "color-mix(in oklab, #a35b00 40%, white)",
+          "color-mix(in oklab, #a35b00 20%, white)"
+        ]
+      },
+      "warning-soft": {
+        "role": "tertiary",
+        "displayName": "Ámbar lavado",
+        "canonical": "#fbecd6",
+        "tonalRamp": [
+          "color-mix(in oklab, #fbecd6 15%, black)",
+          "color-mix(in oklab, #fbecd6 30%, black)",
+          "color-mix(in oklab, #fbecd6 45%, black)",
+          "#fbecd6",
+          "color-mix(in oklab, #fbecd6 80%, white)",
+          "color-mix(in oklab, #fbecd6 60%, white)",
+          "color-mix(in oklab, #fbecd6 40%, white)",
+          "color-mix(in oklab, #fbecd6 20%, white)"
+        ]
+      },
+      "success": {
+        "role": "tertiary",
+        "displayName": "Verde de aprobación",
+        "canonical": "#0f7b4f",
+        "tonalRamp": [
+          "color-mix(in oklab, #0f7b4f 15%, black)",
+          "color-mix(in oklab, #0f7b4f 30%, black)",
+          "color-mix(in oklab, #0f7b4f 45%, black)",
+          "#0f7b4f",
+          "color-mix(in oklab, #0f7b4f 80%, white)",
+          "color-mix(in oklab, #0f7b4f 60%, white)",
+          "color-mix(in oklab, #0f7b4f 40%, white)",
+          "color-mix(in oklab, #0f7b4f 20%, white)"
+        ]
+      },
+      "success-soft": {
+        "role": "tertiary",
+        "displayName": "Verde lavado",
+        "canonical": "#dcf1e6",
+        "tonalRamp": [
+          "color-mix(in oklab, #dcf1e6 15%, black)",
+          "color-mix(in oklab, #dcf1e6 30%, black)",
+          "color-mix(in oklab, #dcf1e6 45%, black)",
+          "#dcf1e6",
+          "color-mix(in oklab, #dcf1e6 80%, white)",
+          "color-mix(in oklab, #dcf1e6 60%, white)",
+          "color-mix(in oklab, #dcf1e6 40%, white)",
+          "color-mix(in oklab, #dcf1e6 20%, white)"
+        ]
+      },
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Ground frío",
+        "canonical": "#f1f4f2",
+        "tonalRamp": [
+          "color-mix(in oklab, #f1f4f2 15%, black)",
+          "color-mix(in oklab, #f1f4f2 30%, black)",
+          "color-mix(in oklab, #f1f4f2 45%, black)",
+          "#f1f4f2",
+          "color-mix(in oklab, #f1f4f2 80%, white)",
+          "color-mix(in oklab, #f1f4f2 60%, white)",
+          "color-mix(in oklab, #f1f4f2 40%, white)",
+          "color-mix(in oklab, #f1f4f2 20%, white)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Superficie",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "color-mix(in oklab, #ffffff 15%, black)",
+          "color-mix(in oklab, #ffffff 30%, black)",
+          "color-mix(in oklab, #ffffff 45%, black)",
+          "#ffffff",
+          "color-mix(in oklab, #ffffff 80%, white)",
+          "color-mix(in oklab, #ffffff 60%, white)",
+          "color-mix(in oklab, #ffffff 40%, white)",
+          "color-mix(in oklab, #ffffff 20%, white)"
+        ]
+      },
+      "surface-2": {
+        "role": "neutral",
+        "displayName": "Superficie 2",
+        "canonical": "#e7ece9",
+        "tonalRamp": [
+          "color-mix(in oklab, #e7ece9 15%, black)",
+          "color-mix(in oklab, #e7ece9 30%, black)",
+          "color-mix(in oklab, #e7ece9 45%, black)",
+          "#e7ece9",
+          "color-mix(in oklab, #e7ece9 80%, white)",
+          "color-mix(in oklab, #e7ece9 60%, white)",
+          "color-mix(in oklab, #e7ece9 40%, white)",
+          "color-mix(in oklab, #e7ece9 20%, white)"
+        ]
+      },
+      "surface-3": {
+        "role": "neutral",
+        "displayName": "Superficie 3",
+        "canonical": "#dce3df",
+        "tonalRamp": [
+          "color-mix(in oklab, #dce3df 15%, black)",
+          "color-mix(in oklab, #dce3df 30%, black)",
+          "color-mix(in oklab, #dce3df 45%, black)",
+          "#dce3df",
+          "color-mix(in oklab, #dce3df 80%, white)",
+          "color-mix(in oklab, #dce3df 60%, white)",
+          "color-mix(in oklab, #dce3df 40%, white)",
+          "color-mix(in oklab, #dce3df 20%, white)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Grafito",
+        "canonical": "#11181c",
+        "tonalRamp": [
+          "color-mix(in oklab, #11181c 15%, black)",
+          "color-mix(in oklab, #11181c 30%, black)",
+          "color-mix(in oklab, #11181c 45%, black)",
+          "#11181c",
+          "color-mix(in oklab, #11181c 80%, white)",
+          "color-mix(in oklab, #11181c 60%, white)",
+          "color-mix(in oklab, #11181c 40%, white)",
+          "color-mix(in oklab, #11181c 20%, white)"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Grafito suave",
+        "canonical": "#4d5a60",
+        "tonalRamp": [
+          "color-mix(in oklab, #4d5a60 15%, black)",
+          "color-mix(in oklab, #4d5a60 30%, black)",
+          "color-mix(in oklab, #4d5a60 45%, black)",
+          "#4d5a60",
+          "color-mix(in oklab, #4d5a60 80%, white)",
+          "color-mix(in oklab, #4d5a60 60%, white)",
+          "color-mix(in oklab, #4d5a60 40%, white)",
+          "color-mix(in oklab, #4d5a60 20%, white)"
+        ]
+      },
+      "ink-faint": {
+        "role": "neutral",
+        "displayName": "Grafito tenue",
+        "canonical": "#657278",
+        "tonalRamp": [
+          "color-mix(in oklab, #657278 15%, black)",
+          "color-mix(in oklab, #657278 30%, black)",
+          "color-mix(in oklab, #657278 45%, black)",
+          "#657278",
+          "color-mix(in oklab, #657278 80%, white)",
+          "color-mix(in oklab, #657278 60%, white)",
+          "color-mix(in oklab, #657278 40%, white)",
+          "color-mix(in oklab, #657278 20%, white)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Línea",
+        "canonical": "#cbd4cf",
+        "tonalRamp": [
+          "color-mix(in oklab, #cbd4cf 15%, black)",
+          "color-mix(in oklab, #cbd4cf 30%, black)",
+          "color-mix(in oklab, #cbd4cf 45%, black)",
+          "#cbd4cf",
+          "color-mix(in oklab, #cbd4cf 80%, white)",
+          "color-mix(in oklab, #cbd4cf 60%, white)",
+          "color-mix(in oklab, #cbd4cf 40%, white)",
+          "color-mix(in oklab, #cbd4cf 20%, white)"
+        ]
+      },
+      "line-strong": {
+        "role": "neutral",
+        "displayName": "Línea fuerte",
+        "canonical": "#a7b4ae",
+        "tonalRamp": [
+          "color-mix(in oklab, #a7b4ae 15%, black)",
+          "color-mix(in oklab, #a7b4ae 30%, black)",
+          "color-mix(in oklab, #a7b4ae 45%, black)",
+          "#a7b4ae",
+          "color-mix(in oklab, #a7b4ae 80%, white)",
+          "color-mix(in oklab, #a7b4ae 60%, white)",
+          "color-mix(in oklab, #a7b4ae 40%, white)",
+          "color-mix(in oklab, #a7b4ae 20%, white)"
+        ]
+      },
+      "status-pending": {
+        "role": "neutral",
+        "displayName": "Pendiente",
+        "canonical": "#7b878c",
+        "tonalRamp": [
+          "color-mix(in oklab, #7b878c 15%, black)",
+          "color-mix(in oklab, #7b878c 30%, black)",
+          "color-mix(in oklab, #7b878c 45%, black)",
+          "#7b878c",
+          "color-mix(in oklab, #7b878c 80%, white)",
+          "color-mix(in oklab, #7b878c 60%, white)",
+          "color-mix(in oklab, #7b878c 40%, white)",
+          "color-mix(in oklab, #7b878c 20%, white)"
+        ]
+      },
+      "status-progress": {
+        "role": "tertiary",
+        "displayName": "Cursando",
+        "canonical": "#a35b00",
+        "tonalRamp": [
+          "color-mix(in oklab, #a35b00 15%, black)",
+          "color-mix(in oklab, #a35b00 30%, black)",
+          "color-mix(in oklab, #a35b00 45%, black)",
+          "#a35b00",
+          "color-mix(in oklab, #a35b00 80%, white)",
+          "color-mix(in oklab, #a35b00 60%, white)",
+          "color-mix(in oklab, #a35b00 40%, white)",
+          "color-mix(in oklab, #a35b00 20%, white)"
+        ]
+      },
+      "status-regularized": {
+        "role": "tertiary",
+        "displayName": "Regularizada",
+        "canonical": "#0b6e99",
+        "tonalRamp": [
+          "color-mix(in oklab, #0b6e99 15%, black)",
+          "color-mix(in oklab, #0b6e99 30%, black)",
+          "color-mix(in oklab, #0b6e99 45%, black)",
+          "#0b6e99",
+          "color-mix(in oklab, #0b6e99 80%, white)",
+          "color-mix(in oklab, #0b6e99 60%, white)",
+          "color-mix(in oklab, #0b6e99 40%, white)",
+          "color-mix(in oklab, #0b6e99 20%, white)"
+        ]
+      },
+      "status-approved": {
+        "role": "tertiary",
+        "displayName": "Aprobada",
+        "canonical": "#0f7b4f",
+        "tonalRamp": [
+          "color-mix(in oklab, #0f7b4f 15%, black)",
+          "color-mix(in oklab, #0f7b4f 30%, black)",
+          "color-mix(in oklab, #0f7b4f 45%, black)",
+          "#0f7b4f",
+          "color-mix(in oklab, #0f7b4f 80%, white)",
+          "color-mix(in oklab, #0f7b4f 60%, white)",
+          "color-mix(in oklab, #0f7b4f 40%, white)",
+          "color-mix(in oklab, #0f7b4f 20%, white)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Titulares de home y de vista; máximo 6rem."
+      },
+      "display-lg": {
+        "displayName": "Display LG",
+        "purpose": "Titular principal de la home en desktop."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Títulos de panel y de sección."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Nombres de materia, subtítulos y filas destacadas."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Texto de interfaz y párrafos; medida de 65–75 caracteres."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Labels de campo, encabezados de tabla y metadatos en mayúsculas."
+      },
+      "control": {
+        "displayName": "Control",
+        "purpose": "Botones, campos y controles compactos."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Texto auxiliar y descripciones breves."
+      },
+      "micro": {
+        "displayName": "Micro",
+        "purpose": "Leyendas del grafo, contadores y metadatos mínimos."
+      },
+      "nano": {
+        "displayName": "Nano",
+        "purpose": "Cuatrimestre dentro de una estación del grafo."
+      },
+      "data": {
+        "displayName": "Data",
+        "purpose": "Cifras de avance y contadores con tabular-nums."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "ease",
+        "purpose": "Transiciones de estado de 150ms en botones, tabs, filas y campos."
+      },
+      {
+        "name": "route-travel",
+        "value": "route-travel 1.4s linear infinite",
+        "purpose": "Único movimiento firma: línea de escaneo en el estado de lectura del PDF."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ],
+    "darkMode": {
+      "storageKey": "planificador-correlativas:theme:v1",
+      "attribute": "data-theme",
+      "palette": {
+        "canvas": "#0b0f12",
+        "surface": "#11171a",
+        "surface-2": "#182024",
+        "surface-3": "#222c30",
+        "ink": "#e8efed",
+        "ink-soft": "#a7b4b0",
+        "ink-faint": "#85938f",
+        "line": "#2b363a",
+        "line-strong": "#465358",
+        "primary": "#7fb0ff",
+        "primary-deep": "#5f97f0",
+        "primary-soft": "#16263c",
+        "signal": "#ff7a75",
+        "signal-deep": "#e05f5a",
+        "signal-soft": "#2a1413",
+        "warning": "#f0a44a",
+        "warning-soft": "#2a1d0d",
+        "success": "#4fd39a",
+        "success-soft": "#0f2a20",
+        "status-pending": "#9aa6aa",
+        "status-pending-soft": "#1a2226",
+        "status-progress": "#f0a44a",
+        "status-progress-soft": "#2a1d0d",
+        "status-regularized": "#5cc8f0",
+        "status-regularized-soft": "#102a35",
+        "status-approved": "#4fd39a",
+        "status-approved-soft": "#0f2a20"
+      },
+      "onColors": {
+        "on-primary": "#08111f",
+        "on-signal": "#1a0b0a",
+        "on-success": "#06170f",
+        "on-status": "#08111f"
+      }
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Acción principal de una vista o panel.",
+      "html": "<button class=\"ds-btn ds-btn--primary\">Importar plan <span aria-hidden=\"true\">→</span></button>",
+      "css": ".ds-btn { display: inline-flex; min-height: 40px; align-items: center; justify-content: center; gap: 8px; border: 1px solid transparent; border-radius: 2px; padding: 8px 14px; font-family: Barlow, ui-sans-serif, system-ui, sans-serif; font-size: 13px; font-weight: 600; line-height: 1; transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease; } .ds-btn--primary { border-color: var(--color-primary); background: var(--color-primary); color: var(--color-on-primary); } .ds-btn--primary:hover { border-color: var(--color-primary-deep); background: var(--color-primary-deep); } .ds-btn:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Acción secundaria o de navegación.",
+      "html": "<button class=\"ds-btn ds-btn--secondary\">Editar plan</button>",
+      "css": ".ds-btn { display: inline-flex; min-height: 40px; align-items: center; justify-content: center; gap: 8px; border: 1px solid transparent; border-radius: 2px; padding: 8px 14px; font-family: Barlow, ui-sans-serif, system-ui, sans-serif; font-size: 13px; font-weight: 600; line-height: 1; transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease; } .ds-btn--secondary { border-color: var(--color-line-strong); background: var(--color-surface); color: var(--color-ink); } .ds-btn--secondary:hover { border-color: var(--color-ink); } .ds-btn:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Búsqueda y edición de datos del plan.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field__label\">Buscar materia</span><input class=\"ds-field__input\" placeholder=\"Nombre o código\" /></label>",
+      "css": ".ds-field { display: block; } .ds-field__label { display: block; margin-bottom: 4px; color: var(--color-ink-soft); font-family: Barlow, ui-sans-serif, system-ui, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; line-height: 1.2; text-transform: uppercase; } .ds-field__input { width: 100%; border: 1px solid var(--color-line-strong); border-radius: 2px; background: var(--color-surface); padding: 8px 10px; color: var(--color-ink); font-family: Barlow, ui-sans-serif, system-ui, sans-serif; font-size: 13px; line-height: 1.35; } .ds-field__input::placeholder { color: var(--color-ink-faint); } .ds-field__input:focus { border-color: var(--color-primary); outline: 2px solid var(--color-primary); outline-offset: 1px; }"
+    },
+    {
+      "name": "Panel",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "Contenedor base de tablero, revisión y detalle.",
+      "html": "<section class=\"ds-panel\"><header class=\"ds-panel__head\"><h2>Mapa de correlativas</h2></header><div class=\"ds-panel__body\">Contenido del panel</div></section>",
+      "css": ".ds-panel { border: 1px solid var(--color-line); background: var(--color-surface); color: var(--color-ink); } .ds-panel__head { display: flex; align-items: center; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--color-line); background: var(--color-surface-2); padding: 12px 16px; } .ds-panel__head h2 { margin: 0; font-family: Barlow Condensed, ui-sans-serif, system-ui, sans-serif; font-size: 20px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; } .ds-panel__body { padding: 16px; }"
+    },
+    {
+      "name": "Platform Tab",
+      "kind": "nav",
+      "description": "Navegación entre tablero, cuatrimestre y grafo.",
+      "html": "<div class=\"ds-tabs\" role=\"group\" aria-label=\"Vista del plan\"><button class=\"ds-tab\" aria-pressed=\"true\">Tablero</button><button class=\"ds-tab\" aria-pressed=\"false\">Cuatrimestre</button><button class=\"ds-tab\" aria-pressed=\"false\">Grafo</button></div>",
+      "css": ".ds-tabs { display: flex; width: fit-content; max-width: 100%; overflow-x: auto; border: 1px solid var(--color-line); background: var(--color-surface); padding: 4px; } .ds-tab { display: inline-flex; min-height: 36px; flex: none; align-items: center; gap: 6px; border: 1px solid transparent; border-radius: 1px; padding: 6px 12px; color: var(--color-ink-soft); font-family: Barlow, ui-sans-serif, system-ui, sans-serif; font-size: 12px; font-weight: 600; line-height: 1; transition: background-color 150ms ease, color 150ms ease; } .ds-tab:hover { background: var(--color-surface-2); color: var(--color-ink); } .ds-tab[aria-pressed=\"true\"] { border-color: var(--color-primary); background: var(--color-primary); color: var(--color-on-primary); } .ds-tab:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }"
+    },
+    {
+      "name": "Route Badge",
+      "kind": "chip",
+      "refersTo": "route-badge",
+      "description": "Código, año o etiqueta de línea.",
+      "html": "<span class=\"ds-badge\">1º año</span>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; gap: 5px; border: 1px solid currentColor; border-radius: 2px; padding: 2px 6px; color: var(--color-ink-soft); font-family: Barlow Condensed, ui-sans-serif, system-ui, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.03em; line-height: 1; }"
+    },
+    {
+      "name": "Service Alert",
+      "kind": "custom",
+      "refersTo": "service-alert",
+      "description": "Aviso informativo, advertencia, error o confirmación.",
+      "html": "<div class=\"ds-alert ds-alert--warning\" role=\"status\"><span class=\"ds-alert__mark\" aria-hidden=\"true\">!</span><p>Faltan requisitos para cursar esta materia.</p></div>",
+      "css": ".ds-alert { display: flex; align-items: flex-start; gap: 12px; border: 1px solid var(--color-line); border-top: 3px solid var(--color-primary); background: var(--color-surface); padding: 12px 16px; color: var(--color-ink); font-family: Barlow, ui-sans-serif, system-ui, sans-serif; font-size: 12px; line-height: 1.55; } .ds-alert p { margin: 0; } .ds-alert__mark { display: inline-flex; width: 18px; height: 18px; flex: none; align-items: center; justify-content: center; border: 1px solid currentColor; border-radius: 999px; font-size: 11px; font-weight: 700; } .ds-alert--warning { border-top-color: var(--color-warning); background: var(--color-warning-soft); } .ds-alert--danger { border-top-color: var(--color-signal); background: var(--color-signal-soft); } .ds-alert--success { border-top-color: var(--color-success); background: var(--color-success-soft); }"
+    },
+    {
+      "name": "Graph Station",
+      "kind": "custom",
+      "refersTo": "graph-station",
+      "description": "Nodo seleccionable del mapa de correlativas.",
+      "html": "<button class=\"ds-station\" aria-pressed=\"false\"><span class=\"ds-station__top\"><span class=\"ds-station__code\">1</span><span class=\"ds-station__dot\"></span></span><span class=\"ds-station__name\">Programación de Computadoras</span><span class=\"ds-station__meta\">ANUAL</span></button>",
+      "css": ".ds-station { display: flex; width: 176px; height: 80px; flex-direction: column; border: 1px solid var(--color-line); border-top: 2px solid var(--color-status-pending); border-radius: 0; background: var(--color-surface); padding: 6px 12px; text-align: left; transition: border-color 150ms ease, background-color 150ms ease; } .ds-station:hover { border-color: var(--color-primary); background: color-mix(in oklab, var(--color-primary-soft) 20%, transparent); } .ds-station:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; } .ds-station__top { display: flex; align-items: center; justify-content: space-between; gap: 8px; } .ds-station__code { border: 1px solid var(--color-line); border-radius: 2px; padding: 1px 5px; color: var(--color-ink-soft); font-family: Barlow Condensed, ui-sans-serif, system-ui, sans-serif; font-size: 12px; font-weight: 600; line-height: 1; } .ds-station__dot { width: 8px; height: 8px; border-radius: 999px; background: var(--color-status-pending); } .ds-station__name { margin-top: 2px; overflow: hidden; color: var(--color-ink); font-family: Barlow Condensed, ui-sans-serif, system-ui, sans-serif; font-size: 13px; font-weight: 600; line-height: 1.1; } .ds-station__meta { margin-top: auto; color: var(--color-ink-soft); font-family: Barlow, ui-sans-serif, system-ui, sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 0.06em; line-height: 1; text-transform: uppercase; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Red local",
+    "overview": "La app se lee como la señalética de una red de transporte: las materias son estaciones, las correlativas son líneas y el tablero indica qué servicio está disponible. No hay decoración de campus ni metáforas académicas: hay información pública, jerarquía y recorridos. La identidad vive en la tensión entre Barlow Condensed para anuncios y Barlow para leer, en el cobalto de la línea principal y en la precisión de las reglas de 1px.\n\nEl sistema es deliberadamente plano y denso. Los paneles son rectángulos blancos sobre un ground frío, separados por bordes y franjas de superficie, nunca por sombras. El color aparece donde tiene trabajo: cobalto para la acción y la ruta, rojo para lo que bloquea, ámbar para lo que está en curso y verde para lo que ya está resuelto. El resultado debe sentirse como una herramienta de consulta rápida, no como una landing.\n\nEl sistema tiene dos temas: claro y oscuro. El oscuro usa grafito frío y conserva las mismas señales; el cambio vive en el header y se recuerda en el navegador.",
+    "keyCharacteristics": [
+      "Señalética de transporte público traducida a interfaz de producto.",
+      "Rectángulos duros, reglas de 1px y franjas de estado; sin sombras ni gradientes.",
+      "Barlow Condensed para titulares, datos y badges; Barlow para cuerpo y controles.",
+      "Cobalto como línea principal; rojo, ámbar y verde como señales semánticas.",
+      "Densidad útil: cada vista responde una pregunta concreta del recorrido."
+    ],
+    "rules": [
+      {
+        "name": "The Line Connects Rule",
+        "body": "El cobalto no decora: marca una ruta, una selección o una acción. Si no conecta ni permite actuar, no va en cobalto.",
+        "section": "colors"
+      },
+      {
+        "name": "The Red Is a Signal Rule",
+        "body": "El rojo aparece solo cuando algo bloquea, falla o se elimina. Nunca se usa para “dar vida” a una sección.",
+        "section": "colors"
+      },
+      {
+        "name": "The Three Signals Rule",
+        "body": "Un estado siempre se comunica con color, texto y un tercer indicador (punto, candado o chispa). El color solo nunca alcanza.",
+        "section": "colors"
+      },
+      {
+        "name": "The Condensed Is for Announcements Rule",
+        "body": "Barlow Condensed se usa en titulares, cifras, badges y códigos. El texto corrido siempre va en Barlow.",
+        "section": "typography"
+      },
+      {
+        "name": "The No-Eyebrow Rule",
+        "body": "Ningún título necesita un kicker arriba. El titular carga solo con tamaño, peso y posición.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Si un bloque necesita una sombra para separarse, el problema es el borde o la superficie. No se agregan sombras decorativas.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Top-Edge Rule",
+        "body": "El color de estado va en el borde superior, nunca en un borde izquierdo o derecho de más de 1px.",
+        "section": "elevation"
+      },
+      {
+        "name": "The On-Color Rule",
+        "body": "El texto sobre un fondo de color usa los tokens on-*; el blanco fijo no se usa en botones, tabs ni estados.",
+        "section": "colors"
+      }
+    ],
+    "dos": [
+      "Do usar Barlow Condensed para titulares, cifras, badges y nombres de materia; Barlow para cuerpo y controles.",
+      "Do separar con bordes de 1px, superficies y franjas; el sistema es plano.",
+      "Do usar cobalto para la ruta y la acción, rojo para bloqueo, ámbar para cursada y verde para aprobación.",
+      "Do acompañar cada estado con texto y un punto, candado o chispa.",
+      "Do mantener el grafo en 176×80, con 20px entre columnas y 12px entre filas.",
+      "Do usar el borde superior para el estado de una estación o un aviso.",
+      "Do usar los tokens on-* sobre fondos de color."
+    ],
+    "donts": [
+      "Don't usar serif, crema, terracota, dorado, sombras de papel ni textura de fondo.",
+      "Don't usar sombras, halos o gradientes para separar bloques.",
+      "Don't usar border-left o border-right de color mayor a 1px en cards, filas o avisos.",
+      "Don't usar pills para contenedores, botones o tabs.",
+      "Don't usar monospace como disfraz de “técnico”.",
+      "Don't poner un kicker o eyebrow arriba de un heading.",
+      "Don't convertir la página en una grilla de tarjetas iguales de icono, título y texto.",
+      "Don't usar el rojo como color de énfasis o decoración.",
+      "Don't usar blanco fijo sobre botones, tabs o estados que cambian con el tema."
+    ]
+  }
+}

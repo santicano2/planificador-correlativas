@@ -125,7 +125,10 @@ export function ReviewPlan({
   const canSave = allErrors.length === 0;
 
   const years = useMemo(
-    () => [...new Set(draft.subjects.map((subject) => subject.year))].sort((a, b) => a - b),
+    () =>
+      [...new Set(draft.subjects.map((subject) => subject.year))].sort(
+        (a, b) => a - b,
+      ),
     [draft.subjects],
   );
 
@@ -161,7 +164,9 @@ export function ReviewPlan({
 
   const prerequisiteCount = draft.subjects.reduce(
     (total, subject) =>
-      total + subject.requiresRegularized.length + subject.requiresApproved.length,
+      total +
+      subject.requiresRegularized.length +
+      subject.requiresApproved.length,
     0,
   );
 
@@ -214,13 +219,10 @@ export function ReviewPlan({
   };
 
   return (
-    <div className="mx-auto w-full max-w-7xl px-4 pb-20 pt-8 sm:px-6 sm:pt-10">
+    <div className="shell pb-20 pt-8 sm:pt-10">
       <div className="mb-6 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-terracotta">
-            {isEdit ? "Edición del plan" : "Paso 2 de 2 · Revisión"}
-          </p>
-          <h1 className="mt-2 max-w-3xl font-display text-4xl font-semibold leading-[0.98] tracking-tight text-ink sm:text-5xl">
+          <h1 className="max-w-3xl font-display text-5xl font-semibold leading-[0.9] tracking-tight text-ink sm:text-6xl">
             {isEdit ? "Editá tu plan" : "Revisá lo que encontramos"}
           </h1>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-ink-soft sm:text-base">
@@ -232,7 +234,7 @@ export function ReviewPlan({
 
         <div className="flex flex-wrap items-center gap-2">
           {sourceName ? (
-            <span className="inline-flex max-w-full items-center gap-2 rounded-full border border-ink/10 bg-paper-light px-3 py-1.5 font-mono text-[10px] text-ink-soft">
+            <span className="inline-flex max-w-full items-center gap-2 border border-line bg-surface px-3 py-1.5 text-xs text-ink-soft">
               <FileIcon className="size-3.5 shrink-0" />
               <span className="truncate">{sourceName}</span>
             </span>
@@ -240,7 +242,7 @@ export function ReviewPlan({
           <button
             type="button"
             onClick={onCancel}
-            className="rounded-full px-3 py-2 text-sm font-semibold text-ink-soft transition hover:bg-ink/5 hover:text-ink"
+            className="btn btn-ghost btn-sm"
           >
             {isEdit ? "Volver al tablero" : "Empezar de nuevo"}
           </button>
@@ -258,30 +260,34 @@ export function ReviewPlan({
           {allErrors.length > 0 ? (
             <section
               role="alert"
-              className="rounded-2xl border border-terracotta/40 bg-terracotta-soft/45 px-4 py-3"
+              className="service-alert service-alert--danger"
             >
-              <h2 className="flex items-center gap-2 text-sm font-semibold text-ink">
-                <AlertIcon className="size-4 text-terracotta" />
-                Revisá estos puntos antes de guardar
-              </h2>
-              <ul className="mt-2 space-y-1 pl-6 text-xs leading-5 text-ink-soft">
-                {allErrors.map((message) => (
-                  <li key={message} className="list-disc">
-                    {message}
-                  </li>
-                ))}
-              </ul>
+              <AlertIcon className="mt-0.5 size-4 shrink-0 text-signal" />
+              <div>
+                <h2 className="text-sm font-semibold text-ink">
+                  Revisá estos puntos antes de guardar
+                </h2>
+                <ul className="mt-2 space-y-1 pl-4 text-xs leading-5 text-ink-soft">
+                  {allErrors.map((message) => (
+                    <li key={message} className="list-disc">
+                      {message}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </section>
           ) : null}
 
           {draft.warnings.length > 0 ? (
-            <details className="group rounded-2xl border border-gold/40 bg-gold/10 px-4 py-3">
-              <summary className="flex cursor-pointer list-none items-center gap-2 text-sm font-semibold text-ink">
-                <AlertIcon className="size-4 text-terracotta" />
-                Avisos de la lectura ({draft.warnings.length})
-                <ChevronDownIcon className="ml-auto size-4 text-ink-soft transition group-open:rotate-180" />
+            <details className="panel group">
+              <summary className="panel-head cursor-pointer list-none">
+                <span className="flex items-center gap-2 text-sm font-semibold text-ink">
+                  <AlertIcon className="size-4 text-warning" />
+                  Avisos de la lectura ({draft.warnings.length})
+                </span>
+                <ChevronDownIcon className="size-4 text-ink-soft transition group-open:rotate-180" />
               </summary>
-              <ul className="mt-2 space-y-1 pl-6 text-xs leading-5 text-ink-soft">
+              <ul className="space-y-1 px-4 py-3 pl-8 text-xs leading-5 text-ink-soft">
                 {draft.warnings.map((warning) => (
                   <li key={warning} className="list-disc">
                     {warning}
@@ -293,20 +299,16 @@ export function ReviewPlan({
         </div>
       ) : null}
 
-      <section className="mb-5 rounded-2xl border border-ink/12 bg-paper-light p-4 sm:p-5">
-        <div className="mb-3 flex items-center justify-between gap-3">
+      <section className="panel mb-5">
+        <div className="panel-head">
           <h2 className="font-display text-xl font-semibold text-ink">
             Datos del plan
           </h2>
-          <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink-soft">
-            Editable
-          </span>
+          <span className="route-badge text-ink-soft">Editable</span>
         </div>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-3 p-4 sm:grid-cols-2 lg:grid-cols-4">
           <label className="sm:col-span-2">
-            <span className="mb-1 block font-mono text-[9px] uppercase tracking-[0.14em] text-ink-soft">
-              Carrera *
-            </span>
+            <span className="label">Carrera *</span>
             <input
               value={draft.career}
               onChange={(event) =>
@@ -314,13 +316,11 @@ export function ReviewPlan({
               }
               aria-invalid={!draft.career.trim()}
               placeholder="Ej. Licenciatura en Sistemas"
-              className="w-full rounded-xl border border-ink/15 bg-paper px-3 py-2 text-sm text-ink"
+              className="field"
             />
           </label>
           <label>
-            <span className="mb-1 block font-mono text-[9px] uppercase tracking-[0.14em] text-ink-soft">
-              Universidad *
-            </span>
+            <span className="label">Universidad *</span>
             <input
               value={draft.university}
               onChange={(event) =>
@@ -328,13 +328,11 @@ export function ReviewPlan({
               }
               aria-invalid={!draft.university.trim()}
               placeholder="Ej. UNLP"
-              className="w-full rounded-xl border border-ink/15 bg-paper px-3 py-2 text-sm text-ink"
+              className="field"
             />
           </label>
           <label>
-            <span className="mb-1 block font-mono text-[9px] uppercase tracking-[0.14em] text-ink-soft">
-              Año del plan
-            </span>
+            <span className="label">Año del plan</span>
             <input
               type="number"
               min={1900}
@@ -349,14 +347,14 @@ export function ReviewPlan({
                 })
               }
               placeholder="2014"
-              className="w-full rounded-xl border border-ink/15 bg-paper px-3 py-2 text-sm text-ink"
+              className="field"
             />
           </label>
         </div>
       </section>
 
-      <section className="overflow-hidden rounded-2xl border border-ink/12 bg-paper-light">
-        <div className="flex flex-col gap-3 border-b border-ink/10 p-4 sm:flex-row sm:items-center sm:justify-between">
+      <section className="panel overflow-hidden">
+        <div className="panel-head flex-col items-stretch gap-3 sm:flex-row sm:items-center">
           <div>
             <h2 className="font-display text-xl font-semibold text-ink">
               Materias
@@ -367,14 +365,14 @@ export function ReviewPlan({
           </div>
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
             <div className="relative">
-              <SearchIcon className="pointer-events-none absolute left-3 top-1/2 size-3.5 -translate-y-1/2 text-ink-soft/70" />
+              <SearchIcon className="pointer-events-none absolute left-3 top-1/2 size-3.5 -translate-y-1/2 text-ink-faint" />
               <input
                 type="search"
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="Buscar materia..."
                 aria-label="Buscar materia"
-                className="w-full rounded-full border border-ink/15 bg-paper py-2 pl-8 pr-3 text-xs text-ink placeholder:text-ink-soft/60 sm:w-52"
+                className="field pl-8 sm:w-52"
               />
             </div>
             <select
@@ -387,7 +385,7 @@ export function ReviewPlan({
                 )
               }
               aria-label="Filtrar por año"
-              className="rounded-full border border-ink/15 bg-paper px-3 py-2 text-xs text-ink"
+              className="field sm:w-36"
             >
               <option value="all">Todos los años</option>
               {years.map((year) => (
@@ -399,7 +397,7 @@ export function ReviewPlan({
             <button
               type="button"
               onClick={addSubject}
-              className="inline-flex items-center justify-center gap-1.5 rounded-full bg-forest px-3.5 py-2 text-xs font-semibold text-paper transition hover:bg-forest-deep"
+              className="btn btn-primary btn-sm"
             >
               <PlusIcon className="size-3.5" />
               Agregar
@@ -408,8 +406,8 @@ export function ReviewPlan({
         </div>
 
         {visibleSubjects.length === 0 ? (
-          <div className="px-6 py-14 text-center">
-            <p className="font-display text-xl font-semibold text-ink">
+          <div className="empty-state">
+            <p className="font-display text-2xl font-semibold text-ink">
               No hay materias para mostrar
             </p>
             <p className="mt-1 text-sm text-ink-soft">
@@ -419,11 +417,11 @@ export function ReviewPlan({
         ) : (
           [...grouped.entries()].map(([year, subjects]) => (
             <div key={year}>
-              <div className="flex items-center justify-between border-y border-ink/10 bg-paper-deep/40 px-4 py-2 first:border-t-0">
-                <h3 className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-forest">
+              <div className="flex items-center justify-between border-y border-line bg-surface-2 px-4 py-2 first:border-t-0">
+                <h3 className="text-[10px] font-semibold uppercase tracking-[0.08em] text-ink-soft">
                   {year}° año
                 </h3>
-                <span className="font-mono text-[10px] text-ink-soft">
+                <span className="text-[10px] text-ink-soft">
                   {subjects.length}{" "}
                   {subjects.length === 1 ? "materia" : "materias"}
                 </span>
@@ -432,26 +430,26 @@ export function ReviewPlan({
               <div className="overflow-x-auto">
                 <table className="w-full border-collapse text-left text-sm sm:min-w-[620px]">
                   <thead>
-                    <tr className="border-b border-ink/10 font-mono text-[9px] uppercase tracking-[0.14em] text-ink-soft">
-                      <th scope="col" className="w-14 px-4 py-2 font-medium sm:w-20">
+                    <tr className="border-b border-line text-[10px] uppercase tracking-[0.08em] text-ink-soft">
+                      <th scope="col" className="w-14 px-4 py-2 font-semibold sm:w-20">
                         Código
                       </th>
-                      <th scope="col" className="px-4 py-2 font-medium">
+                      <th scope="col" className="px-4 py-2 font-semibold">
                         Materia
                       </th>
                       <th
                         scope="col"
-                        className="hidden w-36 px-4 py-2 font-medium sm:table-cell"
+                        className="hidden w-36 px-4 py-2 font-semibold sm:table-cell"
                       >
                         Cuatrimestre
                       </th>
                       <th
                         scope="col"
-                        className="hidden w-48 px-4 py-2 font-medium md:table-cell"
+                        className="hidden w-48 px-4 py-2 font-semibold md:table-cell"
                       >
                         Correlativas
                       </th>
-                      <th scope="col" className="w-20 px-4 py-2 font-medium">
+                      <th scope="col" className="w-20 px-4 py-2 font-semibold">
                         <span className="sr-only">Acciones</span>
                       </th>
                     </tr>
@@ -467,14 +465,14 @@ export function ReviewPlan({
                         <Fragment key={subject.id}>
                           <tr
                             className={[
-                              "border-b border-ink/8 transition-colors",
+                              "border-b border-line transition-colors",
                               isEditing
-                                ? "bg-forest/5"
-                                : "hover:bg-paper/60",
+                                ? "bg-primary-soft/30"
+                                : "hover:bg-canvas",
                             ].join(" ")}
                           >
                             <td className="px-4 py-3 align-top">
-                              <span className="rounded-md bg-ink/5 px-1.5 py-0.5 font-mono text-[11px] text-ink">
+                              <span className="route-badge text-ink-soft">
                                 {subject.code || "—"}
                               </span>
                             </td>
@@ -486,7 +484,7 @@ export function ReviewPlan({
                                     title={subject.warnings.join(" ")}
                                     className="inline-flex"
                                   >
-                                    <AlertIcon className="size-3.5 text-terracotta" />
+                                    <AlertIcon className="size-3.5 text-signal" />
                                   </span>
                                 ) : null}
                               </span>
@@ -523,7 +521,7 @@ export function ReviewPlan({
                                 onClick={() =>
                                   setEditingId(isEditing ? null : subject.id)
                                 }
-                                className="rounded-full border border-ink/15 px-3 py-1.5 text-xs font-semibold text-ink transition hover:border-forest hover:text-forest"
+                                className="btn btn-secondary btn-sm"
                                 aria-expanded={isEditing}
                               >
                                 {isEditing ? "Cerrar" : "Editar"}
@@ -556,11 +554,11 @@ export function ReviewPlan({
         )}
       </section>
 
-      <div className="mt-5 flex flex-col gap-3 rounded-2xl border border-ink/12 bg-paper-light p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5">
+      <div className="panel mt-5 flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5">
         <div className="text-xs leading-5 text-ink-soft">
           {canSave ? (
-            <p className="flex items-center gap-2 font-medium text-forest">
-              <span className="flex size-5 items-center justify-center rounded-full bg-forest text-paper">
+            <p className="flex items-center gap-2 font-medium text-success">
+              <span className="grid size-5 place-items-center bg-success text-on-success">
                 ✓
               </span>
               Todo listo para guardar.
@@ -572,7 +570,7 @@ export function ReviewPlan({
             </p>
           )}
           {saveError ? (
-            <p role="alert" className="mt-1 text-terracotta">
+            <p role="alert" className="mt-1 text-signal">
               {saveError}
             </p>
           ) : null}
@@ -581,7 +579,7 @@ export function ReviewPlan({
           <button
             type="button"
             onClick={addSubject}
-            className="inline-flex items-center justify-center gap-1.5 rounded-full border border-ink/15 px-4 py-2.5 text-sm font-semibold text-ink transition hover:border-forest hover:text-forest"
+            className="btn btn-secondary"
           >
             <PlusIcon className="size-4" />
             Agregar materia
@@ -590,7 +588,7 @@ export function ReviewPlan({
             type="button"
             onClick={handleSave}
             disabled={!canSave}
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-forest px-5 py-2.5 text-sm font-semibold text-paper transition hover:bg-forest-deep disabled:cursor-not-allowed disabled:opacity-40"
+            className="btn btn-primary"
           >
             {isEdit ? "Guardar cambios" : "Guardar plan"}
             <span aria-hidden="true">→</span>
@@ -603,11 +601,11 @@ export function ReviewPlan({
 
 function Stat({ label, value }: { label: string; value: number }) {
   return (
-    <div className="rounded-2xl border border-ink/12 bg-paper-light px-4 py-3">
-      <p className="font-display text-2xl font-semibold leading-none text-ink sm:text-3xl">
+    <div className="stat-tile">
+      <p className="data-value text-3xl font-semibold text-ink sm:text-4xl">
         {value}
       </p>
-      <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.14em] text-ink-soft">
+      <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-ink-soft">
         {label}
       </p>
     </div>

@@ -31,11 +31,7 @@ import { formatMissing } from "./missing-format";
 import { ProgressOverview } from "./progress-overview";
 import { StatusControl } from "./status-control";
 import { TermPlanView } from "./term-plan-view";
-import {
-  STATUS_BORDER_CLASSES,
-  STATUS_DOT_CLASSES,
-  STATUS_LABELS,
-} from "./status-meta";
+import { STATUS_DOT_CLASSES, STATUS_LABELS } from "./status-meta";
 import { TERM_LABELS } from "./term-meta";
 
 interface StudyDashboardProps {
@@ -161,13 +157,10 @@ export function StudyDashboard({
   };
 
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 pb-20 pt-8 sm:px-6 sm:pt-10">
+    <div className="shell pb-20 pt-8 sm:pt-10">
       <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-terracotta">
-            Mi plan
-          </p>
-          <h1 className="mt-2 font-display text-4xl font-semibold leading-none tracking-tight text-ink sm:text-5xl">
+          <h1 className="font-display text-5xl font-semibold leading-none tracking-tight text-ink sm:text-6xl">
             Tu tablero
           </h1>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-ink-soft sm:text-base">
@@ -175,14 +168,14 @@ export function StudyDashboard({
             y qué correlativas te faltan.
           </p>
           <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-ink-soft">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-ink/10 bg-paper-light px-3 py-1.5">
-              <FileIcon className="size-3.5 text-forest" />
+            <span className="inline-flex items-center gap-1.5 border border-line bg-surface px-2.5 py-1">
+              <FileIcon className="size-3.5 text-primary" />
               {plan.planYear ? `Plan ${plan.planYear}` : "Plan de estudios"}
             </span>
-            <span className="rounded-full border border-ink/10 bg-paper-light px-3 py-1.5">
+            <span className="border border-line bg-surface px-2.5 py-1">
               {plan.career}
             </span>
-            <span className="rounded-full border border-ink/10 bg-paper-light px-3 py-1.5">
+            <span className="border border-line bg-surface px-2.5 py-1">
               {plan.university}
             </span>
           </div>
@@ -190,14 +183,14 @@ export function StudyDashboard({
 
         <div className="flex flex-wrap items-center gap-2">
           {isConfirmingClear ? (
-            <div className="flex flex-wrap items-center gap-2 rounded-2xl border border-terracotta/30 bg-terracotta-soft/35 px-3 py-2">
+            <div className="flex flex-wrap items-center gap-2 border border-signal bg-signal-soft px-3 py-2">
               <span className="text-xs font-medium text-ink">
                 ¿Borrar plan y progreso?
               </span>
               <button
                 type="button"
                 onClick={onClear}
-                className="inline-flex items-center gap-1.5 rounded-full bg-terracotta px-3 py-1.5 text-xs font-semibold text-paper"
+                className="btn btn-danger btn-sm"
               >
                 <TrashIcon className="size-3.5" />
                 Sí, borrar
@@ -205,7 +198,7 @@ export function StudyDashboard({
               <button
                 type="button"
                 onClick={() => setIsConfirmingClear(false)}
-                className="rounded-full px-2.5 py-1.5 text-xs font-semibold text-ink-soft hover:bg-ink/5"
+                className="btn btn-ghost btn-sm"
               >
                 Cancelar
               </button>
@@ -215,7 +208,7 @@ export function StudyDashboard({
               <button
                 type="button"
                 onClick={onEdit}
-                className="inline-flex items-center gap-1.5 rounded-full border border-ink/15 px-3 py-2 text-xs font-semibold text-ink transition hover:border-forest hover:text-forest"
+                className="btn btn-secondary btn-sm"
               >
                 <PencilIcon className="size-3.5" />
                 Editar plan
@@ -223,7 +216,7 @@ export function StudyDashboard({
               <button
                 type="button"
                 onClick={() => setIsConfirmingClear(true)}
-                className="inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-xs font-semibold text-terracotta transition hover:bg-terracotta/10"
+                className="btn btn-ghost btn-sm text-signal"
               >
                 <TrashIcon className="size-3.5" />
                 Borrar plan
@@ -231,7 +224,7 @@ export function StudyDashboard({
               <button
                 type="button"
                 onClick={onImportAnother}
-                className="inline-flex items-center gap-1.5 rounded-full bg-forest px-4 py-2 text-xs font-semibold text-paper transition hover:bg-forest-deep"
+                className="btn btn-primary btn-sm"
               >
                 Importar otro plan
                 <ArrowRightIcon className="size-3.5" />
@@ -242,30 +235,22 @@ export function StudyDashboard({
       </div>
 
       {saveError ? (
-        <div
-          role="alert"
-          className="mt-4 flex items-start gap-2 rounded-2xl border border-terracotta/40 bg-terracotta-soft/45 px-4 py-3 text-xs leading-5 text-ink"
-        >
-          <AlertIcon className="mt-0.5 size-4 shrink-0 text-terracotta" />
-          {saveError}
+        <div role="alert" className="service-alert service-alert--danger mt-4">
+          <AlertIcon className="mt-0.5 size-4 shrink-0 text-signal" />
+          <span>{saveError}</span>
         </div>
       ) : null}
 
       <div
         role="group"
         aria-label="Vista del plan"
-        className="mt-6 flex w-fit items-center gap-1 rounded-full border border-ink/12 bg-paper-light p-1"
+        className="platform-tabs mt-6"
       >
         <button
           type="button"
           aria-pressed={view === "table"}
           onClick={() => setView("table")}
-          className={[
-            "inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition",
-            view === "table"
-              ? "bg-forest text-paper"
-              : "text-ink-soft hover:bg-ink/5 hover:text-ink",
-          ].join(" ")}
+          className="platform-tab"
         >
           <FileIcon className="size-3.5" />
           Tablero
@@ -274,12 +259,7 @@ export function StudyDashboard({
           type="button"
           aria-pressed={view === "term"}
           onClick={() => setView("term")}
-          className={[
-            "inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition",
-            view === "term"
-              ? "bg-forest text-paper"
-              : "text-ink-soft hover:bg-ink/5 hover:text-ink",
-          ].join(" ")}
+          className="platform-tab"
         >
           <CalendarIcon className="size-3.5" />
           Cuatrimestre
@@ -288,12 +268,7 @@ export function StudyDashboard({
           type="button"
           aria-pressed={view === "graph"}
           onClick={() => setView("graph")}
-          className={[
-            "inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition",
-            view === "graph"
-              ? "bg-forest text-paper"
-              : "text-ink-soft hover:bg-ink/5 hover:text-ink",
-          ].join(" ")}
+          className="platform-tab"
         >
           <GraphIcon className="size-3.5" />
           Grafo
@@ -316,163 +291,163 @@ export function StudyDashboard({
         />
       ) : (
         <>
-      <div className="mt-6">
-        <ProgressOverview
-          summary={dashboard.summary}
-          availableCount={dashboard.availableCount}
-          blockedCount={dashboard.blockedCount}
-        />
-      </div>
-
-      <div className="mt-5">
-        <BackupActions
-          variant="dashboard"
-          currentPlan={plan}
-          progress={progress}
-          termSelection={termSelection}
-          onRestore={onRestore}
-        />
-      </div>
-
-      <section className="mt-5 rounded-2xl border border-ink/12 bg-paper-light p-3 sm:p-4">
-        <div className="flex flex-col gap-2 lg:flex-row lg:items-center">
-          <div className="relative min-w-0 flex-1">
-            <SearchIcon className="pointer-events-none absolute left-3 top-1/2 size-3.5 -translate-y-1/2 text-ink-soft/70" />
-            <input
-              type="search"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder="Buscar por materia o código..."
-              aria-label="Buscar materia"
-              className="w-full rounded-full border border-ink/15 bg-paper py-2 pl-8 pr-3 text-xs text-ink placeholder:text-ink-soft/60"
+          <div className="mt-6">
+            <ProgressOverview
+              summary={dashboard.summary}
+              availableCount={dashboard.availableCount}
+              blockedCount={dashboard.blockedCount}
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:ml-auto">
-            <select
-              value={yearFilter}
-              onChange={(event) =>
-                setYearFilter(
-                  event.target.value === "all"
-                    ? "all"
-                    : Number(event.target.value),
-                )
-              }
-              aria-label="Filtrar por año"
-              className="rounded-full border border-ink/15 bg-paper px-3 py-2 text-xs text-ink"
-            >
-              <option value="all">Todos los años</option>
-              {years.map((year) => (
-                <option key={year} value={year}>
-                  {year}º año
-                </option>
-              ))}
-            </select>
-
-            <select
-              value={statusFilter}
-              onChange={(event) =>
-                setStatusFilter(event.target.value as StatusFilter)
-              }
-              aria-label="Filtrar por estado"
-              className="rounded-full border border-ink/15 bg-paper px-3 py-2 text-xs text-ink"
-            >
-              <option value="all">Todos los estados</option>
-              {(Object.keys(STATUS_LABELS) as SubjectStatus[]).map((status) => (
-                <option key={status} value={status}>
-                  {STATUS_LABELS[status]}
-                </option>
-              ))}
-            </select>
-
-            <select
-              value={availabilityFilter}
-              onChange={(event) =>
-                setAvailabilityFilter(
-                  event.target.value as AvailabilityFilter,
-                )
-              }
-              aria-label="Filtrar por disponibilidad"
-              className="col-span-2 rounded-full border border-ink/15 bg-paper px-3 py-2 text-xs text-ink sm:col-span-1"
-            >
-              <option value="all">Cualquier disponibilidad</option>
-              <option value="available">Disponibles</option>
-              <option value="blocked">Bloqueadas</option>
-            </select>
+          <div className="mt-5">
+            <BackupActions
+              variant="dashboard"
+              currentPlan={plan}
+              progress={progress}
+              termSelection={termSelection}
+              onRestore={onRestore}
+            />
           </div>
-        </div>
 
-        <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-ink/10 pt-3">
-          <p className="font-mono text-[9px] uppercase tracking-[0.12em] text-ink-soft">
-            Mostrando {visibleRows.length} de {dashboard.rows.length} materias
-          </p>
-          {hasFilters ? (
-            <button
-              type="button"
-              onClick={resetFilters}
-              className="text-xs font-semibold text-forest hover:underline"
-            >
-              Limpiar filtros
-            </button>
-          ) : null}
-        </div>
-      </section>
+          <section className="panel mt-5 p-3 sm:p-4">
+            <div className="flex flex-col gap-2 lg:flex-row lg:items-center">
+              <div className="relative min-w-0 flex-1">
+                <SearchIcon className="pointer-events-none absolute left-3 top-1/2 size-3.5 -translate-y-1/2 text-ink-faint" />
+                <input
+                  type="search"
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder="Buscar por materia o código..."
+                  aria-label="Buscar materia"
+                  className="field pl-8"
+                />
+              </div>
 
-      {visibleRows.length === 0 ? (
-        <div className="mt-5 rounded-2xl border border-dashed border-ink/20 bg-paper-light px-6 py-14 text-center">
-          <SearchIcon className="mx-auto size-6 text-ink-soft/60" />
-          <p className="mt-3 font-display text-xl font-semibold text-ink">
-            No hay materias con esos filtros
-          </p>
-          <p className="mt-1 text-sm text-ink-soft">
-            Probá con otra búsqueda o limpiá los filtros.
-          </p>
-          <button
-            type="button"
-            onClick={resetFilters}
-            className="mt-4 rounded-full bg-forest px-4 py-2 text-xs font-semibold text-paper transition hover:bg-forest-deep"
-          >
-            Limpiar filtros
-          </button>
-        </div>
-      ) : (
-        <div className="mt-5 space-y-4">
-          {[...grouped.entries()].map(([year, rows]) => {
-            const yearRows = dashboard.rows.filter(
-              (row) => row.subject.year === year,
-            );
-            const approved = yearRows.filter(
-              (row) => row.status === "approved",
-            ).length;
-
-            return (
-              <section
-                key={year}
-                className="overflow-hidden rounded-2xl border border-ink/12 bg-paper-light"
-              >
-                <header className="flex items-center justify-between gap-3 border-b border-ink/10 bg-paper-deep/40 px-4 py-2.5">
-                  <h2 className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-forest">
-                    {year}º año
-                  </h2>
-                  <span className="font-mono text-[10px] text-ink-soft">
-                    {approved} de {yearRows.length} aprobadas
-                  </span>
-                </header>
-                <ul className="divide-y divide-ink/8">
-                  {rows.map((row) => (
-                    <SubjectRow
-                      key={row.subject.id}
-                      row={row}
-                      isInTermPlan={selectedTermIds.has(row.subject.id)}
-                      onStatusChange={updateStatus}
-                    />
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:ml-auto">
+                <select
+                  value={yearFilter}
+                  onChange={(event) =>
+                    setYearFilter(
+                      event.target.value === "all"
+                        ? "all"
+                        : Number(event.target.value),
+                    )
+                  }
+                  aria-label="Filtrar por año"
+                  className="field"
+                >
+                  <option value="all">Todos los años</option>
+                  {years.map((year) => (
+                    <option key={year} value={year}>
+                      {year}º año
+                    </option>
                   ))}
-                </ul>
-              </section>
-            );
-          })}
-        </div>
-      )}
+                </select>
+
+                <select
+                  value={statusFilter}
+                  onChange={(event) =>
+                    setStatusFilter(event.target.value as StatusFilter)
+                  }
+                  aria-label="Filtrar por estado"
+                  className="field"
+                >
+                  <option value="all">Todos los estados</option>
+                  {(Object.keys(STATUS_LABELS) as SubjectStatus[]).map(
+                    (status) => (
+                      <option key={status} value={status}>
+                        {STATUS_LABELS[status]}
+                      </option>
+                    ),
+                  )}
+                </select>
+
+                <select
+                  value={availabilityFilter}
+                  onChange={(event) =>
+                    setAvailabilityFilter(
+                      event.target.value as AvailabilityFilter,
+                    )
+                  }
+                  aria-label="Filtrar por disponibilidad"
+                  className="field col-span-2 sm:col-span-1"
+                >
+                  <option value="all">Cualquier disponibilidad</option>
+                  <option value="available">Disponibles</option>
+                  <option value="blocked">Bloqueadas</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-line pt-3">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-ink-soft">
+                Mostrando {visibleRows.length} de {dashboard.rows.length}{" "}
+                materias
+              </p>
+              {hasFilters ? (
+                <button
+                  type="button"
+                  onClick={resetFilters}
+                  className="btn btn-ghost btn-sm text-primary"
+                >
+                  Limpiar filtros
+                </button>
+              ) : null}
+            </div>
+          </section>
+
+          {visibleRows.length === 0 ? (
+            <div className="empty-state mt-5">
+              <SearchIcon className="mx-auto size-6 text-ink-faint" />
+              <p className="mt-3 font-display text-2xl font-semibold text-ink">
+                No hay materias con esos filtros
+              </p>
+              <p className="mt-1 text-sm text-ink-soft">
+                Probá con otra búsqueda o limpiá los filtros.
+              </p>
+              <button
+                type="button"
+                onClick={resetFilters}
+                className="btn btn-primary btn-sm mt-4"
+              >
+                Limpiar filtros
+              </button>
+            </div>
+          ) : (
+            <div className="mt-5 space-y-4">
+              {[...grouped.entries()].map(([year, rows]) => {
+                const yearRows = dashboard.rows.filter(
+                  (row) => row.subject.year === year,
+                );
+                const approved = yearRows.filter(
+                  (row) => row.status === "approved",
+                ).length;
+
+                return (
+                  <section key={year} className="panel overflow-hidden">
+                    <header className="flex items-center justify-between gap-3 border-b border-line bg-surface-2 px-4 py-2.5">
+                      <h2 className="text-[10px] font-semibold uppercase tracking-[0.08em] text-ink-soft">
+                        {year}º año
+                      </h2>
+                      <span className="text-[10px] text-ink-soft">
+                        {approved} de {yearRows.length} aprobadas
+                      </span>
+                    </header>
+                    <ul>
+                      {rows.map((row) => (
+                        <SubjectRow
+                          key={row.subject.id}
+                          row={row}
+                          isInTermPlan={selectedTermIds.has(row.subject.id)}
+                          onStatusChange={updateStatus}
+                        />
+                      ))}
+                    </ul>
+                  </section>
+                );
+              })}
+            </div>
+          )}
         </>
       )}
     </div>
@@ -493,20 +468,22 @@ function SubjectRow({
     subject.requiresRegularized.length + subject.requiresApproved.length;
 
   return (
-    <li
-      className={`border-l-4 bg-paper-light px-4 py-4 transition-colors hover:bg-paper/60 ${STATUS_BORDER_CLASSES[status]}`}
-    >
+    <li className="station-row px-4 py-4">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="min-w-0">
           <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
-            <span className="rounded-md bg-ink/5 px-1.5 py-0.5 font-mono text-[10px] text-ink">
+            <span className="route-badge text-ink-soft">
               {subject.code || "—"}
             </span>
-            <h3 className="font-display text-lg font-semibold leading-tight text-ink">
+            <span
+              className={`status-dot ${STATUS_DOT_CLASSES[status]}`}
+              aria-hidden="true"
+            />
+            <h3 className="font-display text-xl font-semibold leading-tight text-ink">
               {subject.name}
             </h3>
             {isInTermPlan ? (
-              <span className="inline-flex items-center gap-1 rounded-full border border-forest/20 bg-forest/5 px-2 py-0.5 font-mono text-[8px] uppercase tracking-[0.1em] text-forest">
+              <span className="route-badge text-primary">
                 <CalendarIcon className="size-3" />
                 En mi cuatrimestre
               </span>
@@ -519,7 +496,7 @@ function SubjectRow({
                 ? TERM_LABELS[subject.term]
                 : "Cuatrimestre sin definir"}
             </span>
-            <span className="text-line">•</span>
+            <span className="text-line-strong">·</span>
             <span>
               {prerequisiteCount}{" "}
               {prerequisiteCount === 1 ? "correlativa" : "correlativas"}
@@ -554,7 +531,7 @@ function SubjectHint({
     if (status !== "pending" && status !== "in_progress") {
       return (
         <p className="mt-2 flex items-start gap-1.5 text-[11px] leading-5 text-ink-soft">
-          <AlertIcon className="mt-0.5 size-3.5 shrink-0 text-gold" />
+          <AlertIcon className="mt-0.5 size-3.5 shrink-0 text-warning" />
           Correlativas sin cumplir: {formatMissing(missing)}
         </p>
       );
@@ -562,7 +539,7 @@ function SubjectHint({
 
     return (
       <p className="mt-2 flex items-start gap-1.5 text-[11px] leading-5 text-ink-soft">
-        <LockIcon className="mt-0.5 size-3.5 shrink-0 text-terracotta" />
+        <LockIcon className="mt-0.5 size-3.5 shrink-0 text-signal" />
         {formatMissing(missing)}
       </p>
     );
@@ -570,7 +547,7 @@ function SubjectHint({
 
   if (status === "pending") {
     return (
-      <p className="mt-2 flex items-center gap-1.5 text-[11px] font-medium text-forest">
+      <p className="mt-2 flex items-center gap-1.5 text-[11px] font-medium text-success">
         <SparkIcon className="size-3.5" />
         Lista para cursar
       </p>
@@ -580,7 +557,7 @@ function SubjectHint({
   if (status === "in_progress") {
     return (
       <p className="mt-2 flex items-center gap-1.5 text-[11px] text-ink-soft">
-        <span className={`size-2 rounded-full ${STATUS_DOT_CLASSES[status]}`} />
+        <span className={`status-dot ${STATUS_DOT_CLASSES[status]}`} />
         Cursando actualmente
       </p>
     );
@@ -589,14 +566,14 @@ function SubjectHint({
   if (status === "regularized") {
     return (
       <p className="mt-2 flex items-center gap-1.5 text-[11px] text-ink-soft">
-        <span className={`size-2 rounded-full ${STATUS_DOT_CLASSES[status]}`} />
+        <span className={`status-dot ${STATUS_DOT_CLASSES[status]}`} />
         Cursada aprobada, final pendiente
       </p>
     );
   }
 
   return (
-    <p className="mt-2 flex items-center gap-1.5 text-[11px] font-medium text-forest">
+    <p className="mt-2 flex items-center gap-1.5 text-[11px] font-medium text-success">
       <CheckIcon className="size-3.5" />
       Materia aprobada
     </p>

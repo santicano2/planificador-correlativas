@@ -86,21 +86,21 @@ export function PrerequisiteSelector({
     onChange([...selectedIds, id]);
   };
 
-  const accent =
+  const toneClass =
     tone === "regularized"
-      ? "border-forest/50 bg-forest/5"
-      : "border-terracotta/50 bg-terracotta/5";
+      ? "border-t-status-regularized"
+      : "border-t-status-approved";
 
   return (
-    <section className={`rounded-2xl border ${accent}`}>
-      <div className="border-b border-ink/10 px-4 py-3">
-        <div className="flex items-center justify-between gap-3">
+    <section className={`border border-line border-t-2 bg-surface ${toneClass}`}>
+      <div className="panel-head">
+        <div>
           <h4 className="text-sm font-semibold text-ink">{title}</h4>
-          <span className="rounded-full bg-paper-light px-2 py-0.5 font-mono text-[10px] text-ink-soft">
-            {selectedIds.length}
-          </span>
+          <p className="mt-1 text-xs leading-5 text-ink-soft">{description}</p>
         </div>
-        <p className="mt-1 text-xs leading-5 text-ink-soft">{description}</p>
+        <span className="route-badge shrink-0 text-ink-soft">
+          {selectedIds.length}
+        </span>
       </div>
 
       <div className="space-y-3 p-4">
@@ -111,12 +111,10 @@ export function PrerequisiteSelector({
                 key={subject.id}
                 type="button"
                 onClick={() => toggle(subject.id)}
-                className="inline-flex items-center gap-1.5 rounded-full border border-ink/10 bg-paper-light px-2.5 py-1 text-left text-[11px] font-medium text-ink transition hover:border-terracotta/50 hover:text-terracotta"
+                className="route-badge text-ink-soft transition hover:text-signal"
                 title={`Quitar ${subject.name}`}
               >
-                <span className="font-mono text-[10px] text-ink-soft">
-                  {subject.code || subject.name}
-                </span>
+                <span>{subject.code || subject.name}</span>
                 <XIcon className="size-3" />
               </button>
             ))}
@@ -124,17 +122,19 @@ export function PrerequisiteSelector({
               <button
                 key={id}
                 type="button"
-                onClick={() => onChange(selectedIds.filter((value) => value !== id))}
-                className="inline-flex items-center gap-1.5 rounded-full border border-terracotta/40 bg-terracotta-soft px-2.5 py-1 text-[11px] font-medium text-ink"
+                onClick={() =>
+                  onChange(selectedIds.filter((value) => value !== id))
+                }
+                className="route-badge text-signal"
                 title="Quitar correlativa desconocida"
               >
-                <span className="font-mono text-[10px]">{id} · no encontrada</span>
+                <span>{id} · no encontrada</span>
                 <XIcon className="size-3" />
               </button>
             ))}
           </div>
         ) : (
-          <p className="text-xs text-ink-soft/80">Sin correlativas cargadas.</p>
+          <p className="text-xs text-ink-soft">Sin correlativas cargadas.</p>
         )}
 
         <div>
@@ -142,14 +142,14 @@ export function PrerequisiteSelector({
             Buscar materias para {title.toLowerCase()}
           </label>
           <div className="relative">
-            <SearchIcon className="pointer-events-none absolute left-3 top-1/2 size-3.5 -translate-y-1/2 text-ink-soft/70" />
+            <SearchIcon className="pointer-events-none absolute left-3 top-1/2 size-3.5 -translate-y-1/2 text-ink-faint" />
             <input
               id={searchId}
               type="search"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               placeholder="Buscar materia o código..."
-              className="w-full rounded-xl border border-ink/15 bg-paper-light py-2 pl-8 pr-3 text-xs text-ink placeholder:text-ink-soft/60"
+              className="field pl-8"
             />
           </div>
         </div>
@@ -162,7 +162,7 @@ export function PrerequisiteSelector({
           ) : (
             [...grouped.entries()].map(([year, group]) => (
               <div key={year}>
-                <p className="mb-1 font-mono text-[9px] uppercase tracking-[0.14em] text-ink-soft/70">
+                <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-ink-soft">
                   {year}° año
                 </p>
                 <div className="space-y-0.5">
@@ -172,15 +172,21 @@ export function PrerequisiteSelector({
                     return (
                       <label
                         key={subject.id}
-                        className="flex cursor-pointer items-start gap-2 rounded-lg px-1.5 py-1 text-xs leading-5 transition hover:bg-paper-light"
+                        className="flex cursor-pointer items-start gap-2 px-1.5 py-1 text-xs leading-5 transition hover:bg-canvas"
                       >
                         <input
                           type="checkbox"
                           checked={checked}
                           onChange={() => toggle(subject.id)}
-                          className="mt-0.5 size-3.5 shrink-0 accent-[#1f4d3a]"
+                          className="mt-0.5 size-3.5 shrink-0"
                         />
-                        <span className={checked ? "font-medium text-ink" : "text-ink-soft"}>
+                        <span
+                          className={
+                            checked
+                              ? "font-medium text-ink"
+                              : "text-ink-soft"
+                          }
+                        >
                           {subjectLabel(subject)}
                         </span>
                       </label>

@@ -24,6 +24,7 @@
 .DS_Store
 *.pem
 .playwright-cli/
+.impeccable/review/
 dev-server*.log*
 
 

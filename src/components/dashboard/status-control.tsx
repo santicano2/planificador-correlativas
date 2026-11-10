@@ -30,7 +30,7 @@ export function StatusControl({
           value={value}
           aria-label={`Estado de ${subjectName}`}
           onChange={(event) => onChange(event.target.value as SubjectStatus)}
-          className="w-full rounded-full border border-ink/15 bg-paper px-3 py-2 text-xs font-semibold text-ink"
+          className="field font-semibold"
         >
           {STATUS_ORDER.map((status) => (
             <option key={status} value={status}>
@@ -47,7 +47,7 @@ export function StatusControl({
       <div
         role="group"
         aria-label={`Estado de ${subjectName}`}
-        className="hidden items-center gap-0.5 rounded-full border border-ink/12 bg-paper p-0.5 sm:inline-flex"
+        className="hidden items-center gap-0.5 border border-line bg-surface p-0.5 sm:inline-flex"
       >
         {STATUS_ORDER.map((status) => {
           const isActive = value === status;
@@ -60,10 +60,10 @@ export function StatusControl({
               title={STATUS_LABELS[status]}
               onClick={() => onChange(status)}
               className={[
-                "rounded-full px-2.5 py-1.5 text-[11px] font-semibold transition",
+                "min-h-[30px] border border-transparent px-2.5 text-[11px] font-semibold transition",
                 isActive
                   ? STATUS_ACTIVE_CLASSES[status]
-                  : "text-ink-soft hover:bg-ink/5 hover:text-ink",
+                  : "text-ink-soft hover:bg-surface-2 hover:text-ink",
               ].join(" ")}
             >
               {STATUS_SHORT_LABELS[status]}
@@ -78,7 +78,7 @@ export function StatusControl({
           value={value}
           aria-label={`Estado de ${subjectName}`}
           onChange={(event) => onChange(event.target.value as SubjectStatus)}
-          className="w-full rounded-full border border-ink/15 bg-paper px-3 py-2 text-xs font-semibold text-ink"
+          className="field font-semibold"
         >
           {STATUS_ORDER.map((status) => (
             <option key={status} value={status}>
