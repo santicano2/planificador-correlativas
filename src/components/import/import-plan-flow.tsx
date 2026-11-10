@@ -10,6 +10,8 @@ import {
   LockIcon,
   SparkIcon,
 } from "@/components/icons";
+import { RouteMap } from "@/components/home/route-map";
+import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { PdfExtractionError, extractPdf } from "@/lib/pdf/extract-text";
 import { parseStudyPlan } from "@/lib/pdf/parse-plan";
 import {
@@ -281,10 +283,7 @@ export function ImportPlanFlow() {
 
   return (
     <div className="min-h-screen">
-      <a
-        href="#contenido"
-        className="sr-only rounded-full bg-forest px-4 py-2 text-sm font-semibold text-paper focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50"
-      >
+      <a href="#contenido" className="skip-link">
         Saltar al contenido
       </a>
 
@@ -311,16 +310,12 @@ export function ImportPlanFlow() {
               />
             ) : null}
 
-            <section className="mx-auto grid w-full max-w-7xl gap-10 px-4 pb-16 pt-8 sm:px-6 sm:pt-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-14 lg:pt-16">
-              <div className="animate-rise">
-                <span className="inline-flex items-center gap-2 rounded-full border border-forest/20 bg-forest/5 px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-forest">
-                  <span className="size-1.5 rounded-full bg-terracotta" />
-                  Importá tu plan en minutos
-                </span>
-                <h1 className="mt-5 font-display text-5xl font-semibold leading-[0.92] tracking-tight text-ink sm:text-6xl lg:text-7xl">
+            <section className="shell grid gap-10 pb-16 pt-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:gap-14 lg:pt-14">
+              <div>
+                <h1 className="font-display text-6xl font-semibold leading-[0.88] tracking-tight text-ink sm:text-7xl lg:text-[5.25rem]">
                   Tu carrera,
                   <br />
-                  <span className="italic text-forest">sin adivinar</span>
+                  <span className="text-primary">sin adivinar</span>
                   <br />
                   correlativas.
                 </h1>
@@ -330,42 +325,37 @@ export function ImportPlanFlow() {
                   cuatrimestre.
                 </p>
 
-                <div className="mt-7 flex flex-wrap items-center gap-3">
-                  <a
-                    href="#importar"
-                    className="inline-flex items-center gap-2 rounded-full bg-forest px-5 py-3 text-sm font-semibold text-paper transition hover:bg-forest-deep"
-                  >
+                <div className="mt-7 flex flex-wrap items-center gap-4">
+                  <a href="#importar" className="btn btn-primary">
                     Subir mi plan
                     <ArrowRightIcon className="size-4" />
                   </a>
                   <span className="inline-flex items-center gap-1.5 text-xs font-medium text-ink-soft">
-                    <LockIcon className="size-4 text-forest" />
+                    <LockIcon className="size-4 text-primary" />
                     Todo queda en tu navegador
                   </span>
                 </div>
 
-                <div className="mt-10 flex flex-wrap gap-x-7 gap-y-3 border-t border-ink/10 pt-5 font-mono text-[10px] uppercase tracking-[0.14em] text-ink-soft">
+                <div className="mt-9 flex flex-wrap gap-x-7 gap-y-3 border-t border-line pt-4 text-xs text-ink-soft">
                   <span className="inline-flex items-center gap-1.5">
-                    <CheckIcon className="size-3.5 text-forest" />
+                    <CheckIcon className="size-3.5 text-success" />
                     Sin cuenta
                   </span>
                   <span className="inline-flex items-center gap-1.5">
-                    <CheckIcon className="size-3.5 text-forest" />
+                    <CheckIcon className="size-3.5 text-success" />
                     PDF con texto
                   </span>
                   <span className="inline-flex items-center gap-1.5">
-                    <CheckIcon className="size-3.5 text-forest" />
+                    <CheckIcon className="size-3.5 text-success" />
                     Guardado local
                   </span>
                 </div>
               </div>
 
-              <div
-                id="importar"
-                className="animate-rise relative scroll-mt-24"
-                style={{ animationDelay: "120ms" }}
-              >
-                <div className="relative">
+              <div id="importar" className="scroll-mt-24">
+                <RouteMap />
+
+                <div className="mt-3">
                   <UploadPanel
                     busy={isBusy}
                     error={error}
@@ -374,8 +364,8 @@ export function ImportPlanFlow() {
                   />
                 </div>
 
-                <p className="mt-4 flex items-start gap-2 px-2 text-[11px] leading-5 text-ink-soft">
-                  <LockIcon className="mt-0.5 size-3.5 shrink-0 text-forest" />
+                <p className="mt-3 flex items-start gap-2 px-1 text-[11px] leading-5 text-ink-soft">
+                  <LockIcon className="mt-0.5 size-3.5 shrink-0 text-primary" />
                   El PDF se procesa en tu navegador. No se sube a ningún
                   servidor ni se guarda en la nube.
                 </p>
@@ -433,35 +423,43 @@ function Header({
   onOpenStoredPlan: () => void;
 }) {
   return (
-    <header className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4 py-5 sm:px-6">
-      <div className="flex items-center gap-2.5">
-        <span className="grid size-9 place-items-center rounded-xl border border-forest/15 bg-forest text-paper shadow-[3px_3px_0_rgba(23,36,29,0.12)]">
-          <BrandMark />
-        </span>
-        <div className="leading-tight">
-          <p className="font-display text-lg font-semibold tracking-tight text-ink">
-            Planificador
-          </p>
-          <p className="font-mono text-[8px] uppercase tracking-[0.18em] text-ink-soft">
-            de correlativas
-          </p>
-        </div>
-      </div>
+    <header className="border-b border-line bg-surface">
+      <div className="shell flex min-h-[72px] items-center justify-between gap-4">
+        <a
+          href="#contenido"
+          className="flex items-center gap-3"
+          aria-label="Planificador de Correlativas, inicio"
+        >
+          <span className="grid size-9 place-items-center bg-ink text-surface">
+            <BrandMark />
+          </span>
+          <span className="leading-tight">
+            <span className="block font-display text-xl font-semibold tracking-tight text-ink">
+              Planificador
+            </span>
+            <span className="block text-[11px] font-medium text-ink-soft">
+              de correlativas
+            </span>
+          </span>
+        </a>
 
-      <div className="flex items-center gap-2">
-        <span className="hidden font-mono text-[9px] uppercase tracking-[0.14em] text-ink-soft sm:inline">
-          Hecho para estudiantes
-        </span>
-        {hasStoredPlan ? (
-          <button
-            type="button"
-            onClick={onOpenStoredPlan}
-            className="inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-paper-light px-3 py-1.5 text-xs font-semibold text-ink transition hover:border-forest hover:text-forest"
-          >
-            <BookIcon className="size-3.5" />
-            Mi plan
-          </button>
-        ) : null}
+        <div className="flex items-center gap-3">
+          <span className="hidden items-center gap-1.5 text-xs text-ink-soft md:inline-flex">
+            <span className="status-dot bg-success" />
+            Hecho para estudiantes
+          </span>
+          <ThemeToggle />
+          {hasStoredPlan ? (
+            <button
+              type="button"
+              onClick={onOpenStoredPlan}
+              className="btn btn-secondary btn-sm"
+            >
+              <BookIcon className="size-3.5" />
+              Mi plan
+            </button>
+          ) : null}
+        </div>
       </div>
     </header>
   );
@@ -471,15 +469,19 @@ function BrandMark() {
   return (
     <svg viewBox="0 0 24 24" className="size-5" fill="none" aria-hidden="true">
       <path
-        d="M6 7.5h5.5M13.5 7.5H18M9 8v8M15 8v8M9.8 16h4.4"
+        d="M3 6h8a4 4 0 0 1 4 4v9"
         stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
+        strokeWidth="2"
       />
-      <circle cx="6" cy="7.5" r="2" fill="currentColor" />
-      <circle cx="18" cy="7.5" r="2" fill="currentColor" />
-      <circle cx="9" cy="16" r="2" fill="currentColor" />
-      <circle cx="15" cy="16" r="2" fill="#a9522b" />
+      <path
+        d="M21 6h-6a4 4 0 0 0-4 4v9"
+        stroke="currentColor"
+        strokeWidth="2"
+        opacity="0.55"
+      />
+      <rect x="1" y="4" width="4" height="4" fill="currentColor" />
+      <rect x="19" y="4" width="4" height="4" fill="currentColor" />
+      <rect x="13" y="17" width="4" height="4" fill="currentColor" />
     </svg>
   );
 }
@@ -492,10 +494,10 @@ function StoredPlanBanner({
   onOpen: () => void;
 }) {
   return (
-    <div className="mx-auto w-full max-w-7xl px-4 pt-2 sm:px-6">
-      <div className="flex flex-col gap-3 rounded-2xl border border-forest/20 bg-forest/5 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+    <div className="border-b border-line bg-surface-2">
+      <div className="shell flex flex-col gap-3 py-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-start gap-3">
-          <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full bg-forest/10 text-forest">
+          <span className="grid size-8 shrink-0 place-items-center border border-line bg-surface text-primary">
             <BookIcon className="size-4" />
           </span>
           <div>
@@ -509,16 +511,14 @@ function StoredPlanBanner({
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={onOpen}
-            className="inline-flex items-center gap-1.5 rounded-full bg-forest px-3.5 py-2 text-xs font-semibold text-paper transition hover:bg-forest-deep"
-          >
-            Ver mi plan
-            <ArrowRightIcon className="size-3.5" />
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={onOpen}
+          className="btn btn-primary btn-sm self-start sm:self-auto"
+        >
+          Ver mi plan
+          <ArrowRightIcon className="size-3.5" />
+        </button>
       </div>
     </div>
   );
@@ -526,41 +526,44 @@ function StoredPlanBanner({
 
 function HowItWorks() {
   return (
-    <section className="border-y border-ink/10 bg-paper-light/55">
-      <div className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 sm:py-16">
+    <section className="border-y border-line bg-surface">
+      <div className="shell py-14 sm:py-16">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-terracotta">
-              Cómo funciona
-            </p>
-            <h2 className="mt-2 max-w-xl font-display text-3xl font-semibold leading-tight tracking-tight text-ink sm:text-4xl">
-              Del PDF al cuatrimestre en tres pasos.
+            <h2 className="max-w-2xl font-display text-4xl font-semibold leading-[0.95] tracking-tight text-ink sm:text-5xl">
+              Del PDF al cuatrimestre en tres estaciones.
             </h2>
+            <p className="mt-3 max-w-xl text-sm leading-6 text-ink-soft">
+              Sin planillas, sin cargar todo a mano y sin crear una cuenta.
+            </p>
           </div>
-          <p className="max-w-sm text-sm leading-6 text-ink-soft">
-            Sin planillas, sin cargar todo a mano y sin crear una cuenta.
-          </p>
+          <span className="route-badge self-start text-primary sm:self-auto">
+            Línea local
+          </span>
         </div>
 
-        <div className="mt-9 grid gap-3 md:grid-cols-3">
-          <Step
-            number="01"
-            icon={<FileIcon className="size-4" />}
-            title="Subí el PDF"
-            body="Elegí el plan de estudios que te dio la facultad. Leemos el texto y detectamos el formato."
-          />
-          <Step
-            number="02"
-            icon={<SparkIcon className="size-4" />}
-            title="Revisá y corregí"
-            body="Ajustá nombres, años, cuatrimestres y correlativas. El PDF no siempre interpreta todo perfecto."
-          />
-          <Step
-            number="03"
-            icon={<BookIcon className="size-4" />}
-            title="Guardá tu plan"
-            body="Queda guardado en este navegador, sin cuentas ni servidores. Listo para planificar el cuatrimestre."
-          />
+        <div className="relative mt-10">
+          <div className="absolute left-4 right-4 top-4 hidden h-px bg-line md:block" />
+          <ol className="relative grid gap-8 md:grid-cols-3 md:gap-6">
+            <Step
+              number="1"
+              icon={<FileIcon className="size-4" />}
+              title="Subí el PDF"
+              body="Elegí el plan de estudios que te dio la facultad. Leemos el texto y detectamos el formato."
+            />
+            <Step
+              number="2"
+              icon={<SparkIcon className="size-4" />}
+              title="Revisá y corregí"
+              body="Ajustá nombres, años, cuatrimestres y correlativas. El PDF no siempre interpreta todo perfecto."
+            />
+            <Step
+              number="3"
+              icon={<BookIcon className="size-4" />}
+              title="Guardá tu plan"
+              body="Queda guardado en este navegador, sin cuentas ni servidores. Listo para planificar el cuatrimestre."
+            />
+          </ol>
         </div>
       </div>
     </section>
@@ -579,32 +582,28 @@ function Step({
   body: string;
 }) {
   return (
-    <article className="group rounded-2xl border border-ink/12 bg-paper p-5 transition hover:-translate-y-0.5 hover:border-forest/30">
-      <div className="flex items-center justify-between">
-        <span className="flex size-9 items-center justify-center rounded-full bg-forest/10 text-forest">
-          {icon}
-        </span>
-        <span className="font-mono text-[10px] tracking-[0.16em] text-ink-soft/60">
-          {number}
-        </span>
+    <li className="relative md:pr-6">
+      <span className="relative z-10 grid size-8 place-items-center border-2 border-primary bg-surface font-display text-sm font-semibold text-primary">
+        {number}
+      </span>
+      <div className="mt-4 flex items-center gap-2 text-primary">
+        {icon}
+        <h3 className="font-display text-2xl font-semibold text-ink">{title}</h3>
       </div>
-      <h3 className="mt-5 font-display text-xl font-semibold text-ink">
-        {title}
-      </h3>
-      <p className="mt-2 text-sm leading-6 text-ink-soft">{body}</p>
-    </article>
+      <p className="mt-2 max-w-sm text-sm leading-6 text-ink-soft">{body}</p>
+    </li>
   );
 }
 
 function Footer() {
   return (
-    <footer className="border-t border-ink/10">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-4 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+    <footer className="border-t border-line bg-surface">
+      <div className="shell flex flex-col gap-3 py-6 sm:flex-row sm:items-center sm:justify-between">
         <p className="flex items-center gap-2 font-display text-sm font-semibold text-ink">
           <BrandMark />
           Planificador de Correlativas
         </p>
-        <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-ink-soft">
+        <p className="text-[11px] text-ink-soft">
           Sin cuentas · Sin servidores · Hecho para estudiantes
         </p>
       </div>
