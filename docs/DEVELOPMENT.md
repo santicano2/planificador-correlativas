@@ -45,6 +45,7 @@ Checklist de smoke test después de un deploy:
 - La edición conserva el progreso y el respaldo se exporta y restaura.
 - En mobile el grafo hace scroll horizontal y el detalle aparece arriba.
 - La consola no muestra errores y `/pdf.worker.min.mjs` responde `200`.
+- El toggle de tema cambia claro/oscuro, persiste al recargar y no genera errores en consola.
 
 ## Scripts
 
@@ -108,6 +109,8 @@ src/
       use-study-plan-storage.ts # Hook de React sobre el storage del plan
       use-study-progress-storage.ts # Hook de React sobre el progreso
       use-study-term-selection-storage.ts # Hook de React sobre la selección
+    theme/
+      theme.ts             # Clave, tipos y resolución del tema
 scripts/
   copy-pdf-worker.mjs      # Copia el worker de PDF.js a public/
 public/
@@ -201,11 +204,11 @@ La pestaña **Grafo** muestra el plan completo agrupado por año. El modelo se c
 
 La selección resalta la materia, sus requisitos y las materias que habilita, y atenúa el resto. El panel de detalle muestra el estado, los requisitos faltantes, las correlativas y los desbloqueos. El estado se puede cambiar desde el panel y se refleja en el tablero y en `localStorage`.
 
-- Arista verde sólida: la materia destino pide cursada regularizada.
-- Arista terracota punteada: la materia destino pide final aprobado.
+- Arista cobalto sólida: la materia destino pide cursada regularizada.
+- Arista roja punteada: la materia destino pide final aprobado.
 - Clic, Enter o Espacio seleccionan una materia; Escape o el botón de cierre limpian la selección.
 
-En desktop el panel queda a la derecha y es sticky; en mobile aparece arriba del mapa y el grafo se recorre con scroll horizontal. La vista no incluye zoom, arrastre, búsqueda ni filtros propios: esas operaciones siguen en el tablero. El grafo tampoco persiste posiciones ni selección.
+En desktop el panel queda a la derecha, con `320px`, y es sticky. En mobile el mapa aparece primero; al seleccionar una materia, el detalle se muestra arriba y se desplaza a la vista. El grafo se recorre con scroll horizontal. La vista no incluye zoom, arrastre, búsqueda ni filtros propios: esas operaciones siguen en el tablero. El grafo tampoco persiste posiciones ni selección.
 
 ## Edición y respaldo
 
@@ -268,6 +271,10 @@ Limitaciones conocidas:
 
 Al guardar o editar un plan, el progreso se poda con `pruneProgress` y la selección con `pruneTermSelection` para conservar solo las materias que siguen existiendo y pendientes. Al borrar el plan se borran también el progreso, la selección y la vista vuelve al inicio.
 
+## Tema claro/oscuro
+
+El tema se guarda en `planificador-correlativas:theme:v1`. En la primera visita, si no hay valor, se resuelve con `prefers-color-scheme`; después de usar el botón del header, la elección explícita se guarda y deja de seguir al sistema. El atributo `data-theme` en `<html>` activa la paleta correspondiente y un script inline en `layout.tsx` evita el flash de tema. Si `localStorage` está bloqueado, el tema se aplica solo durante la sesión y el toggle deja de seguir al sistema hasta recargar.
+
 ## Decisiones técnicas
 
 - **Lógica pura y aislada:** las reglas de negocio no dependen de React, del navegador ni de `localStorage`.
@@ -276,6 +283,7 @@ Al guardar o editar un plan, el progreso se poda con `pruneProgress` y la selecc
 - **Extracción local:** PDF.js corre en el navegador con un worker copiado a `public/`; el archivo nunca se sube.
 - **La revisión es parte del producto:** el parser propone un borrador y la persona confirma o corrige antes de guardar.
 - **Progreso separado del plan:** el plan describe la carrera y el progreso guarda decisiones del usuario; mantenerlos en claves distintas permite reimportar o editar el plan sin mezclar datos.
+- **Tema como preferencia separada:** el tema se guarda en su propia clave y no se borra al borrar el plan; es una preferencia de lectura, no un dato del plan.
 - **Cuatrimestre como selección, no como estado:** la selección guarda solo ids de materias pendientes y se poda de forma derivada; no duplica estados ni introduce una máquina de estados paralela.
 - **Ids estables al editar:** la edición conserva los ids de las materias para que el progreso sobreviva a cambios de nombre, año o correlativas.
 - **Respaldo versionado:** el JSON incluye `format`, `version` y `exportedAt`; una versión desconocida se rechaza con un mensaje claro.
