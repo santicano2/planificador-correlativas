@@ -22,22 +22,29 @@ export const STATUS_SHORT_LABELS: Record<SubjectStatus, string> = {
 };
 
 export const STATUS_ACTIVE_CLASSES: Record<SubjectStatus, string> = {
-  pending: "bg-ink/10 text-ink",
-  in_progress: "bg-gold/25 text-ink",
-  regularized: "bg-sage/55 text-forest-deep",
-  approved: "bg-forest text-paper",
+  pending: "bg-status-pending-soft text-ink",
+  in_progress: "bg-status-progress text-on-status",
+  regularized: "bg-status-regularized text-on-status",
+  approved: "bg-status-approved text-on-status",
 };
 
 export const STATUS_BORDER_CLASSES: Record<SubjectStatus, string> = {
-  pending: "border-l-ink/15",
-  in_progress: "border-l-gold",
-  regularized: "border-l-sage",
-  approved: "border-l-forest",
+  pending: "border-t-status-pending",
+  in_progress: "border-t-status-progress",
+  regularized: "border-t-status-regularized",
+  approved: "border-t-status-approved",
 };
 
 export const STATUS_DOT_CLASSES: Record<SubjectStatus, string> = {
-  pending: "bg-ink/25",
-  in_progress: "bg-gold",
-  regularized: "bg-sage",
-  approved: "bg-forest",
+  pending: "bg-status-pending",
+  in_progress: "bg-status-progress",
+  regularized: "bg-status-regularized",
+  approved: "bg-status-approved",
+};
+
+export const STATUS_TEXT_CLASSES: Record<SubjectStatus, string> = {
+  pending: "text-status-pending",
+  in_progress: "text-status-progress",
+  regularized: "text-status-regularized",
+  approved: "text-status-approved",
 };

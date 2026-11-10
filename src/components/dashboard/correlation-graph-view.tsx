@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import {
   buildCorrelationGraph,
@@ -28,6 +28,7 @@ export function CorrelationGraphView({
   onStatusChange,
 }: CorrelationGraphViewProps) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const detailRef = useRef<HTMLDivElement>(null);
   const graph = useMemo(
     () => buildCorrelationGraph(plan, progress),
     [plan, progress],
@@ -40,9 +41,26 @@ export function CorrelationGraphView({
     ? graph.nodesById.get(selectedId) ?? null
     : null;
 
+  useEffect(() => {
+    if (
+      selectedId &&
+      window.matchMedia("(max-width: 1023px)").matches
+    ) {
+      detailRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, [selectedId]);
+
   return (
-    <div className="mt-5 grid gap-4 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start">
-      <div className="order-2 min-w-0 lg:order-1">
+    <div className="mt-5 grid gap-4 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
+      <div
+        className={[
+          "min-w-0",
+          selectedNode ? "order-2 lg:order-1" : "order-1",
+        ].join(" ")}
+      >
         <CorrelationGraph
           graph={graph}
           layout={layout}
@@ -53,7 +71,13 @@ export function CorrelationGraphView({
         />
       </div>
 
-      <div className="order-1 lg:order-2 lg:sticky lg:top-6">
+      <div
+        ref={detailRef}
+        className={[
+          "order-1 scroll-mt-4 lg:order-2 lg:sticky lg:top-6",
+          selectedNode ? "" : "hidden lg:block",
+        ].join(" ")}
+      >
         <GraphDetailPanel
           graph={graph}
           node={selectedNode}

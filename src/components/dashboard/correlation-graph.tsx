@@ -66,25 +66,25 @@ export function CorrelationGraph({
 
   if (graph.nodes.length === 0) {
     return (
-      <section className="rounded-3xl border border-dashed border-ink/20 bg-paper-light px-6 py-14 text-center">
-        <p className="font-display text-xl font-semibold text-ink">
+      <div className="empty-state">
+        <p className="font-display text-2xl font-semibold text-ink">
           No hay materias para graficar
         </p>
         <p className="mt-1 text-sm text-ink-soft">
           Importá o editá un plan para ver sus correlativas.
         </p>
-      </section>
+      </div>
     );
   }
 
   return (
-    <section className="rounded-3xl border border-ink/12 bg-paper-light p-3 sm:p-4">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+    <section className="panel">
+      <div className="panel-head flex-col items-start gap-3 lg:flex-row lg:items-center">
         <div>
-          <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-terracotta">
+          <h2 className="font-display text-xl font-semibold text-ink">
             Mapa de correlativas
-          </p>
-          <p className="mt-1 max-w-lg text-xs leading-5 text-ink-soft">
+          </h2>
+          <p className="mt-0.5 max-w-lg text-xs leading-5 text-ink-soft">
             Elegí una materia para ver qué necesita y qué habilita.
           </p>
         </div>
@@ -92,10 +92,14 @@ export function CorrelationGraph({
       </div>
 
       {graph.edges.length === 0 ? (
-        <div className="mt-3 flex items-start gap-2 rounded-2xl border border-gold/35 bg-gold/10 px-3 py-2 text-[11px] leading-5 text-ink-soft">
-          <AlertIcon className="mt-0.5 size-3.5 shrink-0 text-gold" />
-          Este plan no tiene correlativas cargadas. Las materias se muestran sin
-          flechas.
+        <div className="p-3 pb-0 sm:p-4 sm:pb-0">
+          <div className="service-alert service-alert--warning">
+            <AlertIcon className="mt-0.5 size-4 shrink-0 text-warning" />
+            <span>
+              Este plan no tiene correlativas cargadas. Las materias se muestran
+              sin flechas.
+            </span>
+          </div>
         </div>
       ) : null}
 
@@ -108,7 +112,7 @@ export function CorrelationGraph({
             onClear();
           }
         }}
-        className="mt-4 overflow-x-auto pb-2"
+        className="mt-3 overflow-x-auto p-3 pb-2 sm:p-4 sm:pb-2"
       >
         <div
           className="relative"
@@ -123,7 +127,7 @@ export function CorrelationGraph({
             <div
               key={`column-${column.year}`}
               aria-hidden="true"
-              className="pointer-events-none absolute top-0 rounded-3xl border border-ink/8 bg-paper/45"
+              className="pointer-events-none absolute top-0 border border-line bg-surface-2/45"
               style={{
                 left: column.x - 8,
                 width: column.width + 16,
@@ -139,10 +143,10 @@ export function CorrelationGraph({
               className="pointer-events-none absolute top-0 flex h-12 flex-col justify-center"
               style={{ left: column.x, width: column.width }}
             >
-              <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-forest">
+              <p className="font-display text-sm font-semibold text-ink">
                 {column.year}º año
               </p>
-              <p className="font-mono text-[9px] text-ink-soft">
+              <p className="text-[10px] text-ink-soft">
                 {column.count} {column.count === 1 ? "materia" : "materias"}
               </p>
             </div>
@@ -164,7 +168,7 @@ export function CorrelationGraph({
                 markerHeight="7"
                 orient="auto-start-reverse"
               >
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--color-forest)" />
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--color-primary)" />
               </marker>
               <marker
                 id={approvedMarkerId}
@@ -175,7 +179,7 @@ export function CorrelationGraph({
                 markerHeight="7"
                 orient="auto-start-reverse"
               >
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--color-terracotta)" />
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--color-signal)" />
               </marker>
             </defs>
 
@@ -204,7 +208,7 @@ export function CorrelationGraph({
                   key={edge.id}
                   d={buildEdgePath(from, to)}
                   fill="none"
-                  strokeWidth={highlighted ? 2.2 : 1.5}
+                  strokeWidth={highlighted ? 2.4 : 1.5}
                   strokeDasharray={isApproved ? "6 5" : undefined}
                   markerEnd={`url(#${
                     isApproved ? approvedMarkerId : regularizedMarkerId
@@ -212,9 +216,9 @@ export function CorrelationGraph({
                   vectorEffect="non-scaling-stroke"
                   className={[
                     "transition-opacity",
-                    isApproved ? "stroke-terracotta" : "stroke-forest",
+                    isApproved ? "stroke-signal" : "stroke-primary",
                     highlighted ? "opacity-100" : "",
-                    dimmed ? "opacity-10" : "opacity-45",
+                    dimmed ? "opacity-10" : "opacity-60",
                   ].join(" ")}
                 />
               );
@@ -227,7 +231,10 @@ export function CorrelationGraph({
               nodeLayout={nodeLayout}
               isSelected={nodeLayout.node.subject.id === selectedId}
               isRelated={relatedIds.has(nodeLayout.node.subject.id)}
-              isDimmed={Boolean(selectedNode) && !relatedIds.has(nodeLayout.node.subject.id)}
+              isDimmed={
+                Boolean(selectedNode) &&
+                !relatedIds.has(nodeLayout.node.subject.id)
+              }
               isInTermPlan={termIds.has(nodeLayout.node.subject.id)}
               onSelect={onSelect}
             />
@@ -235,7 +242,7 @@ export function CorrelationGraph({
         </div>
       </div>
 
-      <p className="mt-2 text-[10px] text-ink-soft lg:hidden">
+      <p className="px-3 pb-3 text-[10px] text-ink-soft sm:px-4">
         Deslizá el mapa para ver todos los años.
       </p>
     </section>
@@ -287,32 +294,32 @@ function GraphNode({
         height: nodeLayout.height,
       }}
       className={[
-        "absolute flex min-w-0 flex-col rounded-2xl border border-ink/12 border-l-4 bg-paper-light px-3 py-1.5 text-left shadow-[2px_2px_0_rgba(23,36,29,0.05)] transition",
-        "hover:-translate-y-0.5 hover:shadow-[3px_4px_0_rgba(23,36,29,0.08)]",
+        "absolute flex min-w-0 flex-col border border-t-2 border-line bg-surface px-3 py-1.5 text-left transition",
+        "hover:border-primary hover:bg-primary-soft/20",
         STATUS_BORDER_CLASSES[status],
         isSelected
-          ? "z-10 ring-2 ring-terracotta ring-offset-2 ring-offset-paper-light"
+          ? "z-10 outline outline-2 outline-primary outline-offset-2"
           : "",
-        isRelated && !isSelected ? "ring-1 ring-forest/20" : "",
+        isRelated && !isSelected ? "border-primary/50" : "",
         isDimmed ? "opacity-40" : "",
       ].join(" ")}
     >
       <div className="flex items-center justify-between gap-2">
-        <span className="rounded bg-ink/5 px-1.5 py-0.5 font-mono text-[9px] text-ink">
+        <span className="route-badge text-ink-soft">
           {subject.code || "—"}
         </span>
         <span className="flex items-center gap-1">
           {isInTermPlan ? (
-            <CalendarIcon className="size-3.5 text-forest" />
+            <CalendarIcon className="size-3.5 text-primary" />
           ) : null}
           {isPending && isAvailable ? (
-            <SparkIcon className="size-3.5 text-forest" />
+            <SparkIcon className="size-3.5 text-success" />
           ) : null}
           {isPending && !isAvailable ? (
-            <LockIcon className="size-3.5 text-terracotta" />
+            <LockIcon className="size-3.5 text-signal" />
           ) : null}
           <span
-            className={`size-2 rounded-full ${STATUS_DOT_CLASSES[status]}`}
+            className={`status-dot ${STATUS_DOT_CLASSES[status]}`}
           />
         </span>
       </div>
@@ -321,7 +328,7 @@ function GraphNode({
         {subject.name}
       </p>
 
-      <p className="mt-auto font-mono text-[8px] uppercase tracking-[0.12em] text-ink-soft">
+      <p className="mt-auto text-[9px] font-semibold uppercase tracking-[0.06em] text-ink-soft">
         {subject.term ? TERM_SHORT_LABELS[subject.term] : "Sin cuatrimestre"}
       </p>
     </button>
@@ -333,20 +340,19 @@ function GraphLegend() {
     <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[10px] text-ink-soft">
       {STATUS_ORDER.map((status) => (
         <span key={status} className="inline-flex items-center gap-1.5">
-          <span className={`size-2 rounded-full ${STATUS_DOT_CLASSES[status]}`} />
+          <span
+            className={`status-dot ${STATUS_DOT_CLASSES[status]}`}
+          />
           {STATUS_LABELS[status]}
         </span>
       ))}
-      <span className="h-3 w-px bg-ink/10" />
-      <span className="font-mono text-[8px] uppercase tracking-[0.12em] text-ink-soft/70">
-        Correlativa
-      </span>
+      <span className="h-3 w-px bg-line" />
       <span className="inline-flex items-center gap-1.5">
-        <span className="h-0.5 w-4 bg-forest" />
+        <span className="h-0.5 w-4 bg-primary" />
         Pide regularizada
       </span>
       <span className="inline-flex items-center gap-1.5">
-        <span className="w-4 border-t-2 border-dashed border-terracotta" />
+        <span className="w-4 border-t-2 border-dashed border-signal" />
         Pide aprobada
       </span>
     </div>
